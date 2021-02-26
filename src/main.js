@@ -4,7 +4,6 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import YmapPlugin from 'vue-yandex-maps'
-
 Vue.config.productionTip = false
 
 const settings = {
