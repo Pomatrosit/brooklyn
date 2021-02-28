@@ -2,9 +2,13 @@
   <nav>
     <div class="app-wrapper">
       <div class="nav__main">
-        <div class="nav__logo"><img src="/img/logo.png" alt="Brooklyn"></div>
+        <div class="nav__logo">
+          <router-link to="/">
+            <img src="/img/logo.png" alt="Brooklyn">
+          </router-link>
+        </div>
         <ul class="nav__links">
-          <li><router-link to="/">Выбор квартиры</router-link></li>
+          <li><router-link to="/apartments">Выбор квартиры</router-link></li>
           <li><router-link to="/about">Галерея</router-link></li>
           <li><router-link to="/about">Новости</router-link></li>
           <li><router-link to="/about">Ход строительства</router-link></li>
@@ -25,7 +29,7 @@
       </div>
     </div>
 
-    <div class="page-progress" :style="{width: progress + '%'}"></div>
+    <div v-if="path === '/'" class="page-progress" :style="{width: progress + '%'}"></div>
   </nav>
 </template>
 
@@ -34,7 +38,15 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Navbar',
-  computed: mapGetters(['progress'])
+  computed: mapGetters(['progress']),
+  data: () => ({
+    path: '/'
+  }),
+  watch: {
+    $route (to, from) {
+      this.path = to.path
+    }
+  }
 }
 </script>
 
@@ -65,6 +77,7 @@ nav{
 
 .nav__logo img{
   height:6.25vh;
+  cursor:pointer;
 }
 
 .nav__links{

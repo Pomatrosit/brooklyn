@@ -31,7 +31,10 @@
           </a>
       </div>
 
-      <div class="scroll-trigger" :class="{red_trigger : homeSlide >= 3}">
+      <div class="scroll-trigger"
+        :class="{red_trigger : homeSlide >= 3}"
+        @click="onScrollTrigger"
+      >
         <svg class="scroll-trigger__mouse" width="21" height="34" viewBox="0 0 21 34" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="1" y="1" width="19" height="32" rx="9.5" stroke="#EFEFEF" stroke-width="2"/>
           <circle r="2.5" transform="matrix(-1 0 0 1 10.5 11.5)" fill="#EFEFEF"/>
@@ -53,7 +56,14 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Footer',
   computed: mapGetters(['homeSlide']),
+  data: () => ({
+    path: '/',
+    isWheelAvailable: true
+  }),
   watch: {
+    $route (to, from) {
+      this.path = to.path
+    },
     homeSlide (homeSlide, prevHomeSlide) {
       switch (homeSlide) {
         case 2 : gsap.to(this.$refs.screen2_desc, { x: 0, opacity: 1, duration: 1, ease: Power2.easeInOut, delay: 1 })
@@ -83,6 +93,24 @@ export default {
   },
   mounted () {
     gsap.to('.screen_desc', { x: -100, opacity: 0, duration: 0 })
+  },
+  methods: {
+    setScrollUnavailable () {
+      this.isWheelAvailable = false
+      setTimeout(() => {
+        this.isWheelAvailable = true
+      }, 2000)
+    },
+    onScrollTrigger () {
+      const homeSlide = this.$store.getters.homeSlide
+      const lastHomeSlide = this.$store.getters.lastHomeSlide
+      if (this.isWheelAvailable) {
+        if (homeSlide < lastHomeSlide) {
+          this.$store.commit('slideDown')
+          this.setScrollUnavailable()
+        }
+      }
+    }
   }
 }
 </script>
@@ -164,10 +192,23 @@ footer{
 .scroll-trigger__mouse{
   width:1.98vh;
   height:3.33vh;
+  transition:0.2s;
+  transition-timing-function:ease-in-out;
 }
 
 .scroll-trigger__arrow{
   width:1.14vh;
   height:4.8vh;
+  transition:0.2s;
+  transition-timing-function:ease-in-out;
+}
+
+@media(hover:hover){
+  .scroll-trigger:hover .scroll-trigger__arrow{
+    transform:translateY(5px)
+  }
+  .scroll-trigger:hover .scroll-trigger__mouse{
+    transform:translateY(-5px)
+  }
 }
 </style>
