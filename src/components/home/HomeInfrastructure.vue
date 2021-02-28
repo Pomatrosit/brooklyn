@@ -69,10 +69,23 @@
       >
       <yandex-map
         :settings="settings"
-        :coords="coords"
-        :zoom="10"
+        :coords="centerCoords"
+        :zoom="14"
        >
-        <!--Markers-->
+         <div ref="mapInner">
+           <ymap-marker
+             marker-id="1"
+             :coords="brooklynCoords"
+             :icon="{ color: 'red', content: 'ЖК Бруклин'}"
+           />
+
+           <ymap-marker
+             v-for="(coords, idx) in nav[currentNavItem - 1].coords"
+             :key="idx"
+             marker-id="2"
+             :coords="coords"
+           />
+       </div>
       </yandex-map>
       </div>
 
@@ -83,56 +96,61 @@
 <script>
 import { mapGetters } from 'vuex'
 import gsap, { Power2 } from 'gsap'
-import { yandexMap } from 'vue-yandex-maps'
+import { yandexMap, ymapMarker } from 'vue-yandex-maps'
 
 export default {
   name: 'HomeInfrastructure',
   computed: mapGetters(['homeSlide']),
   components: {
-    yandexMap
+    yandexMap,
+    ymapMarker
   },
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 4) {
-        gsap.to(this.$refs.infrastructure, { height: '100%', padding: '10.42vh 0 13.54vh 0', duration: 0, delay: 1 })
+        gsap.to(this.$refs.infrastructure, { x: 0, padding: '10.42vh 0 13.54vh 0', duration: 0, delay: 1 })
         gsap.to(this.$refs.first, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.map, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
       }
       if (prevHomeSlide === 4) {
-        gsap.to(this.$refs.infrastructure, { height: 0, padding: '0', duration: 0, delay: 1 })
+        gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0, delay: 1 })
         gsap.to(this.$refs.first, { y: '-101%', duration: 1, ease: Power2.easeInOut })
         gsap.to(this.$refs.map, { y: '101%', duration: 1, ease: Power2.easeInOut })
       }
     }
   },
   mounted () {
-    // gsap.to(this.$refs.infrastructure, { height: 0, padding: '0', duration: 0 })
-    // gsap.to(this.$refs.first, { y: '-101%', duration: 0 })
-    // gsap.to(this.$refs.map, { y: '101%', duration: 0 })
+    gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0 })
+    gsap.to(this.$refs.first, { y: '-101%', duration: 0 })
+    gsap.to(this.$refs.map, { y: '101%', duration: 0 })
   },
   data: () => ({
     nav: [
-      { id: 1, label: 'Детские сады' },
-      { id: 2, label: 'Транспорт' },
-      { id: 3, label: 'Здравоохранение' },
-      { id: 4, label: 'Магазины' },
-      { id: 5, label: 'Спорт' },
-      { id: 6, label: 'Школы' }
+      { id: 1, label: 'Детские сады', coords: [[46.32726207445324, 48.02318049999988], [46.32789707445488, 48.01947949999993], [46.32349707444354, 48.03649349999998]] },
+      { id: 2, label: 'Школы', coords: [[46.32409407444506, 48.02444699999997], [46.332103574439515, 48.02516549999994], [46.32515207444783, 48.03575699999998]] },
+      { id: 3, label: 'Здравоохранение', coords: [[46.3329245046788, 48.026279999999915], [46.33629757445034, 48.02255149999996], [46.33608550467928, 48.034868], [46.33071557443597, 48.04165], [46.32326007444297, 48.0226505], [46.325820974448544, 48.02168049999995], [46.327015434295596, 48.02284374306107]] },
+      { id: 4, label: 'Магазины', coords: [[46.3200365744608, 48.0195425], [46.338288574455454, 48.02316249999991], [46.33097707446277, 48.048279499999964], [46.340528074435035, 48.02300099999997], [46.323596074443785, 48.02294699999999], [46.32650307445132, 48.021536499999996], [46.32739307445355, 48.02124899999994], [46.32538257447455, 48.032594999999944]] }
+      // { id: 5, label: 'Спорт', coords: [] },
+      // { id: 6, label: 'Транспорт', coords: [] }
     ],
-    currentNavItem: 1,
-    coords: [
-      54.82896654088406,
-      39.831893822753904
+    currentNavItem: 4,
+    centerCoords: [
+      46.329099, 48.028477
+    ],
+    brooklynCoords: [
+      46.324099, 48.026477
     ],
     settings: {
       apiKey: 'dbdccdc4-2977-40f2-9cc3-07dc75ba9931',
       lang: 'ru_RU',
       coordorder: 'latlong',
       version: '2.1'
-    }
+    },
+    map: null
   }),
   methods: {
     changeNavHandler (id) {
+      this.$refs.mapInner.innerHtml = ''
       this.currentNavItem = id
     }
   }

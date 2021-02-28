@@ -28,6 +28,11 @@ export default {
   padding:0;
   margin:0;
   box-sizing:border-box;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 input, input:before, input:after {
