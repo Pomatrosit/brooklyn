@@ -3,10 +3,12 @@
     <div class="app-wrapper">
 
       <p class="footer__screen-description">
-        <span class = "screen_desc" ref="screen2_desc">01 — О комплексе</span>
-        <span class = "screen_desc" ref="screen3_desc">02 — Преимущества</span>
-        <span class = "screen_desc" ref="screen4_desc">03 — Инфраструктура</span>
-        <span class = "screen_desc" ref="screen5_desc">04 — Контакты</span>
+        <span :style="{ display: path === '/' ? 'block' : 'none' }" class = "screen_desc" ref="screen2_desc">01 — О комплексе</span>
+        <span :style="{ display: path === '/' ? 'block' : 'none' }" class = "screen_desc" ref="screen3_desc">02 — Преимущества</span>
+        <span :style="{ display: path === '/' ? 'block' : 'none' }" class = "screen_desc" ref="screen4_desc">03 — Инфраструктура</span>
+        <span :style="{ display: path === '/' ? 'block' : 'none' }" class = "screen_desc" ref="screen5_desc">04 — Контакты</span>
+
+        <span :style="{ display: path === '/apartments' ? 'block' : 'none' }" >Выбор квартиры</span>
       </p>
 
       <div class="footer__main">
@@ -32,6 +34,7 @@
       </div>
 
       <div class="scroll-trigger"
+        v-if="path === '/'"
         :class="{red_trigger : homeSlide >= 3}"
         @click="onScrollTrigger"
       >
