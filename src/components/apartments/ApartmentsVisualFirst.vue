@@ -7,21 +7,21 @@
         <span class="title title3">Третий подъезд</span>
       </div>
       <div class="sections">
-        <div class="section section1">
+        <div class="section section1" @click = "nextStep(1)">
           <img src="/img/apartments/section1.png" alt="first entrance">
           <div class="section-after">
             <span>Подробнее</span>
             <WhiteArrow />
           </div>
         </div>
-        <div class="section section2">
+        <div class="section section2" @click = "nextStep(2)">
           <img src="/img/apartments/section1.png" alt="first entrance">
           <div class="section-after">
             <span>Подробнее</span>
             <WhiteArrow />
           </div>
         </div>
-        <div class="section section3">
+        <div class="section section3" @click = "nextStep(3)">
           <img src="/img/apartments/section1.png" alt="first entrance">
           <div class="section-after">
             <span>Подробнее</span>
@@ -47,9 +47,14 @@
 import WhiteArrow from '@/components/svg/WhiteArrow'
 
 export default {
-  name: 'ApartmentsFirst',
+  name: 'ApartmentsVisualFirst',
   components: {
     WhiteArrow
+  },
+  methods: {
+    nextStep (id) {
+      this.$router.push(`/apartments/visual/${id}`)
+    }
   }
 }
 </script>
@@ -130,11 +135,11 @@ export default {
 }
 
 .section2, .title2, .count-title2, .count2{
-  width:30.6%;
+  width:30.5%;
 }
 
 .section3, .title3, .count-title3, .count3{
-  width:34.4%;
+  width:34.5%;
 }
 
 .titles{

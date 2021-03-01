@@ -11,9 +11,14 @@ const routes = [
     component: Home
   },
   {
-    path: '/apartments',
-    name: 'Apartments',
-    component: () => import('../views/Apartments.vue')
+    path: '/apartments/visual',
+    name: 'ApartmentsVisual',
+    component: () => import('../views/ApartmentsVisualFirst.vue')
+  },
+  {
+    path: '/apartments/visual/:id',
+    name: 'ApartmentsVisualSecond',
+    component: () => import('../views/ApartmentsVisualSecond.vue')
   }
 ]
 

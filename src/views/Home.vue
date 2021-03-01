@@ -5,6 +5,7 @@
     <HomeAdvantages />
     <HomeInfrastructure />
     <HomeContacts />
+    <HomeFooter />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import HomeAbout from '@/components/home/HomeAbout'
 import HomeAdvantages from '@/components/home/HomeAdvantages'
 import HomeInfrastructure from '@/components/home/HomeInfrastructure'
 import HomeContacts from '@/components/home/HomeContacts'
+import HomeFooter from '@/components/home/HomeFooter'
 
 import { mapGetters } from 'vuex'
 
@@ -24,7 +26,8 @@ export default {
     HomeAbout,
     HomeAdvantages,
     HomeInfrastructure,
-    HomeContacts
+    HomeContacts,
+    HomeFooter
   },
   computed: mapGetters(['homeSlide, lastHomeSLide']),
   data: () => ({

@@ -8,7 +8,7 @@
           </router-link>
         </div>
         <ul class="nav__links">
-          <li><router-link to="/apartments">Выбор квартиры</router-link></li>
+          <li><router-link to="/apartments/visual">Выбор квартиры</router-link></li>
           <li><router-link to="/about">Галерея</router-link></li>
           <li><router-link to="/about">Новости</router-link></li>
           <li><router-link to="/about">Ход строительства</router-link></li>
