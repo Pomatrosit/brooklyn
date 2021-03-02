@@ -57,9 +57,30 @@ input, input:before, input:after {
   height:100%;
 }
 
+.apartments-main{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:0;
+  padding:10.42vh 0 13.54vh 0;
+}
+
+.apartments-wrapper{
+  padding:0 6.25vh 0 calc(67.55vh - 5vw);
+  height:100%;
+  background: rgba(36, 33, 53, 0.02);
+  position:relative;
+  overflow-y:Scroll;
+}
+
 @media screen and (max-width:1620px){
   .app-wrapper{
     width:95%;
+  }
+  .apartments-wrapper{
+    padding:0 6.25vh 0 calc(67.55vh - 2.5vw);
   }
 }
 </style>

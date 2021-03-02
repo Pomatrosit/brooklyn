@@ -1,6 +1,6 @@
 <template>
-  <section class="apartments-visual-first">
-    <div class="app-wrapper">
+  <section class="apartments-main">
+    <div class="app-wrapper apartments-wrapper">
       <div class="titles">
         <span class="title title1">Первый подъезд</span>
         <span class="title title2">Второй подъезд</span>
@@ -60,25 +60,13 @@ export default {
 </script>
 
 <style scoped>
-.apartments-visual-first{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:0;
-  padding:10.42vh 0 13.54vh 0;
-}
-
-.app-wrapper{
-  padding:14.58vh 6.25vh 0 calc(67.55vh - 5vw);
-  height:100%;
-  background: rgba(36, 33, 53, 0.02);
-}
-
 .sections, .titles, .count-titles, .counts{
   display:flex;
   align-items:center;
+}
+
+.titles{
+  padding-top:14.5vh;
 }
 
 .sections{
@@ -173,12 +161,6 @@ export default {
 @media(hover:hover){
   .section:hover .section-after{
     opacity:1;
-  }
-}
-
-@media screen and (max-width:1620px){
-  .app-wrapper{
-    padding:14.58vh 6.25vh 0 calc(67.55vh - 2.5vw);
   }
 }
 

@@ -19,6 +19,16 @@ const routes = [
     path: '/apartments/visual/:id',
     name: 'ApartmentsVisualSecond',
     component: () => import('../views/ApartmentsVisualSecond.vue')
+  },
+  {
+    path: '/apartments/parameters/:id',
+    name: 'ApartmentsParameters',
+    component: () => import('../views/ApartmentsParameters.vue')
+  },
+  {
+    path: '/flat/:id',
+    name: 'ApartmentsFlat',
+    component: () => import('../views/ApartmentsFlat.vue')
   }
 ]
 
