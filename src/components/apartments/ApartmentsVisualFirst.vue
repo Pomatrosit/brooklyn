@@ -1,6 +1,5 @@
 <template>
-  <section class="apartments-main">
-    <div class="app-wrapper apartments-wrapper">
+    <div>
       <div class="titles">
         <span class="title title1">Первый подъезд</span>
         <span class="title title2">Второй подъезд</span>
@@ -40,7 +39,6 @@
         <span class="count count3">7</span>
       </div>
     </div>
-  </section>
 </template>
 
 <script>

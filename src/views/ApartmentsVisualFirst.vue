@@ -1,6 +1,8 @@
 <template>
   <div>
-      <ApartmentsVisualFirst />
+      <ContentWrapper>
+        <ApartmentsVisualFirst />
+      </ContentWrapper>
       <AsideNav>
         <ApartmentsNav :active="1" />
       </AsideNav>
@@ -13,6 +15,7 @@ import ApartmentsVisualFirst from '@/components/apartments/ApartmentsVisualFirst
 import ApartmentsNav from '@/components/apartments/ApartmentsNav'
 import ApartmentsFooter from '@/components/apartments/ApartmentsFooter'
 import AsideNav from '@/components/AsideNav'
+import ContentWrapper from '@/components/ContentWrapper'
 
 export default {
   name: 'Apartments',
@@ -20,7 +23,8 @@ export default {
     ApartmentsVisualFirst,
     ApartmentsNav,
     ApartmentsFooter,
-    AsideNav
+    AsideNav,
+    ContentWrapper
   }
 }
 </script>

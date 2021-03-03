@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer v-if="!isFlatPage">
     <div class="app-wrapper">
 
       <p class="footer__screen-description">Выбор квартиры</p>
@@ -33,7 +33,12 @@
 
 <script>
 export default {
-  name: 'ApartmentsFooter'
+  name: 'ApartmentsFooter',
+  computed: {
+    isFlatPage () {
+      return this.$route.name === 'ApartmentsFlat'
+    }
+  }
 }
 </script>
 

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <section class="apartments-main">
-      <div class="app-wrapper apartments-wrapper">
         <p class="title">Выбран {{id}}й подъезд</p>
         <BackBtn />
         <div class="sections">
@@ -58,8 +56,6 @@
           </div>
           <MapLegend />
         </div>
-      </div>
-    </section>
   </div>
 </template>
 
