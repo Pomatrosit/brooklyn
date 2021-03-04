@@ -61,6 +61,15 @@ input, input:before, input:after {
   transform:translateY(13%);
 }
 
+.gallery-main{
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  padding:10.42vh 0 13.54vh 0;
+}
+
 @media screen and (max-width:1620px){
   .app-wrapper{
     width:95%;

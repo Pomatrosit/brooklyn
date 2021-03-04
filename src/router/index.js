@@ -29,6 +29,16 @@ const routes = [
     path: '/flat/:id',
     name: 'ApartmentsFlat',
     component: () => import('../views/ApartmentsFlat.vue')
+  },
+  {
+    path: '/gallery',
+    name: 'GalleryMain',
+    component: () => import('../views/GalleryMain.vue')
+  },
+  {
+    path: '/gallery/:id',
+    name: 'GalleryCategory',
+    component: () => import('../views/GalleryCategory.vue')
   }
 ]
 

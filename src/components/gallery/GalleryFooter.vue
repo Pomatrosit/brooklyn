@@ -1,7 +1,7 @@
 <template>
-  <footer v-if="!isFlatPage">
+  <footer>
     <div class="app-wrapper">
-      <p class="footer__screen-description">Выбор квартиры</p>
+      <p class="footer__screen-description">Галерея ЖК Бруклин</p>
       <FooterMain />
   </div>
   </footer>
@@ -11,14 +11,8 @@
 import FooterMain from '@/components/FooterMain'
 
 export default {
-  name: 'ApartmentsFooter',
   components: {
     FooterMain
-  },
-  computed: {
-    isFlatPage () {
-      return this.$route.name === 'ApartmentsFlat'
-    }
   }
 }
 </script>
