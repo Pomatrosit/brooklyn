@@ -12,8 +12,13 @@
         </div>
       </div>
       <div class="gallery-bottom">
-        <div class="gallery-img" @click="openModal">
-          <img src="/img/gallery/1.png" alt="">
+        <div
+          v-for="img in images"
+          :key="img.id"
+          class="gallery-img"
+          @click="openModal(img.src)"
+        >
+          <img :src="img.src" alt="">
           <SearchIcon />
         </div>
       </div>
@@ -53,8 +58,9 @@ export default {
     goBack () {
       this.$router.push('/gallery')
     },
-    openModal () {
+    openModal (src) {
       this.isModalOpen = true
+      this.modalImageSrc = src
     },
     closeModal () {
       this.isModalOpen = false
@@ -62,7 +68,14 @@ export default {
   },
   data: () => ({
     isModalOpen: false,
-    modalImageSrc: '/img/gallery/1.png'
+    modalImageSrc: '/img/gallery/1.png',
+    images: [
+      { id: 1, src: '/img/gallery/1.png' },
+      { id: 2, src: '/img/gallery/2.png' },
+      { id: 3, src: '/img/gallery/3.png' },
+      { id: 4, src: '/img/gallery/2.png' },
+      { id: 5, src: '/img/gallery/3.png' }
+    ]
   })
 }
 </script>

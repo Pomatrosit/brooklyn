@@ -78,7 +78,7 @@ export default {
 .about__img{
   width:50%;
   height:100%;
-  background:url('/img/mainPage/homeAboutBg.png') center / cover;
+  background:url('/img/mainPage/homeAboutBg.png') top / cover;
 }
 
 .about__main{

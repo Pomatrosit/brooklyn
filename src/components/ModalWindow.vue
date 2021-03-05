@@ -1,6 +1,7 @@
 <template>
   <div class="overlay" @click="closeModal">
     <div
+      @click.stop
       class="modal"
       :style="{
         maxWidth: maxWidth || '500px',

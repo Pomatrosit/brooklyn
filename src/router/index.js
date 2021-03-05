@@ -39,6 +39,11 @@ const routes = [
     path: '/gallery/:id',
     name: 'GalleryCategory',
     component: () => import('../views/GalleryCategory.vue')
+  },
+  {
+    path: '/news',
+    name: 'News',
+    component: () => import('../views/News.vue')
   }
 ]
 

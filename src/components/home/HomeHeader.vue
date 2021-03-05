@@ -2,22 +2,22 @@
 <div>
   <section class="header" id="section1" ref="header">
     <div class="header__slide header__slide1" ref="slide1">
-      <!-- <img src="/img/mainPage/1.png" alt=""> -->
+      <!-- <img src="/img/mainPage/swooshed/1.png" alt=""> -->
     </div>
     <div class="header__slide header__slide2" ref="slide2">
-      <!-- <img src="/img/mainPage/2.png" alt=""> -->
+      <!-- <img src="/img/mainPage/swooshed/2.png" alt=""> -->
     </div>
     <div class="header__slide header__slide3" ref="slide3">
-      <!-- <img src="/img/mainPage/3.png" alt=""> -->
+      <!-- <img src="/img/mainPage/swooshed/3.png" alt=""> -->
     </div>
     <div class="header__slide header__slide4" ref="slide4">
-      <!-- <img src="/img/mainPage/4.png" alt=""> -->
+      <!-- <img src="/img/mainPage/swooshed/4.png" alt=""> -->
     </div>
     <div class="header__slide header__slide5" ref="slide5">
-      <!-- <img src="/img/mainPage/5.png" alt=""> -->
+      <!-- <img src="/img/mainPage/swooshed/5.png" alt=""> -->
     </div>
     <div class="header__slide header__slide6" ref="slide6">
-      <!-- <img src="/img/mainPage/6.png" alt=""> -->
+      <!-- <img src="/img/mainPage/swooshed/6.png" alt=""> -->
     </div>
   </section>
 
@@ -201,6 +201,11 @@ export default {
 .header__slide6{
   z-index:-999;
   background:url('/img/mainPage/swooshed/6.jpg') center / cover;
+}
+
+.header__slide img{
+  width:100%;
+  height:100%;
 }
 
 .nav{
