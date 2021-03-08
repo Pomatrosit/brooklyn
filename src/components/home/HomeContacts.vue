@@ -129,21 +129,30 @@ export default {
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 5) {
+        // gsap.to(this.$refs.contacts, { height: '100%', padding: '10.42vh 0 13.54vh 0', duration: 0 })
+        // gsap.to(this.$refs.img, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
+        // gsap.to(this.$refs.main, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.contacts, { height: '100%', padding: '10.42vh 0 13.54vh 0', duration: 0 })
-        gsap.to(this.$refs.img, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
-        gsap.to(this.$refs.main, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
+        gsap.to(this.$refs.img, { y: 0, opacity: 1, duration: 1, ease: Power2.easeInOut, delay: 1 })
+        gsap.to(this.$refs.main, { y: 0, opacity: 1, duration: 1, ease: Power2.easeInOut, delay: 1.2 })
       }
       if (prevHomeSlide === 5) {
+        // gsap.to(this.$refs.contacts, { height: 0, padding: '0', duration: 0, delay: 1 })
+        // gsap.to(this.$refs.img, { height: 0, duration: 1, ease: Power2.easeInOut })
+        // gsap.to(this.$refs.main, { y: '101%', duration: 1, ease: Power2.easeInOut })
         gsap.to(this.$refs.contacts, { height: 0, padding: '0', duration: 0, delay: 1 })
-        gsap.to(this.$refs.img, { height: 0, duration: 1, ease: Power2.easeInOut })
-        gsap.to(this.$refs.main, { y: '101%', duration: 1, ease: Power2.easeInOut })
+        gsap.to(this.$refs.img, { y: 100, opacity: 0, duration: 1, ease: Power2.easeInOut })
+        gsap.to(this.$refs.main, { y: 100, opacity: 0, duration: 1, ease: Power2.easeInOut, delay: 0.2 })
       }
     }
   },
   mounted () {
+    // gsap.to(this.$refs.contacts, { height: 0, padding: '0', duration: 0 })
+    // gsap.to(this.$refs.img, { height: 0, duration: 0 })
+    // gsap.to(this.$refs.main, { y: '101%', duration: 0 })
     gsap.to(this.$refs.contacts, { height: 0, padding: '0', duration: 0 })
-    gsap.to(this.$refs.img, { height: 0, duration: 0 })
-    gsap.to(this.$refs.main, { y: '101%', duration: 0 })
+    gsap.to(this.$refs.img, { y: 100, opacity: 0, duration: 0 })
+    gsap.to(this.$refs.main, { y: 100, opacity: 0, duration: 0 })
   }
 }
 </script>

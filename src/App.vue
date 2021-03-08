@@ -59,6 +59,9 @@ input, input:before, input:after {
 
 .svg-in-btn{
   transform:translateY(13%);
+  width:3.334vh;
+  min-width:3.334vh;
+  height:3.334vh;
 }
 
 .gallery-main{

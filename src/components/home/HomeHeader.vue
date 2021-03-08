@@ -76,18 +76,27 @@ export default {
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 1) {
-        gsap.to(this.$refs.header, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
+        // gsap.to(this.$refs.header, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
+        // gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
+        gsap.to(this.$refs.header, { height: '100%', duration: 0 })
+        gsap.to(this.$refs.header, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
       }
       if (prevHomeSlide === 1) {
-        gsap.to(this.$refs.header, { height: 0, duration: 1, ease: Power2.easeInOut })
+        // gsap.to(this.$refs.header, { height: 0, duration: 1, ease: Power2.easeInOut })
+        // gsap.to(this.$refs.navigation, { y: '20vh', duration: 0.8, ease: Power2.easeInOut, delay: 0.2 })
+        gsap.to(this.$refs.header, { height: 0, duration: 0, delay: 1 })
+        gsap.to(this.$refs.header, { opacity: 0, y: -100, duration: 1, ease: Power2.easeInOut })
         gsap.to(this.$refs.navigation, { y: '20vh', duration: 0.8, ease: Power2.easeInOut, delay: 0.2 })
       }
     }
   },
   mounted () {
-    gsap.to(this.$refs.header, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
-    gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
+    // gsap.to(this.$refs.header, { height: '100%', duration: 1, ease: Power2.easeInOut })
+    // gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
+    gsap.to(this.$refs.header, { height: '100%', duration: 0 })
+    gsap.to(this.$refs.header, { opacity: 1, duration: 1, ease: Power2.easeInOut })
+    gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
   },
   methods: {
     nextSlide () {
@@ -153,6 +162,7 @@ export default {
   bottom:0;
   z-index:0;
   height:0;
+  opacity:0;
 }
 
 .header__slide{

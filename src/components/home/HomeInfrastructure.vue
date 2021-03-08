@@ -109,20 +109,32 @@ export default {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 4) {
         gsap.to(this.$refs.infrastructure, { x: 0, padding: '10.42vh 0 13.54vh 0', duration: 0, delay: 1 })
-        gsap.to(this.$refs.first, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
-        gsap.to(this.$refs.map, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
+        gsap.to(this.$refs.first, { y: 0, opacity: 1, duration: 1, ease: Power2.easeInOut, delay: 1 })
+        gsap.to(this.$refs.map, { y: 0, opacity: 1, duration: 1, ease: Power2.easeInOut, delay: 1.2 })
       }
       if (prevHomeSlide === 4) {
-        gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0, delay: 1 })
-        gsap.to(this.$refs.first, { y: '-101%', duration: 1, ease: Power2.easeInOut })
-        gsap.to(this.$refs.map, { y: '101%', duration: 1, ease: Power2.easeInOut })
+        // gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0, delay: 1 })
+        // gsap.to(this.$refs.first, { y: '-101%', duration: 1, ease: Power2.easeInOut })
+        // gsap.to(this.$refs.map, { y: '101%', duration: 1, ease: Power2.easeInOut })
+        if (homeSlide === 5) {
+          gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0, delay: 1 })
+          gsap.to(this.$refs.first, { y: -100, opacity: 0, duration: 1, ease: Power2.easeInOut })
+          gsap.to(this.$refs.map, { y: -100, opacity: 0, duration: 1, ease: Power2.easeInOut, delay: 0.2 })
+        } else {
+          gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0, delay: 1 })
+          gsap.to(this.$refs.first, { y: 100, opacity: 0, duration: 1, ease: Power2.easeInOut })
+          gsap.to(this.$refs.map, { y: 100, opacity: 0, duration: 1, ease: Power2.easeInOut, delay: 0.2 })
+        }
       }
     }
   },
   mounted () {
+    // gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0 })
+    // gsap.to(this.$refs.first, { y: '-101%', duration: 0 })
+    // gsap.to(this.$refs.map, { y: '101%', duration: 0 })
     gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0 })
-    gsap.to(this.$refs.first, { y: '-101%', duration: 0 })
-    gsap.to(this.$refs.map, { y: '101%', duration: 0 })
+    gsap.to(this.$refs.first, { opacity: 0, y: 100, duration: 0 })
+    gsap.to(this.$refs.map, { opacity: 0, y: 100, duration: 0 })
   },
   data: () => ({
     nav: [

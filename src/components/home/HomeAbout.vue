@@ -44,21 +44,36 @@ export default {
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 2) {
+        // gsap.to(this.$refs.about, { height: '100%', duration: 0 })
+        // gsap.to(this.$refs.aboutImg, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
+        // gsap.to(this.$refs.aboutMain, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.about, { height: '100%', duration: 0 })
-        gsap.to(this.$refs.aboutImg, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
-        gsap.to(this.$refs.aboutMain, { y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
+        gsap.to(this.$refs.aboutImg, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
+        gsap.to(this.$refs.aboutMain, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1.2 })
       }
       if (prevHomeSlide === 2) {
-        gsap.to(this.$refs.about, { height: 0, duration: 0, delay: 1 })
-        gsap.to(this.$refs.aboutImg, { height: 0, duration: 1, ease: Power2.easeInOut })
-        gsap.to(this.$refs.aboutMain, { y: '101%', duration: 1, ease: Power2.easeInOut })
+        // gsap.to(this.$refs.about, { height: 0, duration: 0, delay: 1 })
+        // gsap.to(this.$refs.aboutImg, { height: 0, duration: 1, ease: Power2.easeInOut })
+        // gsap.to(this.$refs.aboutMain, { y: '101%', duration: 1, ease: Power2.easeInOut })
+        if (homeSlide === 3) {
+          gsap.to(this.$refs.about, { height: 0, duration: 0, delay: 1 })
+          gsap.to(this.$refs.aboutImg, { opacity: 0, y: -100, duration: 1, ease: Power2.easeInOut })
+          gsap.to(this.$refs.aboutMain, { y: -100, opacity: 0, duration: 1, ease: Power2.easeInOut, delay: 0.2 })
+        } else {
+          gsap.to(this.$refs.about, { height: 0, duration: 0, delay: 1 })
+          gsap.to(this.$refs.aboutImg, { opacity: 0, y: 100, duration: 1, ease: Power2.easeInOut })
+          gsap.to(this.$refs.aboutMain, { y: 100, opacity: 0, duration: 1, ease: Power2.easeInOut, delay: 0.2 })
+        }
       }
     }
   },
   mounted () {
+    // gsap.to(this.$refs.about, { height: 0, duration: 0 })
+    // gsap.to(this.$refs.aboutImg, { height: 0, duration: 0 })
+    // gsap.to(this.$refs.aboutMain, { y: '101%', duration: 0 })
     gsap.to(this.$refs.about, { height: 0, duration: 0 })
-    gsap.to(this.$refs.aboutImg, { height: 0, duration: 0 })
-    gsap.to(this.$refs.aboutMain, { y: '101%', duration: 0 })
+    gsap.to(this.$refs.aboutImg, { opacity: 0, y: 100, duration: 0 })
+    gsap.to(this.$refs.aboutMain, { y: 100, opacity: 0, duration: 0 })
   }
 }
 </script>

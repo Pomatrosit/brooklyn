@@ -71,7 +71,7 @@ nav{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding-right:6.25vh;
+  padding-right:3.15vw;
   border-right:1px solid #242135;
 }
 
@@ -83,13 +83,13 @@ nav{
 .nav__links{
   display:flex;
   align-items:center;
-  margin-left:1.5625vh;
+  margin-left:0.79vw;
   flex-grow:1;
 }
 
 .nav__links li{
   list-style:none;
-  margin-left:4.6875vh;
+  margin-left:2.36vw;
   font-size: 1.667vh;
 }
 
@@ -105,12 +105,14 @@ nav{
 
 .nav__record{
   height:6.25vh;
-  padding-right:6.25vh;
+  padding-right:3.15vw;
   border-right:1px solid #242135;
+  cursor:pointer;
 }
 
 .nav__call{
-  margin-left:6.25vh;
+  margin-left:3.15vw;
+  cursor:pointer;
 }
 
 .nav__record a, .nav__call a{
@@ -142,6 +144,15 @@ nav{
 @media screen and (max-width:1620px){
   .nav__links li, .nav__record a, .nav__call a{
     font-size:1.8vh;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .nav__call a{
+    border:2px solid red;
+  }
+  .nav__record a, .nav__call a{
+    display:none;
   }
 }
 </style>

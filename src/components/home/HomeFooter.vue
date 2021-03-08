@@ -32,6 +32,7 @@
       </div>
 
       <div class="scroll-trigger"
+        v-if="homeSlide < 5"
         :class="{red_trigger : homeSlide >= 3}"
         @click="onScrollTrigger"
       >
