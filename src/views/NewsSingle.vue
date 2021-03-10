@@ -1,7 +1,7 @@
 <template>
   <div>
     <ContentWrapper>
-      123
+      <NewsSingle />
     </ContentWrapper>
     <AsideNav>
       <NewsNav />
@@ -15,6 +15,7 @@ import NewsFooter from '@/components/news/NewsFooter'
 import AsideNav from '@/components/AsideNav'
 import ContentWrapper from '@/components/ContentWrapper'
 import NewsNav from '@/components/news/NewsNav'
+import NewsSingle from '@/components/news/NewsSingle'
 
 export default {
   name: 'News',
@@ -22,7 +23,8 @@ export default {
     NewsFooter,
     AsideNav,
     ContentWrapper,
-    NewsNav
+    NewsNav,
+    NewsSingle
   }
 }
 </script>

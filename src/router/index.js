@@ -49,6 +49,16 @@ const routes = [
     path: '/news/:id',
     name: 'NewsSingle',
     component: () => import('../views/NewsSingle.vue')
+  },
+  {
+    path: '/progress',
+    name: 'Progress',
+    component: () => import('../views/Progress.vue')
+  },
+  {
+    path: '/contacts',
+    name: 'Contacts',
+    component: () => import('../views/Contacts.vue')
   }
 ]
 

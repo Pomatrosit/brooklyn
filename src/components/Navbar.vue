@@ -11,8 +11,8 @@
           <li><router-link to="/apartments/visual">Выбор квартиры</router-link></li>
           <li><router-link to="/gallery">Галерея</router-link></li>
           <li><router-link to="/news">Новости</router-link></li>
-          <li><router-link to="/about">Ход строительства</router-link></li>
-          <li><router-link to="/about">Контакты</router-link></li>
+          <li><router-link to="/progress">Ход строительства</router-link></li>
+          <li><router-link to="/contacts">Контакты</router-link></li>
         </ul>
         <div class="nav__record">
           <svg width="32" height="25" viewBox="0 0 32 25" fill="none" xmlns="http://www.w3.org/2000/svg">

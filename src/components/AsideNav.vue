@@ -11,7 +11,7 @@
 
 <style scoped>
 .aside-nav{
-  width:61.3vh;
+  width:30.3vw;
   position:fixed;
   top:10.42vh;
   bottom:13.54vh;
@@ -27,7 +27,7 @@ nav{
   flex-direction:column;
   align-items:flex-start;
   justify-content:space-between;
-  padding:8.333vh 10.4vh 8.333vh 12.5vh;
+  padding:8.333vh 5.2vw 8.333vh 6.12vw;
   position:relative;
 }
 
@@ -40,9 +40,9 @@ nav{
   z-index:0;
 }
 
-@media screen and (max-width:1250px){
+@media (max-aspect-ratio: 16/9) {
   nav{
-      padding:8.333vh 8.4vh 8.333vh 10.5vh;
+      padding:8.333vh 3vw 8.333vh 3vw;
   }
 }
 </style>

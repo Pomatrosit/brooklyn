@@ -18,7 +18,8 @@
 }
 
 .content-wrapper{
-  padding:0 6.25vh 0 calc(67.55vh - 5vw);
+  /* padding:0 6.25vh 0 calc(67.55vh - 5vw); */
+  padding:0 2vw 0 27.3vw;
   height:100%;
   background: rgba(36, 33, 53, 0.02);
   position:relative;
@@ -36,7 +37,7 @@
 
 @media screen and (max-width:1620px){
   .content-wrapper{
-    padding:0 6.25vh 0 calc(67.55vh - 2.5vw);
+    padding:0 2vw 0 29.8vw;
   }
 }
 </style>

@@ -98,12 +98,12 @@ export default {
 }
 
 .plan-title{
-  width:calc(61.3vh - 5vw);
+  width:25.3vw;
   border-right:1px solid #242135;
   font-size: 2.1vh;
   padding:1.5vh 0;
   color: #242135;
-  margin-right:13vh;
+  margin-right:6.5vw;
 }
 
 .flat__title{
@@ -126,7 +126,14 @@ export default {
 
 @media screen and (max-width:1620px){
   .plan-title{
-    width:calc(61.3vh - 2.5vw);
+    width:27.8vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .plan-title{
+    width:auto;
+    border-right:none;
   }
 }
 </style>
