@@ -294,4 +294,19 @@
   height:2.188vh;
   cursor:pointer;
 }
+
+@media (max-aspect-ratio: 16/9) {
+  .contacts__desc{
+    margin-right:5%;
+  }
+}
+
+@media (max-aspect-ratio: 15/10) {
+  .contacts__img{
+    width:40%;
+  }
+  .contacts__main{
+    width:60%;
+  }
+}
 </style>

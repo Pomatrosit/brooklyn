@@ -48,7 +48,7 @@
 
     </div>
 
-    <div class="nav__arrow-right" @click="nextSlide">
+    <div class="nav__arrow-right slider-arrow-hovered" @click="nextSlide">
       <svg width="15" height="26" viewBox="0 0 15 26" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.755305 24.0783C0.448886 24.3712 0.420019 24.8173 0.659351 25.1386L0.767211 25.258C1.08334 25.5492 1.57722 25.5793 1.92916 25.3392L2.05638 25.2342L14.2447 13.5843C14.5511 13.2914 14.58 12.8452 14.3406 12.524L14.2314 12.403L2.04319 0.753175C1.69003 0.415608 1.10848 0.415608 0.755313 0.753175C0.448885 1.04607 0.420018 1.49225 0.659355 1.81347L0.76858 1.9344L11.9678 12.6385L12.346 13L11.9678 13.3615L0.755305 24.0783Z" fill="#EFEFEF" stroke="#EFEFEF"/>
       </svg>
@@ -76,15 +76,11 @@ export default {
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 1) {
-        // gsap.to(this.$refs.header, { height: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
-        // gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
         gsap.to(this.$refs.header, { height: '100%', duration: 0 })
         gsap.to(this.$refs.header, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
       }
       if (prevHomeSlide === 1) {
-        // gsap.to(this.$refs.header, { height: 0, duration: 1, ease: Power2.easeInOut })
-        // gsap.to(this.$refs.navigation, { y: '20vh', duration: 0.8, ease: Power2.easeInOut, delay: 0.2 })
         gsap.to(this.$refs.header, { height: 0, duration: 0, delay: 1 })
         gsap.to(this.$refs.header, { opacity: 0, y: -100, duration: 1, ease: Power2.easeInOut })
         gsap.to(this.$refs.navigation, { y: '20vh', duration: 0.8, ease: Power2.easeInOut, delay: 0.2 })
@@ -92,8 +88,6 @@ export default {
     }
   },
   mounted () {
-    // gsap.to(this.$refs.header, { height: '100%', duration: 1, ease: Power2.easeInOut })
-    // gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
     gsap.to(this.$refs.header, { height: '100%', duration: 0 })
     gsap.to(this.$refs.header, { opacity: 1, duration: 1, ease: Power2.easeInOut })
     gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
@@ -282,5 +276,25 @@ export default {
 
 .nav__point-active{
   background:#EA8E79;
+}
+
+.nav__arrow-left, .nav__arrow-right{
+  transition:0.3s;
+}
+
+.nav__arrow-left svg, .nav__arrow-right svg{
+  transition:0.3s;
+}
+
+@media (hover:hover){
+  .nav__arrow-right:hover{
+    background:#eba393;
+  }
+  .nav__arrow-right:hover svg{
+    transform:translateX(50%)
+  }
+  .nav__arrow-left:hover svg{
+    transform:translateX(-50%)
+  }
 }
 </style>

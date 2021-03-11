@@ -81,14 +81,6 @@ export default {
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 3) {
-        // gsap.to(this.$refs.advantages, { height: '100%', duration: 0 })
-        // gsap.to(this.$refs.advantage1, { width: '100%', duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
-        // gsap.to(this.$refs.advantage2, { width: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
-        // gsap.to(this.$refs.advantage3, { width: '100%', duration: 0.7, ease: Power2.easeInOut, delay: 1.3 })
-        // gsap.to(this.$refs.advantage4, { width: '48.4%', duration: 1, ease: Power2.easeInOut, delay: 1 })
-        // gsap.to(this.$refs.advantage5, { width: '48.4%', duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
-        // gsap.to(this.$refs.advantage6, { width: '100%', duration: 1, ease: Power2.easeInOut, delay: 1 })
-        // gsap.to('.advantage__title', { opacity: 1, duration: 0.2, delay: 2 })
         gsap.to(this.$refs.advantages, { height: '100%', duration: 0 })
         if (prevHomeSlide === 2) {
           gsap.to(this.$refs.advantage1, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
@@ -107,14 +99,6 @@ export default {
         }
       }
       if (prevHomeSlide === 3) {
-        // gsap.to(this.$refs.advantages, { height: 0, duration: 0, delay: 1 })
-        // gsap.to(this.$refs.advantage1, { width: 0, duration: 0.8, ease: Power2.easeInOut })
-        // gsap.to(this.$refs.advantage2, { width: 0, duration: 1, ease: Power2.easeInOut })
-        // gsap.to(this.$refs.advantage3, { width: 0, duration: 0.7, ease: Power2.easeInOut })
-        // gsap.to(this.$refs.advantage4, { width: 0, duration: 1, ease: Power2.easeInOut })
-        // gsap.to(this.$refs.advantage5, { width: 0, duration: 0.8, ease: Power2.easeInOut })
-        // gsap.to(this.$refs.advantage6, { width: 0, duration: 1, ease: Power2.easeInOut })
-        // gsap.to('.advantage__title', { opacity: 0, duration: 0 })
         if (homeSlide === 4) {
           gsap.to(this.$refs.advantages, { height: 0, duration: 0, delay: 1 })
           gsap.to(this.$refs.advantage1, { opacity: 0, y: -100, duration: 1, ease: Power2.easeInOut })
@@ -136,9 +120,6 @@ export default {
     }
   },
   mounted () {
-    // gsap.to(this.$refs.advantages, { height: 0, duration: 0 })
-    // gsap.to('.advantage', { width: 0, duration: 0 })
-    // gsap.to('.advantage__title', { opacity: 0 })
     gsap.to(this.$refs.advantages, { height: 0, duration: 0 })
     gsap.to(this.$refs.advantage1, { opacity: 0, y: 100, duration: 0 })
     gsap.to(this.$refs.advantage2, { opacity: 0, y: 100, duration: 0 })
@@ -282,7 +263,7 @@ export default {
   left:0;
   padding:0 2.08vh;
   opacity:0;
-  transition:0.5s;
+  transition:1.5s;
 }
 
 .advantage:after{
