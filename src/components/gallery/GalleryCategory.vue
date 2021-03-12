@@ -1,79 +1,53 @@
 <template>
   <div>
-  <div class="gallery-main">
-    <div class="app-wrapper">
-      <div class="gallery-top">
-        <h1 v-if="id ==='1'" class="gallery__title gallery-animated">Архитектура и двор</h1>
-        <h1 v-else-if="id ==='2'" class="gallery__title gallery-animated">Места общего пользования</h1>
-        <h1 v-else-if="id ==='3'" class="gallery__title gallery-animated">Интерьеры квартир</h1>
-        <div class="gallery__back gallery-animated" @click="goBack">
-          <SliderArrowLeft fill="#242135" width="1vh" height="1.667vh"/>
-          <span>Назад</span>
-        </div>
-        <div class="gallery-top__after gallery-animated"></div>
-      </div>
-      <div class="gallery-bottom">
-        <div
-          v-for="(img, idx) in images"
-          :key="img.id"
-          class="gallery-img gallery-animated"
-          @click="openModal(idx)"
-        >
-          <img :src="img.src" alt="">
-          <SearchIcon />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <ModalWindow
-    v-if="isModalOpen"
-    :closeModal="closeModal"
-    padding="0"
-    overflow="hidden"
-    height="80vh"
-    maxWidth="80vw"
-  >
-    <div class="slider-wrapper">
-      <slick
-        ref="slick"
-        :options="slickOptions"
-      >
-          <div
-            v-for="img in images"
-            class="slide"
-            :key="img.id"
-          >
-            <img class="slide-inner" :src="img.src" alt="">
+    <CoolLightBox
+      overlayColor="rgba(30, 30, 30, .9)"
+      :zIndex="2"
+      :style="{zIndex: 100}"
+      :items="images"
+      :index="index"
+      @close="index = null">
+    </CoolLightBox>
+    <div class="gallery-main">
+      <div class="app-wrapper">
+        <div class="gallery-top">
+          <h1 v-if="id ==='1'" class="gallery__title gallery-animated">Архитектура и двор</h1>
+          <h1 v-else-if="id ==='2'" class="gallery__title gallery-animated">Места общего пользования</h1>
+          <h1 v-else-if="id ==='3'" class="gallery__title gallery-animated">Интерьеры квартир</h1>
+          <div class="gallery__back gallery-animated" @click="goBack">
+            <SliderArrowLeft fill="#242135" width="1vh" height="1.667vh"/>
+            <span>Назад</span>
           </div>
-      </slick>
-      <div class="arrow-left arrow" @click="prev">
-        <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
-      </div>
-      <div class="arrow-right arrow" @click="next">
-        <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
+          <div class="gallery-top__after gallery-animated"></div>
+        </div>
+        <div class="gallery-bottom">
+          <div
+            class="gallery-img gallery-animated"
+            v-for="(image, imageIndex) in images"
+            :key="imageIndex"
+            @click="index = imageIndex"
+          >
+            <img :src="image">
+            <SearchIcon />
+          </div>
+        </div>
       </div>
     </div>
-  </ModalWindow>
-</div>
+ </div>
 </template>
 
 <script>
-import ModalWindow from '@/components/ModalWindow'
 import SliderArrowLeft from '@/components/svg/SliderArrowLeft'
-import SliderArrowRight from '@/components/svg/SliderArrowRight'
 import SearchIcon from '@/components/svg/SearchIcon'
 import gsap, { Power2 } from 'gsap'
-import Slick from 'vue-slick'
-import 'slick-carousel/slick/slick.css'
+import CoolLightBox from 'vue-cool-lightbox'
+import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 
 export default {
   components: {
     SliderArrowLeft,
-    SliderArrowRight,
     SearchIcon,
-    ModalWindow,
-    Slick
+    CoolLightBox
   },
   computed: {
     id () {
@@ -83,35 +57,17 @@ export default {
   methods: {
     goBack () {
       this.$router.push('/gallery')
-    },
-    openModal (idx) {
-      this.isModalOpen = true
-      this.slickOptions.initialSlide = idx
-    },
-    closeModal () {
-      this.isModalOpen = false
-    },
-    next () {
-      this.$refs.slick.next()
-    },
-    prev () {
-      this.$refs.slick.prev()
     }
   },
   data: () => ({
-    isModalOpen: false,
     images: [
-      { id: 1, src: '/img/gallery/1.png' },
-      { id: 2, src: '/img/gallery/2.png' },
-      { id: 3, src: '/img/gallery/3.png' },
-      { id: 4, src: '/img/gallery/2.png' },
-      { id: 5, src: '/img/gallery/3.png' }
+      '/img/mainPage/swooshed/1.jpg',
+      '/img/mainPage/swooshed/2.jpg',
+      '/img/mainPage/swooshed/3.jpg',
+      '/img/mainPage/swooshed/4.jpg',
+      '/img/mainPage/swooshed/5.jpg'
     ],
-    slickOptions: {
-      slidesToShow: 1,
-      arrows: false,
-      initialSlide: 1
-    }
+    index: null
   }),
   mounted () {
     gsap.to('.gallery-animated', { opacity: 0, y: 100, duration: 0 })
@@ -220,29 +176,12 @@ export default {
   z-index:1;
 }
 
-.slide-inner{
-  width:100%;
-  height:100%;
-}
-
 .gallery-img svg{
   position:relative;
   z-index:2;
   opacity:0;
   transition:0.5s;
   transform:translateY(20px);
-}
-
-.modal-img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.slider-wrapper{
-  width:100%;
-  height:100%;
-  position:relative;
 }
 
 .arrow{

@@ -4,7 +4,7 @@
       <div class="nav__main">
         <div class="nav__logo">
           <router-link to="/">
-            <Logo />
+            <Logo width="8.3vh" height="5.83vh"/>
           </router-link>
         </div>
         <ul class="nav__links">

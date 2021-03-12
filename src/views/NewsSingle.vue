@@ -4,7 +4,7 @@
       <NewsSingle />
     </ContentWrapper>
     <AsideNav>
-      <NewsNav />
+      <NewsNav :isBackBtn="true"/>
     </AsideNav>
     <NewsFooter />
   </div>

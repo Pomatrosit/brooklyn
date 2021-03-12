@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
   <section class="advantages" ref="advantages">
     <div class="app-wrapper">
@@ -17,28 +18,30 @@
           </figure>
 
           <figure class="advantage advantage2" ref="advantage2" @mouseenter="hover" @mouseleave="unhover">
-            <div class="advantage__top">
-              <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-              <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                равнодушными ни жильцов, ни их гостей.
-              </span>
-            </div>
             <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
-            <div class="advantage__overlay"></div>
+            <div class="advantage__overlay">
+              <div class="advantage__top">
+                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                  равнодушными ни жильцов, ни их гостей.
+                </span>
+              </div>
+            </div>
           </figure>
 
         </div>
         <div class="advantages__flex advantages__flex2">
 
           <figure class="advantage advantage3" ref="advantage3" @mouseenter="hover" @mouseleave="unhover">
-            <div class="advantage__top">
-              <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-              <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                равнодушными ни жильцов, ни их гостей.
-              </span>
-            </div>
             <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
-            <div class="advantage__overlay"></div>
+            <div class="advantage__overlay">
+              <div class="advantage__top">
+                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                  равнодушными ни жильцов, ни их гостей.
+                </span>
+              </div>
+            </div>
           </figure>
 
         </div>
@@ -46,38 +49,41 @@
           <div class="advantage__flex3-inner">
 
             <figure class="advantage advantage4" ref="advantage4" @mouseenter="hover" @mouseleave="unhover">
-              <div class="advantage__top">
-                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                  равнодушными ни жильцов, ни их гостей.
-                </span>
-              </div>
               <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
-              <div class="advantage__overlay"></div>
+              <div class="advantage__overlay">
+                <div class="advantage__top">
+                  <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                  <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                    равнодушными ни жильцов, ни их гостей.
+                  </span>
+                </div>
+              </div>
             </figure>
 
             <figure class="advantage advantage5" ref="advantage5" @mouseenter="hover" @mouseleave="unhover">
-              <div class="advantage__top">
-                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                  равнодушными ни жильцов, ни их гостей.
-                </span>
-              </div>
               <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
-              <div class="advantage__overlay"></div>
+              <div class="advantage__overlay">
+                <div class="advantage__top">
+                  <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                  <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                    равнодушными ни жильцов, ни их гостей.
+                  </span>
+                </div>
+              </div>
             </figure>
 
           </div>
 
           <figure class="advantage advantage6" ref="advantage6" @mouseenter="hover" @mouseleave="unhover">
-            <div class="advantage__top">
-              <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-              <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                равнодушными ни жильцов, ни их гостей.
-              </span>
-            </div>
             <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
-            <div class="advantage__overlay"></div>
+            <div class="advantage__overlay">
+              <div class="advantage__top">
+                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                  равнодушными ни жильцов, ни их гостей.
+                </span>
+              </div>
+            </div>
           </figure>
 
         </div>
@@ -150,10 +156,15 @@ export default {
       const overlay = card.querySelector('.advantage__overlay')
       const hoveredTitle = card.querySelector('.advantage__title-secondary')
       const hoveredDesc = card.querySelector('.advantage__desc')
-      gsap.to(title, { opacity: 0, y: 50, duration: 0.3, ease: Power2.easeInOut })
-      gsap.to(overlay, { y: 0, duration: 0.5, ease: Power2.easeInOut })
-      gsap.to(hoveredTitle, { startAt: { y: 50 }, opacity: 1, y: 0, duration: 0.5, delay: 0.3, ease: Power2.easeInOut })
-      gsap.to(hoveredDesc, { startAt: { y: 50 }, opacity: 1, y: 0, duration: 0.5, delay: 0.4, ease: Power2.easeInOut })
+      hoveredTitle.style.transitionDelay = '0.3s'
+      hoveredDesc.style.transitionDelay = '0.4s'
+      title.style.opacity = '0'
+      title.style.transform = 'translateY(50px)'
+      overlay.style.transform = 'translateY(0)'
+      hoveredTitle.style.transform = 'translateY(0)'
+      hoveredTitle.style.opacity = '1'
+      hoveredDesc.style.transform = 'translateY(0)'
+      hoveredDesc.style.opacity = '1'
     },
     unhover (e) {
       const card = e.target.closest('.advantage')
@@ -161,14 +172,16 @@ export default {
       const overlay = card.querySelector('.advantage__overlay')
       const hoveredTitle = card.querySelector('.advantage__title-secondary')
       const hoveredDesc = card.querySelector('.advantage__desc')
-      gsap.to(hoveredDesc, { opacity: 0, duration: 0 })
-      gsap.to(hoveredTitle, { opacity: 0, duration: 0 })
-      gsap.to(title, { opacity: 1, y: 0, duration: 0.5, delay: 0.3, ease: Power2.easeInOut })
-      gsap.to(overlay, { y: '100%', duration: 0.5, ease: Power2.easeInOut })
-      setTimeout(() => {
-        gsap.to(hoveredDesc, { opacity: 0, y: 50, duration: 0 })
-        gsap.to(hoveredTitle, { opacity: 0, y: 50, duration: 0 })
-      }, 0.5)
+      hoveredTitle.style.transitionDelay = '0'
+      hoveredDesc.style.transitionDelay = '0'
+      title.style.transitionDelay = '0.2s'
+      title.style.opacity = '1'
+      title.style.transform = 'translateY(0)'
+      overlay.style.transform = 'translateY(100%)'
+      hoveredTitle.style.transform = 'translateY(50px)'
+      hoveredTitle.style.opacity = '0'
+      hoveredDesc.style.transform = 'translateY(50px)'
+      hoveredDesc.style.opacity = '0'
     }
   },
   data: () => ({
@@ -286,6 +299,7 @@ export default {
   display:flex;
   align-items:center;
   padding:2vh 2.08vh;
+  transition: 0.5s;
 }
 
 .advantage__top{
@@ -308,6 +322,8 @@ export default {
   line-height: 160%;
   color: #FFFFFF;
   transform:translateY(50px);
+  transition:0.5s;
+  transition-delay:0.3s;
 }
 
 .advantage__desc{
@@ -317,6 +333,9 @@ export default {
   color: #FFFFFF;
   opacity:0;
   display:block;
+  transform:translateY(50px);
+  transition: 0.5s;
+  transition-delay: 0.4s;
 }
 
 .advantage__overlay{
@@ -330,6 +349,7 @@ export default {
   border-top:4px solid #242135;
   transform:translateY(100%);
   transition-timing-function:ease-in-out;
+  transition:0.5s;
 }
 
 </style>

@@ -7,6 +7,11 @@
             планируйте светлое будущее вместе с нами.</p>
         </div>
 
+        <div v-show="isBackBtn" class="news__back" @click="goBack">
+          <SliderArrowLeft fill="#fff" width="1vh" height="1.667vh"/>
+          <span>К списку новостей</span>
+        </div>
+
         <div class="nav-btn news-animated" @click="goToMainPage" :style="{ width: '100%' }" >
           <Button
             text="Вернуться на главную"
@@ -28,17 +33,22 @@
 <script>
 import Button from '@/components/Button'
 import gsap, { Power2 } from 'gsap'
+import SliderArrowLeft from '@/components/svg/SliderArrowLeft'
 
 export default {
   components: {
-    Button
+    Button,
+    SliderArrowLeft
   },
   methods: {
     goToMainPage () {
       this.$router.push('/')
+    },
+    goBack () {
+      this.$router.go(-1)
     }
   },
-  props: ['animated'],
+  props: ['animated', 'isBackBtn'],
   mounted () {
     if (this.animated) {
       gsap.to('.news-animated', { opacity: 0, y: 100, duration: 0 })
@@ -86,5 +96,30 @@ export default {
   line-height: 125%;
   color: #FFFFFF;
   margin-bottom:2.6vh;
+}
+
+.news__back{
+  cursor:pointer;
+  display:flex;
+  align-items:Center;
+  animation: anim 0.5s ease-in-out forwards;
+}
+
+.news__back span{
+  font-weight: 400;
+  font-size: 2.09vh;
+  color: #fff;
+  margin-left:2.5vh
+}
+
+@keyframes anim {
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 </style>

@@ -13,10 +13,10 @@
         </slick>
       </div>
       <div class="slider-arrows">
-        <div class="arrow-left arrow news-single-animated" @click="prev">
+        <div class="arrow-left arrow news-single-animated dark-arrow" @click="prev">
           <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
-        <div class="arrow-right arrow news-single-animated" @click="next">
+        <div class="arrow-right arrow news-single-animated pink-arrow" @click="next">
           <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
       </div>
@@ -193,6 +193,25 @@ export default {
   width:10vh;
   right:-2.5vh;
   top:-4vh;
+}
+
+.arrow-left, .arrow-right{
+  transition:0.3s;
+}
+
+@media(hover:hover){
+  .arrow-left:hover{
+    background:#615e71;
+  }
+  .arrow-left:hover svg{
+    transform:translateX(-50%);
+  }
+  .arrow-right:hover{
+    background:#eba393;
+  }
+  .arrow-right:hover svg{
+    transform:translateX(50%);
+  }
 }
 
 @media screen and (max-width:1620px){
