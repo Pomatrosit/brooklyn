@@ -50,6 +50,7 @@ export default {
   overflow-x:hidden;
   overflow-y:scroll;
   transform-style: preserve-3d;
+  animation:open-modal-animation 0.5s ease-in-out forwards;
 }
 
 .modal::-webkit-scrollbar {
@@ -59,6 +60,17 @@ export default {
 
 .modal::-webkit-scrollbar-thumb {
     background-color: #492A64;
+}
+
+@keyframes open-modal-animation{
+  from{
+    opacity:0;
+    transform:translateY(100px)
+  }
+  to{
+    opacity:1;
+    transform:translateY(0)
+  }
 }
 
 @media screen and (max-width:768px){

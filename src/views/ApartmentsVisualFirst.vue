@@ -3,8 +3,8 @@
       <ContentWrapper>
         <ApartmentsVisualFirst />
       </ContentWrapper>
-      <AsideNav>
-        <ApartmentsNav :active="1" />
+      <AsideNav :animated="true">
+        <ApartmentsNav :active="1" :animated="true"/>
       </AsideNav>
       <ApartmentsFooter />
   </div>

@@ -9,3 +9,9 @@ export default {
   props: ['fill', 'width', 'height']
 }
 </script>
+
+<style scoped>
+svg{
+  transition:0.3s;
+}
+</style>

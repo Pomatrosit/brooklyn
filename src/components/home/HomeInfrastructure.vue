@@ -4,7 +4,7 @@
       <div class="infrastructure__first" ref="first">
 
         <div class="infrastructure__nav">
-          <h2 class="infrastructure__title">Объекты инфраструкруты</h2>
+          <h2 class="infrastructure__title" ref="title">Объекты инфраструкруты</h2>
           <div class="nav__main">
 
             <div class="nav__row"
@@ -51,11 +51,11 @@
           </div>
         </div>
 
-        <svg class="bg1" width="960" height="732" viewBox="0 0 960 732" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg ref="shapes" class="bg1" width="960" height="732" viewBox="0 0 960 732" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M482 1L959 366L482 731M241 1L718 366L241 731M361 1L839 366L361 731M120 1L598 366L120 731M421 1L898 366L421 731M180 1L657 366L180 731M301 1L778 366L301 731M60 1L537 366L60 731M462 1L939 366L462 731M221 1L698 366L221 731M342 1L819 366L342 731M101 1L578 366L101 731M401 1L878 366L401 731M160 1L637 366L160 731M281 1L758 366L281 731M40 1L517 366L40 731M442 1L919 366L442 731M201 1L678 366L201 731M322 1L799 366L322 731M81 1L558 366L81 731M381 1L858 366L381 731M140 1L617 366L140 731M261 1L738 366L261 731M20 1L497 366L20 731M0 1L477 366L0 731" stroke="#2C2B32" stroke-opacity="0.03"/>
         </svg>
 
-        <svg class="bg2" width="335" height="214" viewBox="0 0 335 214" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg ref="number" class="bg2" width="335" height="214" viewBox="0 0 335 214" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M83.7 213.6C67.5 213.6 53 209.3 40.2 200.7C27.6 192.1 17.7 179.8 10.5 163.8C3.5 147.6 0 128.6 0 106.8C0 85 3.5 66.1 10.5 50.1C17.7 33.9 27.6 21.5 40.2 12.9C53 4.3 67.5 0 83.7 0C99.9 0 114.3 4.3 126.9 12.9C139.7 21.5 149.7 33.9 156.9 50.1C164.1 66.1 167.7 85 167.7 106.8C167.7 128.6 164.1 147.6 156.9 163.8C149.7 179.8 139.7 192.1 126.9 200.7C114.3 209.3 99.9 213.6 83.7 213.6ZM83.7 193.8C95.9 193.8 106.6 190.4 115.8 183.6C125.2 176.8 132.5 166.9 137.7 153.9C142.9 140.9 145.5 125.2 145.5 106.8C145.5 88.4 142.9 72.7 137.7 59.7C132.5 46.7 125.2 36.8 115.8 30C106.6 23.2 95.9 19.8 83.7 19.8C71.5 19.8 60.7 23.2 51.3 30C42.1 36.8 34.9 46.7 29.7 59.7C24.5 72.7 21.9 88.4 21.9 106.8C21.9 125.2 24.5 140.9 29.7 153.9C34.9 166.9 42.1 176.8 51.3 183.6C60.7 190.4 71.5 193.8 83.7 193.8Z" fill="#FBFBFB"/>
           <path d="M267.103 91.8C289.103 93 305.803 99 317.203 109.8C328.803 120.4 334.603 134.3 334.603 151.5C334.603 163.5 331.703 174.2 325.903 183.6C320.103 192.8 311.503 200.1 300.103 205.5C288.703 210.9 274.803 213.6 258.403 213.6C243.203 213.6 228.803 211.2 215.203 206.4C201.803 201.4 191.003 194.8 182.803 186.6L193.303 169.5C200.303 176.7 209.603 182.6 221.203 187.2C232.803 191.6 245.203 193.8 258.403 193.8C275.603 193.8 288.903 190.1 298.303 182.7C307.703 175.1 312.403 164.7 312.403 151.5C312.403 138.5 307.703 128.3 298.303 120.9C288.903 113.5 274.703 109.8 255.703 109.8H240.703V93.9L298.903 21H191.503V1.8H326.503V17.1L267.103 91.8Z" fill="#FBFBFB"/>
         </svg>
@@ -111,11 +111,12 @@ export default {
         gsap.to(this.$refs.infrastructure, { x: 0, padding: '10.42vh 0 13.54vh 0', duration: 0, delay: 1 })
         gsap.to(this.$refs.first, { y: 0, opacity: 1, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.map, { y: 0, opacity: 1, duration: 1, ease: Power2.easeInOut, delay: 1.2 })
+        gsap.to(this.$refs.title, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 2 })
+        gsap.to(this.$refs.shapes, { opacity: 1, x: 0, duration: 1, ease: Power2.easeInOut, delay: 2.2 })
+        gsap.to(this.$refs.number, { opacity: 1, x: 0, duration: 1, ease: Power2.easeInOut, delay: 2.6 })
+        gsap.to('.nav__row', { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 2.2, stagger: 0.1 })
       }
       if (prevHomeSlide === 4) {
-        // gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0, delay: 1 })
-        // gsap.to(this.$refs.first, { y: '-101%', duration: 1, ease: Power2.easeInOut })
-        // gsap.to(this.$refs.map, { y: '101%', duration: 1, ease: Power2.easeInOut })
         if (homeSlide === 5) {
           gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0, delay: 1 })
           gsap.to(this.$refs.first, { y: -100, opacity: 0, duration: 1, ease: Power2.easeInOut })
@@ -125,16 +126,21 @@ export default {
           gsap.to(this.$refs.first, { y: 100, opacity: 0, duration: 1, ease: Power2.easeInOut })
           gsap.to(this.$refs.map, { y: 100, opacity: 0, duration: 1, ease: Power2.easeInOut, delay: 0.2 })
         }
+        gsap.to(this.$refs.title, { opacity: 0, y: 100, duration: 0, delay: 1 })
+        gsap.to(this.$refs.shapes, { opacity: 0, x: -200, duration: 0, delay: 1 })
+        gsap.to(this.$refs.number, { opacity: 0, x: 100, duration: 0, delay: 1 })
+        gsap.to('.nav__row', { opacity: 0, y: 100, duration: 0, delay: 1 })
       }
     }
   },
   mounted () {
-    // gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0 })
-    // gsap.to(this.$refs.first, { y: '-101%', duration: 0 })
-    // gsap.to(this.$refs.map, { y: '101%', duration: 0 })
     gsap.to(this.$refs.infrastructure, { x: '100%', padding: '0', duration: 0 })
     gsap.to(this.$refs.first, { opacity: 0, y: 100, duration: 0 })
     gsap.to(this.$refs.map, { opacity: 0, y: 100, duration: 0 })
+    gsap.to(this.$refs.title, { opacity: 0, y: 100, duration: 0 })
+    gsap.to(this.$refs.shapes, { opacity: 0, x: -200, duration: 0 })
+    gsap.to(this.$refs.number, { opacity: 0, x: 100, duration: 0 })
+    gsap.to('.nav__row', { opacity: 0, y: 100, duration: 0 })
   },
   data: () => ({
     nav: [

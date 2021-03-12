@@ -3,8 +3,8 @@
       <ContentWrapper>
         <ApartmentsParameters />
       </ContentWrapper>
-      <AsideNav>
-        <ApartmentsNav :active="2" />
+      <AsideNav :animated="true">
+        <ApartmentsNav :active="2" :animated="true"/>
       </AsideNav>
       <ApartmentsFooter />
   </div>

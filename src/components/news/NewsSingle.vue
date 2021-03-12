@@ -1,8 +1,8 @@
 <template>
   <div class="news">
-    <h1 class="news__title">Открытие офиса продаж</h1>
+    <h1 class="news__title news-single-animated">Открытие офиса продаж</h1>
     <div class="slider">
-      <div class="slider-main">
+      <div class="slider-main news-single-animated">
         <slick
           ref="slick"
           :options="slickOptions"
@@ -13,32 +13,34 @@
         </slick>
       </div>
       <div class="slider-arrows">
-        <div class="arrow-left arrow" @click="prev">
+        <div class="arrow-left arrow news-single-animated" @click="prev">
           <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
-        <div class="arrow-right arrow" @click="next">
-          <SliderArrowRight width="0.83vh" height="1.45vh" fill="#242135"/>
+        <div class="arrow-right arrow news-single-animated" @click="next">
+          <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
       </div>
     </div>
-    <div class="slider-description">
+    <div class="slider-description news-single-animated">
       <p>Первый день работы офиса</p>
       <p>21/01/21</p>
     </div>
-    <h2 class="news__subtitle">Концептуальный жилой комплекс в Астрахани (H2)</h2>
-    <p class="news__text">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально.
-       Отличный выбор для тех, кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры
-     </p>
-    <p class="news__text">Жилой Квартал «Бруклин» - отличный выбор для тех, кто хочет совместить жизнь в тихом районе и
-      максимальную доступность объектов инфраструктуры. Все: от особенностей отделки до обустройства придомовой
-      территории — продумано и функционально.
-    </p>
-    <div class="quote">
-      <p class="quote__text">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее
-        устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально. Отличный выбор для тех,
-        кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры.
+    <h2 class="news__subtitle news-single-animated">Концептуальный жилой комплекс в Астрахани (H2)</h2>
+    <div class="news__content">
+      <p class="news__text news-single-animated">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально.
+         Отличный выбор для тех, кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры
+       </p>
+      <p class="news__text">Жилой Квартал «Бруклин» - отличный выбор для тех, кто хочет совместить жизнь в тихом районе и
+        максимальную доступность объектов инфраструктуры. Все: от особенностей отделки до обустройства придомовой
+        территории — продумано и функционально.
       </p>
-      <img src="/img/news/comma.png" alt="comma" class="quote__comma">
+      <div class="quote">
+        <p class="quote__text">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее
+          устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально. Отличный выбор для тех,
+          кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры.
+        </p>
+        <img src="/img/news/comma.png" alt="comma" class="quote__comma">
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +50,7 @@ import Slick from 'vue-slick'
 import 'slick-carousel/slick/slick.css'
 import SliderArrowLeft from '@/components/svg/SliderArrowLeft'
 import SliderArrowRight from '@/components/svg/SliderArrowRight'
+import gsap, { Power2 } from 'gsap'
 
 export default {
   components: {
@@ -68,13 +71,17 @@ export default {
     prev () {
       this.$refs.slick.prev()
     }
+  },
+  mounted () {
+    gsap.to('.news-single-animated', { opacity: 0, y: 100, duration: 0 })
+    gsap.to('.news-single-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: Power2.easeInOut })
   }
 }
 </script>
 
 <style scoped>
 .news{
-  margin-top:8.3vh;
+  margin-top:7.5vh;
 }
 
 .news__title{
@@ -109,7 +116,7 @@ export default {
 }
 
 .arrow-right{
-  background:#fff;
+  background:#EA8E79;
 }
 
 .slider-arrows{
@@ -145,17 +152,19 @@ export default {
   margin-bottom: 3vh;
 }
 
+.news__content{
+  width:70%;
+}
+
 .news__text{
   font-weight: 400;
   font-size: 1.667vh;
   line-height: 160%;
   color: #242135;
   margin-bottom:3vh;
-  max-width:800px;
 }
 
 .quote{
-  max-width:800px;
   border: 1px solid #242135;
   padding:6.25vh 12.5vh 6.25vh 6.25vh;
   margin-left:15px;
@@ -184,6 +193,12 @@ export default {
   width:10vh;
   right:-2.5vh;
   top:-4vh;
+}
+
+@media screen and (max-width:1620px){
+  .news__content{
+    width:100%;
+  }
 }
 
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
-        <p class="title">Выбран {{id}}й подъезд</p>
+        <p class="title apartments-visual-second-animated">Выбран {{id}}й подъезд</p>
         <BackBtn />
-        <div class="sections">
+        <div class="sections apartments-visual-second-animated">
           <div class="section section1" @click="changeEntrance(1)">
             <img src="/img/apartments/section1.png" alt="first entrance">
             <div v-if="+id === 1" class="section-after"><CheckMark /></div>
@@ -16,9 +16,9 @@
             <div v-if="+id === 3" class="section-after"><CheckMark /></div>
           </div>
         </div>
-        <p class="subtitle">Выберите планировку</p>
+        <p class="subtitle apartments-visual-second-animated">Выберите планировку</p>
         <div class="entrance-and-legend">
-          <div v-if="id === 1" class="entrance entrance1">
+          <div v-if="id === 1" class="entrance entrance1 apartments-visual-second-animated">
             <svg viewBox="0 0 805 386" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 v-for="path in flats[0]"
@@ -30,7 +30,7 @@
               />
             </svg>
           </div>
-          <div v-else-if="id === 2" class="entrance entrance2">
+          <div v-else-if="id === 2" class="entrance entrance2 apartments-visual-second-animated">
             <svg viewBox="0 0 691 386" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 v-for="path in flats[1]"
@@ -42,7 +42,7 @@
               />
             </svg>
           </div>
-          <div v-else-if="id === 3" class="entrance entrance3">
+          <div v-else-if="id === 3" class="entrance entrance3 apartments-visual-second-animated">
             <svg viewBox="0 0 805 386" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 v-for="path in flats[2]"
@@ -54,7 +54,7 @@
               />
             </svg>
           </div>
-          <MapLegend />
+          <MapLegend class="apartments-visual-second-animated"/>
         </div>
   </div>
 </template>
@@ -63,6 +63,7 @@
 import CheckMark from '@/components/svg/CheckMark'
 import MapLegend from './MapLegend'
 import BackBtn from './BackBtn'
+import gsap, { Power2 } from 'gsap'
 
 export default {
   name: 'ApartmentsVisualSecond',
@@ -110,6 +111,10 @@ export default {
     goBack () {
       this.$router.push('/apartments/visual')
     }
+  },
+  mounted () {
+    gsap.to('.apartments-visual-second-animated', { opacity: 0, y: 100, duration: 0 })
+    gsap.to('.apartments-visual-second-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: Power2.easeInOut })
   }
 }
 </script>

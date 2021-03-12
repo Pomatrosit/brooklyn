@@ -1,11 +1,11 @@
 <template>
     <div>
-      <div class="titles">
+      <div class="titles apartments-visual-first-animated" >
         <span class="title title1">Первый подъезд</span>
         <span class="title title2">Второй подъезд</span>
         <span class="title title3">Третий подъезд</span>
       </div>
-      <div class="sections">
+      <div class="sections apartments-visual-first-animated">
         <div class="section section1" @click = "nextStep(1)">
           <img src="/img/apartments/section1.png" alt="first entrance">
           <div class="section-after">
@@ -28,12 +28,12 @@
           </div>
         </div>
       </div>
-      <div class="count-titles">
+      <div class="count-titles apartments-visual-first-animated">
         <span class="count-title count-title1">Количество квартир</span>
         <span class="count-title count-title2">Количество квартир</span>
         <span class="count-title count-title3">Количество квартир</span>
       </div>
-      <div class="counts">
+      <div class="counts apartments-visual-first-animated">
         <span class="count count1">16</span>
         <span class="count count2">21</span>
         <span class="count count3">7</span>
@@ -43,6 +43,7 @@
 
 <script>
 import WhiteArrow from '@/components/svg/WhiteArrow'
+import gsap, { Power2 } from 'gsap'
 
 export default {
   name: 'ApartmentsVisualFirst',
@@ -53,6 +54,10 @@ export default {
     nextStep (id) {
       this.$router.push(`/apartments/visual/${id}`)
     }
+  },
+  mounted () {
+    gsap.to('.apartments-visual-first-animated', { opacity: 0, y: 100, duration: 0 })
+    gsap.to('.apartments-visual-first-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: Power2.easeInOut, delay: 2 })
   }
 }
 </script>

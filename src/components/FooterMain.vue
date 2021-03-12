@@ -1,7 +1,6 @@
 <template>
   <div class="footer__main">
-
-    <span class="footer__text">ЖК Бруклин. Все права защищены©</span>
+    <span class="footer__text">ЖК Бруклин. Все права защищены | <span>Разработка сайта компания Sells</span></span>
 
     <div class="footer__social">
       <a href="#">
@@ -45,5 +44,23 @@
 .footer__social svg{
   width:3.125vh;
   height:3.125vh;
+}
+
+.footer__text span{
+  color:#EA8E79;
+}
+
+.footer__social svg path{
+  transition:0.2s;
+}
+
+@media(hover:hover){
+  .scroll-trigger:hover .scroll-trigger__arrow{
+    transform:translateY(5px)
+  }
+  .footer__social svg:hover path{
+    fill:#EA8E79;
+    stroke:#EA8E79;
+  }
 }
 </style>

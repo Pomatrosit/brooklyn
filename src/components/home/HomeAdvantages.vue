@@ -4,65 +4,80 @@
       <div class="advantages__main">
         <div class="advantages__flex advantages__flex1">
 
-          <figure class="advantage advantage1" ref="advantage1">
-            <figcaption class="advantage__title" ref="title1">
-              <span class="advantage__title-inner1">Просторные колясочные и велосипедные зоны</span>
-              <span class="advantage__title-inner2">В холлах ЖК «Бруклин» предусмотрено все для комфортной жизни. Коляску или велосипед Вы можете оставить
-                в специальн о предусмотренном для этого месте на первом этаже.
-              </span>
-            </figcaption>
+          <figure class="advantage advantage1" ref="advantage1" @mouseenter="hover" @mouseleave="unhover">
+            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <div class="advantage__overlay">
+              <div class="advantage__top">
+                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                  равнодушными ни жильцов, ни их гостей.
+                </span>
+              </div>
+            </div>
           </figure>
 
-          <figure class="advantage advantage2" ref="advantage2">
-            <figcaption class="advantage__title" ref="title2">
-              <span class="advantage__title-inner1">Благоустройство двора </span>
-              <span class="advantage__title-inner2">Игровые комплексы для детей разных возрастов и спортивные площадки создают единый ландшафт.
-                Двор тихий и спокойный. В нём не слышно шума дорог, а жители будут чувствовать себя уединенно.
+          <figure class="advantage advantage2" ref="advantage2" @mouseenter="hover" @mouseleave="unhover">
+            <div class="advantage__top">
+              <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+              <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                равнодушными ни жильцов, ни их гостей.
               </span>
-            </figcaption>
+            </div>
+            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <div class="advantage__overlay"></div>
           </figure>
 
         </div>
         <div class="advantages__flex advantages__flex2">
 
-          <figure class="advantage advantage3" ref="advantage3">
-            <figcaption class="advantage__title advantage__title3" ref="title3">
-              <span class="advantage__title-inner1">Уютные планировочные решения</span>
-              <span class="advantage__title-inner2">В ЖК «Бруклин» использованы современные продуманные планировки с европейским
-                типом разделения пространства, здесь каждый найдет для себя функциональную и комфортную квартиру .
+          <figure class="advantage advantage3" ref="advantage3" @mouseenter="hover" @mouseleave="unhover">
+            <div class="advantage__top">
+              <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+              <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                равнодушными ни жильцов, ни их гостей.
               </span>
-            </figcaption>
+            </div>
+            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <div class="advantage__overlay"></div>
           </figure>
 
         </div>
         <div class="advantages__flex advantages__flex3">
           <div class="advantage__flex3-inner">
 
-            <figure class="advantage advantage4" ref="advantage4">
-              <figcaption class="advantage__title" ref="title4">
-                <span class="advantage__title-inner1">Безопасная среда</span>
-                <span class="advantage__title-inner2">Закрытая территория двора без доступа посторонних и автомобилей обеспечит безопасность Вашей семьи.
+            <figure class="advantage advantage4" ref="advantage4" @mouseenter="hover" @mouseleave="unhover">
+              <div class="advantage__top">
+                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                  равнодушными ни жильцов, ни их гостей.
                 </span>
-              </figcaption>
+              </div>
+              <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+              <div class="advantage__overlay"></div>
             </figure>
 
-            <figure class="advantage advantage5" ref="advantage5">
-              <figcaption class="advantage__title" ref="title5">
-                <span class="advantage__title-inner1">Витражное остекление</span>
-                <span class="advantage__title-inner2">Добавит в квартиру больше света и позволит в полной мере наслаждаться видом из окна
+            <figure class="advantage advantage5" ref="advantage5" @mouseenter="hover" @mouseleave="unhover">
+              <div class="advantage__top">
+                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+                  равнодушными ни жильцов, ни их гостей.
                 </span>
-              </figcaption>
+              </div>
+              <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+              <div class="advantage__overlay"></div>
             </figure>
 
           </div>
 
-          <figure class="advantage advantage6" ref="advantage6">
-            <figcaption class="advantage__title" ref="title6">
-              <span class="advantage__title-inner1">Дизайнерские холлы и коридоры</span>
-              <span class="advantage__title-inner2">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
+          <figure class="advantage advantage6" ref="advantage6" @mouseenter="hover" @mouseleave="unhover">
+            <div class="advantage__top">
+              <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+              <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
                 равнодушными ни жильцов, ни их гостей.
               </span>
-            </figcaption>
+            </div>
+            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <div class="advantage__overlay"></div>
           </figure>
 
         </div>
@@ -127,7 +142,38 @@ export default {
     gsap.to(this.$refs.advantage4, { opacity: 0, y: 100, duration: 0 })
     gsap.to(this.$refs.advantage5, { opacity: 0, y: 100, duration: 0 })
     gsap.to(this.$refs.advantage6, { opacity: 0, y: 100, duration: 0 })
-  }
+  },
+  methods: {
+    hover (e) {
+      const card = e.target.closest('.advantage')
+      const title = card.querySelector('.advantage__title')
+      const overlay = card.querySelector('.advantage__overlay')
+      const hoveredTitle = card.querySelector('.advantage__title-secondary')
+      const hoveredDesc = card.querySelector('.advantage__desc')
+      gsap.to(title, { opacity: 0, y: 50, duration: 0.3, ease: Power2.easeInOut })
+      gsap.to(overlay, { y: 0, duration: 0.5, ease: Power2.easeInOut })
+      gsap.to(hoveredTitle, { startAt: { y: 50 }, opacity: 1, y: 0, duration: 0.5, delay: 0.3, ease: Power2.easeInOut })
+      gsap.to(hoveredDesc, { startAt: { y: 50 }, opacity: 1, y: 0, duration: 0.5, delay: 0.4, ease: Power2.easeInOut })
+    },
+    unhover (e) {
+      const card = e.target.closest('.advantage')
+      const title = card.querySelector('.advantage__title')
+      const overlay = card.querySelector('.advantage__overlay')
+      const hoveredTitle = card.querySelector('.advantage__title-secondary')
+      const hoveredDesc = card.querySelector('.advantage__desc')
+      gsap.to(hoveredDesc, { opacity: 0, duration: 0 })
+      gsap.to(hoveredTitle, { opacity: 0, duration: 0 })
+      gsap.to(title, { opacity: 1, y: 0, duration: 0.5, delay: 0.3, ease: Power2.easeInOut })
+      gsap.to(overlay, { y: '100%', duration: 0.5, ease: Power2.easeInOut })
+      setTimeout(() => {
+        gsap.to(hoveredDesc, { opacity: 0, y: 50, duration: 0 })
+        gsap.to(hoveredTitle, { opacity: 0, y: 50, duration: 0 })
+      }, 0.5)
+    }
+  },
+  data: () => ({
+    isHovered1: false
+  })
 }
 </script>
 
@@ -236,39 +282,45 @@ export default {
   left:0;
   right:0;
   z-index:1;
-  height:25%;
-  transition:0.5s;
+  text-transform:uppercase;
   display:flex;
   align-items:center;
-  padding:0 2.08vh;
+  padding:2vh 2.08vh;
 }
 
-.advantage__title3{
-  height:12.5%;
+.advantage__top{
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  padding:2vh 2.08vh;
+  z-index:1;
 }
 
-.advantage__title-inner1{
+.advantage__title-secondary{
+  display:block;
+  height:auto;
   text-transform:uppercase;
+  opacity:0;
+  margin-bottom:1vh;
+  font-weight: bold;
+  font-size: 1.667vh;
+  line-height: 160%;
+  color: #FFFFFF;
+  transform:translateY(50px);
 }
 
-.advantage__title-inner2{
+.advantage__desc{
   font-weight: 500;
   font-size: 1.5625vh;
   line-height: 160%;
   color: #FFFFFF;
-  display:block;
-  position:absolute;
-  width:100%;
-  top:100%;
-  left:0;
-  padding:0 2.08vh;
   opacity:0;
-  transition:1.5s;
+  display:block;
 }
 
-.advantage:after{
+.advantage__overlay{
   position:absolute;
-  content:"";
   z-index:0;
   top:0;
   left:0;
@@ -277,22 +329,7 @@ export default {
   background: rgba(36, 33, 53, 0.5);
   border-top:4px solid #242135;
   transform:translateY(100%);
-  transition:0.3s;
   transition-timing-function:ease-in-out;
 }
 
-@media(hover:hover){
-  .advantage:hover:after{
-    transform:translateY(0);
-  }
-  .advantage:hover .advantage__title{
-    transform:translateY(-300%);
-  }
-  .advantage:hover .advantage__title3{
-    transform:translateY(-700%);
-  }
-  .advantage:hover .advantage__title-inner2{
-    opacity:1;
-  }
-}
 </style>

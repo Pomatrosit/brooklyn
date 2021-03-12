@@ -1,7 +1,7 @@
 <template>
       <div class="parameters">
-        <p class="parameters__title">Количество комнат</p>
-        <div class="parameters__buttons">
+        <p class="parameters__title apartments-parameters-animated">Количество комнат</p>
+        <div class="parameters__buttons apartments-parameters-animated">
           <div class="parameter-btn" :class="{'active-btn' : id === 'studios'}" @click="changeType('studios')">
             <span>C</span>
           </div>
@@ -15,8 +15,8 @@
             <span>3</span>
           </div>
         </div>
-        <p class="parameters__title">Найдено 4 планировки</p>
-        <div class="flat-cards">
+        <p class="parameters__title apartments-parameters-animated">Найдено 4 планировки</p>
+        <div class="flat-cards apartments-parameters-animated">
           <FlatCard />
           <FlatCard />
           <FlatCard />
@@ -27,6 +27,7 @@
 
 <script>
 import FlatCard from './FlatCard'
+import gsap, { Power2 } from 'gsap'
 
 export default {
   components: {
@@ -41,6 +42,10 @@ export default {
     changeType (id) {
       if (id !== this.id) this.$router.push('/apartments/parameters/' + id)
     }
+  },
+  mounted () {
+    gsap.to('.apartments-parameters-animated', { opacity: 0, y: 100, duration: 0 })
+    gsap.to('.apartments-parameters-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: Power2.easeInOut, delay: 2 })
   }
 }
 </script>
@@ -72,11 +77,13 @@ export default {
   justify-content:Center;
   margin-right:2.1vh;
   cursor:pointer;
+  transition:0.3s;
 }
 
 .parameter-btn span{
   font-size: 1.875vh;
   color: #242135;
+  transition:0.3s;
 }
 
 .flat-cards{
@@ -92,5 +99,14 @@ export default {
 
 .active-btn span{
   color: #FFFFFF;
+}
+
+@media(hover:hover){
+  .parameter-btn:not(.active-btn):hover{
+    background:#615e71;
+  }
+  .parameter-btn:not(.active-btn):hover span{
+    color:#fff;
+  }
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="back" @click="$router.go(-1)">
     <span class="back__label">Вернуться назад</span>
-    <span class="back__btn"><SliderArrowLeft fill="#EFEFEF" width="50vh" height="2.08vh"/></span>
+    <span class="back__btn">
+      <SliderArrowLeft fill="#EFEFEF" width="50vh" height="2.08vh"/>
+    </span>
   </div>
 </template>
 
@@ -39,5 +41,19 @@ export default {
   height:8.3vh;
   background:#242135;
   cursor:pointer;
+  transition:0.3s;
+}
+
+.back__btn:hover svg{
+  transition:0.3s;
+}
+
+@media(hover:hover){
+  .back__btn:hover{
+    background:#615e71;
+  }
+  .back__btn:hover svg{
+    transform:translateX(-10%)
+  }
 }
 </style>

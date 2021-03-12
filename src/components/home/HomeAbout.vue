@@ -46,9 +46,9 @@ export default {
         gsap.to(this.$refs.about, { height: '100%', duration: 0 })
         gsap.to(this.$refs.aboutImg, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.aboutMain, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1.2 })
-        gsap.to(this.$refs.aboutTitle, { opacity: 1, y: 0, duration: 1, delay: 2 })
-        gsap.to(this.$refs.aboutText, { opacity: 1, y: 0, duration: 1, delay: 2.2 })
-        gsap.to(this.$refs.aboutShapes, { opacity: 1, x: 0, duration: 1, ease: Power2.easeInOut, delay: 2.2 })
+        gsap.to(this.$refs.aboutTitle, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 2 })
+        gsap.to(this.$refs.aboutText, { opacity: 1, y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 2.2 })
+        gsap.to(this.$refs.aboutShapes, { opacity: 1, x: 0, duration: 0.8, ease: Power2.easeInOut, delay: 2.2 })
         gsap.to(this.$refs.aboutNumber, { opacity: 1, x: 0, duration: 1, ease: Power2.easeInOut, delay: 2.6 })
       }
       if (prevHomeSlide === 2) {
@@ -109,13 +109,6 @@ export default {
 }
 
 .about__text-block{
-  /* position:absolute;
-  top:50%;
-  left:100px;
-  transform:translateY(-50%);
-  z-index:1;
-  overflow:hidden; */
-  /* margin: 13.54vh 0 0 5.2vw; */
   margin-left:5.2vw;
   position:relative;
   z-index:1;

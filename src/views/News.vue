@@ -3,8 +3,8 @@
     <ContentWrapper>
       <NewsList />
     </ContentWrapper>
-    <AsideNav>
-      <NewsNav />
+    <AsideNav :animated="true">
+      <NewsNav :animated="true"/>
     </AsideNav>
     <NewsFooter />
   </div>

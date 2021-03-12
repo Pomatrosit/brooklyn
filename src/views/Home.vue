@@ -51,7 +51,7 @@ export default {
       this.isWheelAvailable = false
       setTimeout(() => {
         this.isWheelAvailable = true
-      }, 2000)
+      }, 3000)
     }
   },
   mounted () {
