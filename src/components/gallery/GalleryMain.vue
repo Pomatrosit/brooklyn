@@ -4,7 +4,9 @@
       <div class="gallery-top">
         <h1 class="gallery__title gallery-animated">Галерея ЖК Бруклин</h1>
         <div class="gallery__back gallery-animated" @click="goToMainPage">
-          <SliderArrowLeft fill="#242135" width="1vh" height="1.667vh"/>
+          <svg width="1vh" height="1.667vh" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.7541 15.7589C9.05216 15.4667 9.07926 15.0095 8.83539 14.6873L8.7541 14.595L2.02658 8L8.7541 1.40503C9.05216 1.11283 9.07926 0.655583 8.83539 0.333375L8.7541 0.241064C8.45604 -0.0511349 7.98963 -0.0776984 7.66096 0.161374L7.56679 0.241064L0.245899 7.41802C-0.0521603 7.71022 -0.079257 8.16746 0.16461 8.48967L0.245899 8.58198L7.56679 15.7589C7.89466 16.0804 8.42624 16.0804 8.7541 15.7589Z" fill="#242135"/>
+          </svg>
           <span>На главную</span>
         </div>
         <div class="gallery-top__after gallery-animated"></div>
@@ -43,13 +45,9 @@
 </template>
 
 <script>
-import SliderArrowLeft from '@/components/svg/SliderArrowLeft'
 import gsap, { Power2 } from 'gsap'
 
 export default {
-  components: {
-    SliderArrowLeft
-  },
   methods: {
     goToMainPage () {
       this.$router.push('/')
@@ -108,7 +106,8 @@ export default {
   font-weight: 500;
   font-size: 2.09vh;
   color: #242135;
-  margin-left:2.5vh
+  margin-left:2.5vh;
+  transition:0.3s;
 }
 
 .gallery-bottom{
@@ -169,9 +168,19 @@ export default {
   position:relative;
 }
 
+.gallery__back:hover svg path{
+  transition:0.5s;
+}
+
 @media (hover:hover){
   .category-card:hover .category-card__img{
     transform:scale(1.2);
+  }
+  .gallery__back:hover span{
+    color:#EA8E79;
+  }
+  .gallery__back:hover svg path{
+    fill:#EA8E79;
   }
 }
 </style>

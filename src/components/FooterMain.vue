@@ -1,6 +1,6 @@
 <template>
   <div class="footer__main">
-    <span class="footer__text">ЖК Бруклин. Все права защищены | <span>Разработка сайта компания Sells</span></span>
+    <span class="footer__text">ЖК Бруклин. Все права защищены | <span @click="goToSells">Разработка сайта компания Sells</span></span>
 
     <div class="footer__social">
       <a href="#">
@@ -22,6 +22,16 @@
 
 </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    goToSells () {
+      window.open('https://sells.company/', '_blank')
+    }
+  }
+}
+</script>
 
 <style scoped>
 .footer__main{
@@ -48,6 +58,7 @@
 
 .footer__text span{
   color:#EA8E79;
+  cursor:pointer;
 }
 
 .footer__social svg path{

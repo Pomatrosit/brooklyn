@@ -115,6 +115,10 @@ export default {
   mounted () {
     gsap.to('.apartments-visual-second-animated', { opacity: 0, y: 100, duration: 0 })
     gsap.to('.apartments-visual-second-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: Power2.easeInOut })
+  },
+  updated () {
+    gsap.to('.entrance', { opacity: 0, duration: 0 })
+    gsap.to('.entrance', { opacity: 1, duration: 1, ease: Power2.easeInOut })
   }
 }
 </script>
@@ -190,6 +194,10 @@ export default {
 
 .entrance{
   width:72%;
+}
+
+.entrance2{
+  width:61%;
 }
 
 .entrance svg{

@@ -10,8 +10,7 @@
             <div class="advantage__overlay">
               <div class="advantage__top">
                 <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                  равнодушными ни жильцов, ни их гостей.
+                <span class="advantage__desc">В холлах ЖК «Бруклин» предусмотрено все для комфортной жизни. Коляску или велосипед Вы можете оставить в специальн о предусмотренном для этого месте на первом этаже.
                 </span>
               </div>
             </div>
@@ -21,9 +20,8 @@
             <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                  равнодушными ни жильцов, ни их гостей.
+                <span class="advantage__title-secondary">Благоустройство двора</span>
+                <span class="advantage__desc">Игровые комплексы для детей разных возрастов и спортивные площадки создают единый ландшафт. Двор тихий и спокойный. В нём не слышно шума дорог, а жители будут чувствовать себя уединенно.
                 </span>
               </div>
             </div>
@@ -36,9 +34,8 @@
             <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                  равнодушными ни жильцов, ни их гостей.
+                <span class="advantage__title-secondary">Уютные планировочные решения</span>
+                <span class="advantage__desc">В ЖК «Бруклин» использованы современные продуманные планировки с европейским типом разделения пространства, здесь каждый найдет для себя функциональную и комфортную квартиру .
                 </span>
               </div>
             </div>
@@ -52,9 +49,8 @@
               <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
               <div class="advantage__overlay">
                 <div class="advantage__top">
-                  <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                  <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                    равнодушными ни жильцов, ни их гостей.
+                  <span class="advantage__title-secondary">Безопасная среда</span>
+                  <span class="advantage__desc">Закрытая территория двора без доступа посторонних и автомобилей обеспечит безопасность Вашей семьи.
                   </span>
                 </div>
               </div>
@@ -64,9 +60,8 @@
               <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
               <div class="advantage__overlay">
                 <div class="advantage__top">
-                  <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                  <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                    равнодушными ни жильцов, ни их гостей.
+                  <span class="advantage__title-secondary">Витражное остекление</span>
+                  <span class="advantage__desc">Добавит в квартиру больше света и позволит в полной мере наслаждаться видом из окна
                   </span>
                 </div>
               </div>
@@ -78,9 +73,8 @@
             <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
-                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-                  равнодушными ни жильцов, ни их гостей.
+                <span class="advantage__title-secondary">Дизайнерские холлы и коридоры</span>
+                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит равнодушными ни жильцов, ни их гостей.
                 </span>
               </div>
             </div>

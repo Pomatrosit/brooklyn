@@ -1,20 +1,20 @@
 <template>
   <section class="contacts">
-    <div class="contacts__img" ref="img"></div>
+    <div class="contacts__img contacts-animated" ref="img"></div>
     <div class="contacts__main" ref="main">
 
       <div class="contacts__top">
-        <div class="logo"><img src="/img/logo__big.png" alt="Brooklyn"></div>
+        <div class="logo contacts-animated"><img src="/img/logo__big.png" alt="Brooklyn"></div>
         <div class="contacts__desc">
-          <h2 class="contacts__title">Ждем вас!</h2>
-          <p class="contacts__text">Вы можете связаться с нами следующими способами:</p>
+          <h2 class="contacts__title contacts-animated">Ждем вас!</h2>
+          <p class="contacts__text contacts-animated">Вы можете связаться с нами следующими способами:</p>
         </div>
       </div>
 
       <div class="contacts__bottom">
         <div class="horizontal">
 
-          <div class="card">
+          <div class="card contacts-animated">
             <div class="card__left">
               <svg class="card__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.4" d="M12.4182 3.48976C11.9421 3.40182 11.5049 3.70561 11.4143 4.1703C11.3236 4.63499 11.6284 5.08868 12.0915 5.17962C13.4858 5.45143 14.5624 6.5307 14.8352 7.92976V7.93076C14.9129 8.33349 15.2675 8.62629 15.6758 8.62629C15.7306 8.62629 15.7853 8.62129 15.8411 8.6113C16.3042 8.51836 16.609 8.06567 16.5183 7.59998C16.111 5.51039 14.5026 3.89648 12.4182 3.48976Z" fill="#200E32"/>
@@ -29,7 +29,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card contacts-animated">
             <div class="card__left">
               <svg class="card__icon" width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.4" d="M20.0006 12.9412C20.0006 15.7313 17.7606 17.9914 14.9705 18.0014H14.9605H5.05016C2.27007 18.0014 0 15.7513 0 12.9612V12.9512C0 12.9512 0.00600025 8.52506 0.0140005 6.29899C0.0150005 5.88098 0.495016 5.64697 0.822026 5.90698C3.1981 7.79204 7.44724 11.2291 7.50024 11.2741C8.21026 11.8432 9.11029 12.1642 10.0303 12.1642C10.9503 12.1642 11.8504 11.8432 12.5604 11.2631C12.6134 11.2281 16.7675 7.89404 19.1796 5.97798C19.5076 5.71697 19.9896 5.95098 19.9906 6.36799C20.0006 8.57706 20.0006 12.9412 20.0006 12.9412Z" fill="#200E32"/>
@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card contacts-animated">
             <div class="card__left">
               <svg class="card__icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.9934 19.7212V16.501C6.99339 15.685 7.6586 15.022 8.48256 15.0169H11.508C12.3357 15.0169 13.0066 15.6813 13.0066 16.501V19.7119C13.0066 20.4196 13.5832 20.9948 14.2978 21H16.3619C17.3259 21.0024 18.2513 20.6249 18.9339 19.9507C19.6164 19.2765 20 18.3611 20 17.4064V8.25912C20 7.48794 19.6548 6.75644 19.0575 6.26167L12.0452 0.707981C10.8195 -0.263421 9.06881 -0.232041 7.87936 0.782652L1.01791 6.26167C0.392359 6.74185 0.0184761 7.47553 0 8.25912V17.397C0 19.3869 1.62882 21 3.63808 21H5.65504C5.99913 21.0024 6.32999 20.8688 6.57418 20.6287C6.81838 20.3886 6.95571 20.062 6.9557 19.7212H6.9934Z" fill="#200E32"/>
@@ -57,7 +57,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card contacts-animated">
             <div class="card__left">
               <svg class="card__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 10C20 15.524 15.523 20 10 20C4.477 20 0 15.524 0 10C0 4.478 4.477 0 10 0C15.523 0 20 4.478 20 10Z" fill="#200E32"/>
@@ -73,7 +73,7 @@
 
         </div>
         <div class="vertical">
-          <div class="card-vertical">
+          <div class="card-vertical contacts-animated">
             <div class="card-vertical__top">
               <svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.4" d="M10.489 21.2771L2.37431 25.3304C1.76151 25.663 0.997103 25.4409 0.654355 24.8306C0.554255 24.6388 0.501322 24.4255 0.5 24.2088V15.1362C0.5 16.0357 1.00717 16.5909 2.34124 17.2128L10.489 21.2771Z" fill="#200E32"/>
@@ -106,18 +106,25 @@
         </div>
       </div>
 
-      <svg class="bg1" width="961" height="732" viewBox="0 0 961 732" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="bg1" ref="bg" width="961" height="732" viewBox="0 0 961 732" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M478 1L1 366L478 731M719 1L242 366L719 731M599 1L121 366L599 731M840 1L362 366L840 731M539 1L62 366L539 731M780 1L303 366L780 731M659 1L182 366L659 731M900 1L423 366L900 731M498 1L21 366L498 731M739 1L262 366L739 731M618 1L141 366L618 731M859 1L382 366L859 731M559 1L82 366L559 731M800 1L323 366L800 731M679 1L202 366L679 731M920 1L443 366L920 731M518 1L41 366L518 731M759 1L282 366L759 731M638 1L161 366L638 731M879 1L402 366L879 731M579 1L102 366L579 731M820 1L343 366L820 731M699 1L222 366L699 731M940 1L463 366L940 731M960 1L483 366L960 731" stroke="#242135" stroke-opacity="0.05"/>
-      </svg>
-
-      <svg class="bg2" width="386" height="219" viewBox="0 0 386 219" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M85.668 219C69.0871 219 54.2461 214.591 41.1452 205.774C28.2489 196.956 18.1162 184.346 10.7469 167.941C3.58229 151.331 0 131.851 0 109.5C0 87.1489 3.58229 67.7711 10.7469 51.3666C18.1162 34.757 28.2489 22.0435 41.1452 13.2261C54.2461 4.4087 69.0871 0 85.668 0C102.249 0 116.987 4.4087 129.884 13.2261C142.985 22.0435 153.22 34.757 160.589 51.3666C167.958 67.7711 171.643 87.1489 171.643 109.5C171.643 131.851 167.958 151.331 160.589 167.941C153.22 184.346 142.985 196.956 129.884 205.774C116.987 214.591 102.249 219 85.668 219ZM85.668 198.699C98.1548 198.699 109.106 195.213 118.523 188.242C128.144 181.27 135.615 171.119 140.938 157.791C146.26 144.462 148.921 128.365 148.921 109.5C148.921 90.6348 146.26 74.5379 140.938 61.2093C135.615 47.8806 128.144 37.7303 118.523 30.7584C109.106 23.7865 98.1548 20.3006 85.668 20.3006C73.1811 20.3006 62.1272 23.7865 52.5062 30.7584C43.0899 37.7303 35.7206 47.8806 30.3983 61.2093C25.076 74.5379 22.4149 90.6348 22.4149 109.5C22.4149 128.365 25.076 144.462 30.3983 157.791C35.7206 171.119 43.0899 181.27 52.5062 188.242C62.1272 195.213 73.1811 198.699 85.668 198.699Z" fill="#EA8E79" fill-opacity="0.03"/>
-        <path d="M386 160.559H343.013V217.154H320.905V160.559H199.618V144.565L313.535 1.8455H338.1L228.174 140.874H321.519V91.0449H343.013V140.874H386V160.559Z" fill="#EA8E79" fill-opacity="0.03"/>
       </svg>
 
     </div>
   </section>
 </template>
+
+<script>
+import gsap, { Power2 } from 'gsap'
+
+export default {
+  mounted () {
+    gsap.to('.contacts-animated', { opacity: 0, y: 100, duration: 0 })
+    gsap.to(this.$refs.bg, { opacity: 1, x: 0, duration: 1, ease: Power2.easeInOut })
+    gsap.to('.contacts-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: Power2.easeInOut })
+  }
+}
+</script>
 
 <style scoped>
 .contacts{
@@ -278,15 +285,12 @@
   padding-left:10vh;
 }
 
-.bg1, .bg2{
+.bg1{
   position:Absolute;
   z-index:0;
   top:0;
   right:0;
-}
-
-.bg2{
-  right:5.72vh;
+  transform:translateX(220px)
 }
 
 .social-icons svg, .card__icon, .card-vertical svg{

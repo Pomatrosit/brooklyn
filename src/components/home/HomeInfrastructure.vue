@@ -62,7 +62,7 @@
 
       </div>
 
-      <div
+      <div @wheel.stop
         id="infrastructure__map"
         class="infrastructure__map"
         ref="map"

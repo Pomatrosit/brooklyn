@@ -25,6 +25,21 @@ export default {
     ApartmentsFooter,
     AsideNav,
     ContentWrapper
+  },
+  data: () => ({
+    animated: false,
+    prevRoute: null
+  }),
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      vm.prevRoute = from
+    })
+    localStorage.setItem('path', from.path)
+  },
+  mounted () {
+    const path = localStorage.getItem('path')
+    const pathArr = path.split('/')
+    if (!pathArr.includes('apartments') && !pathArr.includes('flat')) this.animated = true
   }
 }
 </script>

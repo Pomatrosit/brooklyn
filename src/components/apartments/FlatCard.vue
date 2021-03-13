@@ -69,7 +69,7 @@ export default {
 
 .flat-card__title{
   font-weight: 500;
-  font-size: 12px;
+  font-size: 1.3vh;
   line-height: 150%;
   color: #242135;
   margin-bottom:1.7vh

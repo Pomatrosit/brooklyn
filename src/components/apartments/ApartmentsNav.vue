@@ -169,4 +169,10 @@ export default {
   background:#EA8E79;
 }
 
+@media (max-aspect-ratio: 16/9) {
+  .nav__option:before, .nav__option:after{
+    display:none;
+  }
+}
+
 </style>

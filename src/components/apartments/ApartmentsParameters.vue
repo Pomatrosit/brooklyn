@@ -45,7 +45,11 @@ export default {
   },
   mounted () {
     gsap.to('.apartments-parameters-animated', { opacity: 0, y: 100, duration: 0 })
-    gsap.to('.apartments-parameters-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: Power2.easeInOut, delay: 2 })
+    gsap.to('.apartments-parameters-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: Power2.easeInOut })
+  },
+  updated () {
+    gsap.to('.flat-cards', { opacity: 0, duration: 0 })
+    gsap.to('.flat-cards', { opacity: 1, duration: 1, ease: Power2.easeInOut })
   }
 }
 </script>

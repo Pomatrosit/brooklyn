@@ -12,11 +12,11 @@
             <div class="slide"><img src="/img/mainPage/contacts.jpg" alt=""></div>
         </slick>
       </div>
-      <div class="slider-arrows">
-        <div class="arrow-left arrow news-single-animated dark-arrow" @click="prev">
+      <div class="slider-arrows news-single-animated">
+        <div class="arrow-left arrow dark-arrow" @click="prev">
           <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
-        <div class="arrow-right arrow news-single-animated pink-arrow" @click="next">
+        <div class="arrow-right arrow pink-arrow" @click="next">
           <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
       </div>
@@ -61,7 +61,8 @@ export default {
   data: () => ({
     slickOptions: {
       slidesToShow: 1,
-      arrows: false
+      arrows: false,
+      dots: false
     }
   }),
   methods: {
