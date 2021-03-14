@@ -4,21 +4,22 @@
       @click.stop
       class="modal"
       :style="{
-        maxWidth: maxWidth || '500px',
-        padding: padding || '20px',
         fontSize: '30px',
         overflow,
         height
       }"
     >
       <slot />
+      <svg class="modal-bg" width="100%" height="100%" viewBox="0 0 952 730" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M952 594.391L2 1146.46L952 1681M952 270.347L2 822.415L952 1356.96M952 432.183L2 984.25L952 1518.79M952 108.139L2 660.206L952 1194.75M952 540.321L2 1092.39L952 1626.93M952 216.278L2 768.345L952 1302.89M952 378.113L2 930.181L952 1464.72M952 54.0694L2 606.137L952 1140.68M952 486.252L2 1038.32L952 1572.86M952 162.208L2 714.276L952 1248.82M952 324.044L2 876.111L952 1410.65M952 0L2 552.068L952 1086.61" stroke="#eee"/>
+      </svg>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['maxWidth', 'height', 'padding', 'modalWithSlider', 'overflow', 'closeModal']
+  props: ['height', 'modalWithSlider', 'overflow', 'closeModal']
 }
 </script>
 
@@ -38,38 +39,44 @@ export default {
 }
 
 .modal{
-  background: #fff;
+  background: #322F45;
   position:relative;
   z-index:1001;
   overflow-y:scroll;
   width:100%;
-  background:#fff;
   max-height:80vh;
   position:relative;
-  padding:padding;
   overflow-x:hidden;
   overflow-y:scroll;
   transform-style: preserve-3d;
   animation:open-modal-animation 0.5s ease-in-out forwards;
+  padding:8.3vh;
+  max-width:500px;
 }
 
 .modal::-webkit-scrollbar {
     width: 4px; /* ширина для вертикального скролла */
-    background-color: #fff;
+    background-color: #322F45;
 }
 
 .modal::-webkit-scrollbar-thumb {
-    background-color: #492A64;
+    background-color: #fff;
+}
+
+.modal-bg{
+  position:absolute;
+  right:0;
+  bottom:0;
+  z-index:0;
+  opacity:0.05;
 }
 
 @keyframes open-modal-animation{
   from{
     opacity:0;
-    transform:translateY(100px)
   }
   to{
     opacity:1;
-    transform:translateY(0)
   }
 }
 

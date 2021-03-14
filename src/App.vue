@@ -1,17 +1,48 @@
 <template>
   <div id="app">
+    <PreLoader v-if="isLoading"/>
     <Navbar/>
     <router-view/>
+    <ModalWindow
+      v-if="isModalOpen"
+      :closeModal="toggleModal"
+    >
+      <Form />
+    </ModalWindow>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
+import ModalWindow from '@/components/ModalWindow'
+import Form from '@/components/Form'
+import PreLoader from '@/components/PreLoader'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    ModalWindow,
+    Navbar,
+    Form,
+    PreLoader
+  },
+  computed: {
+    isModalOpen () {
+      return this.$store.getters.isModalOpen
+    },
+    isLoading () {
+      return this.$store.getters.isLoading
+    }
+  },
+  methods: {
+    toggleModal () {
+      this.$store.commit('toggleModal')
+    }
+  },
+  beforeCreate () {
+    window.onload = () => {
+      this.$store.commit('hideLoader')
+    }
   }
 }
 </script>

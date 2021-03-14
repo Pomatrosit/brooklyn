@@ -86,8 +86,8 @@ export default {
       centerPadding: '0'
     },
     currentSlide: 0,
-    nextSlide: 0,
-    nextNextSlide: 0,
+    nextSlide: 1,
+    nextNextSlide: 2,
     slidesInfo: [
       {
         title: 'Январь 2021',
@@ -115,6 +115,15 @@ export default {
           'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.'
         ],
         img: '/img/mainPage/swooshed/2.jpg'
+      },
+      {
+        title: 'Апрель 2021',
+        paragraphs: [
+          'Продолжаем монтаж системы электроснабжения, вентиляции, водоснабжения и водоотведения.',
+          'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.',
+          'Выполняем монолитные работы рампы паркинга и устройство гидроизоляции плиты паркинга.'
+        ],
+        img: '/img/mainPage/swooshed/4.jpg'
       }
     ]
   }),
@@ -146,10 +155,8 @@ export default {
         .to(this.$refs.navImages, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
       setTimeout(() => {
         this.currentSlide = nextSlide
-        if (this.nextSlide >= this.slidesInfo.length - 1) this.nextSlide = 0
-        else this.nextSlide++
-        if (this.nextNextSlide >= this.slidesInfo.length - 1) this.nextNextSlide = 0
-        else this.nextNextSlide++
+        this.nextSlide = (nextSlide + 1) % this.slidesInfo.length
+        this.nextNextSlide = (nextSlide + 2) % this.slidesInfo.length
       }, 800)
     },
     goTo (idx) {
