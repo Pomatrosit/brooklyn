@@ -39,5 +39,6 @@
   justify-content:center;
   font-size:50px;
   z-index:9999;
+  transition:1s;
 }
 </style>

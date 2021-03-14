@@ -17,6 +17,7 @@ import Navbar from '@/components/Navbar'
 import ModalWindow from '@/components/ModalWindow'
 import Form from '@/components/Form'
 import PreLoader from '@/components/PreLoader'
+import { loadImages } from '@/utils/utils'
 
 export default {
   name: 'App',
@@ -40,9 +41,13 @@ export default {
     }
   },
   beforeCreate () {
-    window.onload = () => {
-      this.$store.commit('hideLoader')
-    }
+    window.addEventListener('load', () => {
+      document.querySelector('.preloader').style.opacity = '0'
+      setTimeout(() => this.$store.commit('hideLoader'), 1000)
+    })
+  },
+  mounted () {
+    loadImages()
   }
 }
 </script>

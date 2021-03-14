@@ -4,8 +4,9 @@
       overlayColor="rgba(30, 30, 30, .9)"
       :zIndex="2"
       :style="{zIndex: 100}"
-      :items="images"
+      :items="imagesComputed"
       :index="index"
+      effect="fade"
       @close="index = null">
     </CoolLightBox>
     <div class="gallery-main">
@@ -23,15 +24,17 @@
           <div class="gallery-top__after gallery-animated"></div>
         </div>
         <div class="gallery-bottom">
+
           <div
             class="gallery-img gallery-animated"
-            v-for="(image, imageIndex) in images"
+            v-for="(image, imageIndex) in imagesComputed"
             :key="imageIndex"
             @click="index = imageIndex"
           >
             <img :src="image">
             <SearchIcon />
           </div>
+
         </div>
       </div>
     </div>
@@ -52,6 +55,10 @@ export default {
   computed: {
     id () {
       return this.$route.params.id
+    },
+    imagesComputed () {
+      if (this.id === '1') return this.images
+      return this.images2
     }
   },
   methods: {
@@ -66,6 +73,17 @@ export default {
       '/img/mainPage/swooshed/3.jpg',
       '/img/mainPage/swooshed/4.jpg',
       '/img/mainPage/swooshed/5.jpg'
+    ],
+    images2: [
+      '/img/gallery/4.jpg',
+      '/img/gallery/5.jpg',
+      '/img/gallery/6.jpg',
+      '/img/gallery/9.jpg',
+      '/img/gallery/10.jpg',
+      '/img/gallery/11.jpg',
+      '/img/gallery/12.jpg',
+      '/img/gallery/13.jpg',
+      '/img/gallery/14.jpg'
     ],
     index: null
   }),

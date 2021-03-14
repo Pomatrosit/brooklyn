@@ -108,7 +108,7 @@ form{
   padding:0 2vh;
   background: #FFFFFF;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 1.5vh;
   line-height: 17px;
   color: #828282;
 }
@@ -148,7 +148,7 @@ form{
 .policy__text{
   font-style: normal;
   font-weight: 300;
-  font-size: 1.5vh;
+  font-size: 1.46vh;
   line-height: 1.7vh;
   color: #FFFFFF;
 }

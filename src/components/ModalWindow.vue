@@ -50,7 +50,7 @@ export default {
   overflow-y:scroll;
   transform-style: preserve-3d;
   animation:open-modal-animation 0.5s ease-in-out forwards;
-  padding:8.3vh;
+  padding:6vh;
   max-width:500px;
 }
 
@@ -74,9 +74,11 @@ export default {
 @keyframes open-modal-animation{
   from{
     opacity:0;
+    transform:translateY(50px)
   }
   to{
     opacity:1;
+    transform:translateY(0)
   }
 }
 

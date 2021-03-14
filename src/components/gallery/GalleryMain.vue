@@ -135,7 +135,7 @@ export default {
   object-fit:cover;
   position:absolute;
   z-index:-1;
-  transition:0.7s;
+  transition:0.5s;
   transition-timing-function:ease-in-out;
 }
 
@@ -174,7 +174,7 @@ export default {
 
 @media (hover:hover){
   .category-card:hover .category-card__img{
-    transform:scale(1.2);
+    transform:scale(1.1);
   }
   .gallery__back:hover span{
     color:#EA8E79;
