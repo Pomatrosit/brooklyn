@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay" @click="closeModal">
+  <div class="overlay" @wheel.stop @click="closeModal">
     <div
       @click.stop
       class="modal"

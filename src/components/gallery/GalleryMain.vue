@@ -153,7 +153,7 @@ export default {
 }
 
 .category-card__icon img{
-  width:60%;
+  width:50%;
 }
 
 .category-card__title{
