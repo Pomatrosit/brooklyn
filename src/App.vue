@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <PreLoader v-if="isLoading"/>
-    <Navbar/>
+    <Navbar v-if="isDesktop"/>
+    <NavbarMobile v-if="!isDesktop"/>
     <router-view/>
     <ModalWindow
       v-if="isModalOpen"
@@ -14,6 +15,7 @@
 
 <script>
 import Navbar from '@/components/Navbar'
+import NavbarMobile from '@/components/NavbarMobile'
 import ModalWindow from '@/components/ModalWindow'
 import Form from '@/components/Form'
 import PreLoader from '@/components/PreLoader'
@@ -25,7 +27,8 @@ export default {
     ModalWindow,
     Navbar,
     Form,
-    PreLoader
+    PreLoader,
+    NavbarMobile
   },
   computed: {
     isModalOpen () {
@@ -33,11 +36,18 @@ export default {
     },
     isLoading () {
       return this.$store.getters.isLoading
+    },
+    isDesktop () {
+      return this.$store.getters.isDesktop
     }
   },
   methods: {
     toggleModal () {
       this.$store.commit('toggleModal')
+    },
+    onResize () {
+      if (document.documentElement.clientWidth < 1120) this.$store.commit('setDesktop', false)
+      else this.$store.commit('setDesktop', true)
     }
   },
   beforeCreate () {
@@ -48,6 +58,14 @@ export default {
   },
   mounted () {
     loadImages()
+    this.onResize()
+    window.addEventListener('resize', this.onResize)
+  },
+  updated () {
+    this.$store.commit('setStartSlide')
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.onResize)
   }
 }
 </script>
@@ -112,6 +130,13 @@ input, input:before, input:after {
 @media screen and (max-width:1620px){
   .app-wrapper{
     width:95%;
+  }
+}
+
+@media screen and (max-width:1120px){
+  .app-wrapper{
+    width:100%;
+    padding:0 20px;
   }
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="isDesktop">
       <ContentWrapper>
         <ApartmentsParameters />
       </ContentWrapper>
@@ -7,6 +8,11 @@
         <ApartmentsNav :active="2"/>
       </AsideNav>
       <ApartmentsFooter />
+    </div>
+    <div v-else>
+      <ApartmentsParametersMobile />
+      <FooterMobile />
+    </div>
   </div>
 </template>
 
@@ -16,6 +22,8 @@ import ApartmentsFooter from '@/components/apartments/ApartmentsFooter'
 import AsideNav from '@/components/AsideNav'
 import ApartmentsParameters from '@/components/apartments/ApartmentsParameters'
 import ContentWrapper from '@/components/ContentWrapper'
+import ApartmentsParametersMobile from '@/components/apartments/ApartmentsParametersMobile'
+import FooterMobile from '@/components/FooterMobile'
 
 export default {
   name: 'Apartments',
@@ -24,7 +32,14 @@ export default {
     ApartmentsFooter,
     AsideNav,
     ApartmentsParameters,
-    ContentWrapper
+    ContentWrapper,
+    ApartmentsParametersMobile,
+    FooterMobile
+  },
+  computed: {
+    isDesktop () {
+      return this.$store.getters.isDesktop
+    }
   }
 }
 </script>

@@ -101,6 +101,7 @@ form{
 }
 
 .form-control input, .submit-btn{
+  font-family:'Montserrat';
   width:100%;
   height:6.25vh;
   outline:none;
@@ -108,7 +109,7 @@ form{
   padding:0 2vh;
   background: #FFFFFF;
   border-radius: 5px;
-  font-size: 1.5vh;
+  font-size: 1.7vh;
   line-height: 17px;
   color: #828282;
 }
@@ -163,7 +164,37 @@ form{
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-  width:1.5625;
+  width:1.5625vh;
   height:1.25vh;
+}
+
+@media screen and (max-width:1120px){
+  .title{
+    font-size: 20px;
+  }
+  .subtitle{
+    font-size: 14px;
+  }
+  .input-label{
+    font-size: 14px;
+  }
+  .form-control input, .submit-btn{
+    height:50px;
+  }
+  .form-control input{
+    font-size:14px;
+  }
+  .policy__text{
+    font-size: 10px;
+  }
+  .policy__checkbox{
+    width:24px;
+    height:24px;
+    min-width:24px;
+  }
+  .policy__checkbox svg{
+    width:15px;
+    height:12px;
+  }
 }
 </style>

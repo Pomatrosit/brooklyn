@@ -1,11 +1,21 @@
 <template>
-  <div class="home">
-    <HomeHeader />
-    <HomeAbout />
-    <HomeAdvantages />
-    <HomeInfrastructure />
-    <HomeContacts />
-    <HomeFooter />
+  <div>
+    <div class="home" v-if="isDesktop">
+      <HomeHeader />
+      <HomeAbout />
+      <HomeAdvantages />
+      <HomeInfrastructure />
+      <HomeContacts />
+      <HomeFooter />
+    </div>
+    <div class="home" v-if="!isDesktop">
+      <HomeHeaderMobile />
+      <HomeAboutMobile />
+      <HomeAdvantagesMobile />
+      <HomeInfrastructureMobile />
+      <homeContactsMobile />
+      <FooterMobile />
+    </div>
   </div>
 </template>
 
@@ -16,8 +26,12 @@ import HomeAdvantages from '@/components/home/HomeAdvantages'
 import HomeInfrastructure from '@/components/home/HomeInfrastructure'
 import HomeContacts from '@/components/home/HomeContacts'
 import HomeFooter from '@/components/home/HomeFooter'
-
-import { mapGetters } from 'vuex'
+import HomeHeaderMobile from '@/components/home/HomeHeaderMobile'
+import HomeAboutMobile from '@/components/home/HomeAboutMobile'
+import HomeAdvantagesMobile from '@/components/home/HomeAdvantagesMobile'
+import HomeInfrastructureMobile from '@/components/home/HomeInfrastructureMobile'
+import homeContactsMobile from '@/components/home/homeContactsMobile'
+import FooterMobile from '@/components/FooterMobile'
 
 export default {
   name: 'Home',
@@ -27,9 +41,19 @@ export default {
     HomeAdvantages,
     HomeInfrastructure,
     HomeContacts,
-    HomeFooter
+    HomeFooter,
+    HomeHeaderMobile,
+    HomeAboutMobile,
+    HomeAdvantagesMobile,
+    HomeInfrastructureMobile,
+    homeContactsMobile,
+    FooterMobile
   },
-  computed: mapGetters(['homeSlide, lastHomeSLide']),
+  computed: {
+    isDesktop () {
+      return this.$store.getters.isDesktop
+    }
+  },
   data: () => ({
     isWheelAvailable: true
   }),
@@ -56,8 +80,10 @@ export default {
   },
   mounted () {
     this.$store.commit('setStartSlide')
-    this.setWheelUnavailable()
-    window.addEventListener('wheel', this.onWheel)
+    if (this.isDesktop) {
+      this.setWheelUnavailable()
+      window.addEventListener('wheel', this.onWheel)
+    }
   },
   beforeDestroy () {
     window.removeEventListener('wheel', this.onWheel)
