@@ -1,7 +1,7 @@
 <template>
   <div class="navbar-mobile">
     <div class="app-wrapper">
-      <div @click="$router.push('/')">
+      <div @click="goToHomePage">
        <Logo width="44px" height="30px"/>
       </div>
       <div class="navbar__social">
@@ -32,6 +32,11 @@ import Logo from '@/components/svg/Logo'
 export default {
   components: {
     Logo
+  },
+  methods: {
+    goToHomePage () {
+      this.$router.push('/').then(() => window.scrollTo(0, 0))
+    }
   }
 }
 </script>

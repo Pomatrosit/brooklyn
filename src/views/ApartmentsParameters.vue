@@ -11,7 +11,6 @@
     </div>
     <div v-else>
       <ApartmentsParametersMobile />
-      <FooterMobile />
     </div>
   </div>
 </template>
@@ -23,7 +22,6 @@ import AsideNav from '@/components/AsideNav'
 import ApartmentsParameters from '@/components/apartments/ApartmentsParameters'
 import ContentWrapper from '@/components/ContentWrapper'
 import ApartmentsParametersMobile from '@/components/apartments/ApartmentsParametersMobile'
-import FooterMobile from '@/components/FooterMobile'
 
 export default {
   name: 'Apartments',
@@ -33,8 +31,7 @@ export default {
     AsideNav,
     ApartmentsParameters,
     ContentWrapper,
-    ApartmentsParametersMobile,
-    FooterMobile
+    ApartmentsParametersMobile
   },
   computed: {
     isDesktop () {

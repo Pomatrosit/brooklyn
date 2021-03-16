@@ -18,8 +18,16 @@
 </template>
 
 <script>
+import { setScrollAvailable, setScrollUnavailable } from '@/utils/utils'
+
 export default {
-  props: ['height', 'modalWithSlider', 'overflow', 'closeModal']
+  props: ['height', 'modalWithSlider', 'overflow', 'closeModal'],
+  mounted () {
+    setScrollUnavailable()
+  },
+  beforeDestroy () {
+    setScrollAvailable()
+  }
 }
 </script>
 

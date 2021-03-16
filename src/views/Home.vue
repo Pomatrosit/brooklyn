@@ -14,7 +14,6 @@
       <HomeAdvantagesMobile />
       <HomeInfrastructureMobile />
       <homeContactsMobile />
-      <FooterMobile />
     </div>
   </div>
 </template>
@@ -31,7 +30,6 @@ import HomeAboutMobile from '@/components/home/HomeAboutMobile'
 import HomeAdvantagesMobile from '@/components/home/HomeAdvantagesMobile'
 import HomeInfrastructureMobile from '@/components/home/HomeInfrastructureMobile'
 import homeContactsMobile from '@/components/home/homeContactsMobile'
-import FooterMobile from '@/components/FooterMobile'
 
 export default {
   name: 'Home',
@@ -46,8 +44,7 @@ export default {
     HomeAboutMobile,
     HomeAdvantagesMobile,
     HomeInfrastructureMobile,
-    homeContactsMobile,
-    FooterMobile
+    homeContactsMobile
   },
   computed: {
     isDesktop () {

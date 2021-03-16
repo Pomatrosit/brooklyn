@@ -2,8 +2,9 @@
   <div id="app">
     <PreLoader v-if="isLoading"/>
     <Navbar v-if="isDesktop"/>
-    <NavbarMobile v-if="!isDesktop"/>
+    <NavbarMobile v-else/>
     <router-view/>
+    <FooterMobile v-if="!isDesktop"/>
     <ModalWindow
       v-if="isModalOpen"
       :closeModal="toggleModal"
@@ -20,6 +21,7 @@ import ModalWindow from '@/components/ModalWindow'
 import Form from '@/components/Form'
 import PreLoader from '@/components/PreLoader'
 import { loadImages } from '@/utils/utils'
+import FooterMobile from '@/components/FooterMobile'
 
 export default {
   name: 'App',
@@ -28,7 +30,8 @@ export default {
     Navbar,
     Form,
     PreLoader,
-    NavbarMobile
+    NavbarMobile,
+    FooterMobile
   },
   computed: {
     isModalOpen () {

@@ -1,5 +1,5 @@
 <template>
-  <figure class="flat-card" @click="goToFlat(1)">
+  <figure class="flat-card">
     <div class="flat-card__top">
       <div class="flat-card__count">
         <p class="flat-card__title">Количество комнат:</p>
@@ -15,7 +15,7 @@
     </div>
     <div class="flat-card__buttons">
       <div class="flat-card__btn"><span>Скачать PDF</span></div>
-      <div class="flat-card__btn light-btn"><span>Записаться на просмотр</span></div>
+      <div class="flat-card__btn light-btn" @click="openModal"><span>Записаться на просмотр</span></div>
     </div>
   </figure>
 </template>
@@ -25,6 +25,9 @@ export default {
   methods: {
     goToFlat (id) {
       this.$router.push('/flat/' + id)
+    },
+    openModal () {
+      this.$store.commit('toggleModal', 1)
     }
   }
 }
