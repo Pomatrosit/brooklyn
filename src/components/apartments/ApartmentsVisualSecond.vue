@@ -25,7 +25,7 @@
                 :key="path.id"
                 :d="path.d"
                 :fill="path.fill"
-                fill-opacity="0.4"
+                fill-opacity="0.2"
                 @click="$router.push('/flat/' + path.id)"
               />
             </svg>
@@ -37,7 +37,7 @@
                 :key="path.id"
                 :d="path.d"
                 :fill="path.fill"
-                fill-opacity="0.4"
+                fill-opacity="0.2"
                 @click="$router.push('/flat/' + path.id)"
               />
             </svg>
@@ -49,7 +49,7 @@
                 :key="path.id"
                 :d="path.d"
                 :fill="path.fill"
-                fill-opacity="0.4"
+                fill-opacity="0.2"
                 @click="$router.push('/flat/' + path.id)"
               />
             </svg>

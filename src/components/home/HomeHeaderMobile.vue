@@ -1,13 +1,28 @@
 <template>
   <div class="home-header">
+    <CoolLightBox
+      overlayColor="rgba(30, 30, 30, .9)"
+      :zIndex="2"
+      :style="{zIndex: 100}"
+      :items="images"
+      :index="index"
+      effect="swipe"
+      @close="index = null">
+    </CoolLightBox>
     <slick
       class="slick"
       ref="slick"
       :options="slickOptions"
+      @afterChange="handleAfterChange"
     >
-        <div class="slide"><img src="/img/mainPage/swooshed/mobile2.png" alt=""></div>
-        <div class="slide"><img src="/img/mainPage/swooshed/mobile1.png" alt=""></div>
-        <div class="slide"><img src="/img/mainPage/swooshed/3.jpg" alt=""></div>
+        <div
+          class="slide"
+          v-for="(image, imageIndex) in images"
+          :key="imageIndex"
+          @click="index = imageIndex"
+        >
+          <img :src="image">
+        </div>
     </slick>
     <div class="app-wrapper">
       <div class="slick-bottom">
@@ -19,7 +34,7 @@
             <SliderArrowRight width="8px" height="13px" fill="#242135"/>
           </div>
         </div>
-        <div class="zoom">
+        <div class="zoom" @click="index = index2">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.6892 2C17.9359 2 21.3785 5.36655 21.3785 9.51941C21.3785 11.4792 20.6118 13.264 19.3557 14.6024L21.826 17.0109C22.0576 17.2367 22.0581 17.6034 21.8271 17.8299C21.6171 18.0357 21.2882 18.0548 21.0561 17.8869L20.9896 17.8309L18.4902 15.3934C17.1745 16.4231 15.5054 17.0388 13.6892 17.0388C9.44259 17.0388 6 13.6723 6 9.51941C6 5.36655 9.44259 2 13.6892 2ZM13.6892 3.15819C10.0967 3.15819 7.18435 6.00621 7.18435 9.51941C7.18435 13.0326 10.0967 15.8806 13.6892 15.8806C17.2818 15.8806 20.1941 13.0326 20.1941 9.51941C20.1941 6.00621 17.2818 3.15819 13.6892 3.15819Z" fill="#242135"/>
           </svg>
@@ -46,19 +61,29 @@ import Slick from 'vue-slick'
 import 'slick-carousel/slick/slick.css'
 import SliderArrowLeft from '@/components/svg/SliderArrowLeft'
 import SliderArrowRight from '@/components/svg/SliderArrowRight'
+import CoolLightBox from 'vue-cool-lightbox'
+import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 
 export default {
   components: {
     Slick,
     SliderArrowRight,
-    SliderArrowLeft
+    SliderArrowLeft,
+    CoolLightBox
   },
   data: () => ({
     slickOptions: {
       slidesToShow: 1,
       arrows: false,
       dots: false
-    }
+    },
+    images: [
+      '/img/mainPage/swooshed/1.jpg',
+      '/img/mainPage/swooshed/2.jpg',
+      '/img/mainPage/swooshed/3.jpg'
+    ],
+    index: null,
+    index2: 0
   }),
   methods: {
     prevSlide () {
@@ -69,6 +94,9 @@ export default {
     },
     goToApartmentsPage () {
       this.$router.push('/apartments/parameters/studios').then(() => window.scrollTo(0, 0))
+    },
+    handleAfterChange (event, slick, currentSlide) {
+      this.index2 = currentSlide
     }
   }
 }

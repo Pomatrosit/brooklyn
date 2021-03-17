@@ -1,37 +1,26 @@
 <template>
 <div>
   <div v-if="isDesktop">
-    <ContentWrapper>
-      <NewsList />
-    </ContentWrapper>
-    <AsideNav :animated="true">
-      <NewsNav :animated="true"/>
-    </AsideNav>
-    <NewsFooter />
+    <NotFound />
+    <NotFoundFooter />
   </div>
   <div v-else>
-    <NewsMobile />
+    <NotFoundMobile />
   </div>
 </div>
 </template>
 
 <script>
-import NewsFooter from '@/components/news/NewsFooter'
-import AsideNav from '@/components/AsideNav'
-import ContentWrapper from '@/components/ContentWrapper'
-import NewsNav from '@/components/news/NewsNav'
-import NewsList from '@/components/news/NewsList'
-import NewsMobile from '@/components/news/NewsMobile'
+import NotFound from '@/components/notFound/NotFound'
+import NotFoundFooter from '@/components/notFound/NotFoundFooter'
+import NotFoundMobile from '@/components/notFound/NotFoundMobile'
 
 export default {
   name: 'News',
   components: {
-    NewsFooter,
-    AsideNav,
-    ContentWrapper,
-    NewsNav,
-    NewsList,
-    NewsMobile
+    NotFound,
+    NotFoundFooter,
+    NotFoundMobile
   },
   computed: {
     isDesktop () {

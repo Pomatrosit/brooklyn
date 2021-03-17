@@ -1,6 +1,10 @@
 <template>
 <div>
-  <section class="header" id="section1" ref="header">
+  <section class="header" id="section1" ref="header"
+    @mousedown="onMouseDown"
+    @mouseup="onMouseUp"
+    @mouseleave="onMouseLeave"
+  >
     <div class="header__slide header__slide1" ref="slide1">
       <!-- <img src="/img/mainPage/swooshed/1.png" alt=""> -->
     </div>
@@ -70,7 +74,9 @@ export default {
     countOfSlides: 6,
     currentZIndex: -1000,
     isSliderMoved: false,
-    HEADER_SLIDE_ANIMATION_DURATION: 1.5
+    HEADER_SLIDE_ANIMATION_DURATION: 1.5,
+    touchStart: 0,
+    touchEnd: 0
   }),
   computed: mapGetters(['homeSlide']),
   watch: {
@@ -142,6 +148,21 @@ export default {
           }
         }
       }
+    },
+    onMouseDown (e) {
+      this.touchStart = e.clientX
+      document.body.style.cursor = 'grab'
+    },
+    onMouseUp (e) {
+      this.touchEnd = e.clientX
+      document.body.style.cursor = 'auto'
+      if (this.touchStart - this.touchEnd > 150) this.nextSlide()
+      if (this.touchStart - this.touchEnd < -150) this.prevSlide()
+    },
+    onMouseLeave () {
+      document.body.style.cursor = 'auto'
+      this.touchStart = 0
+      this.touchEnd = 0
     }
   }
 }

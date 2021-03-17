@@ -265,6 +265,7 @@ export default {
 
 .card__right{
   text-align:right;
+  padding-left:20px;
 }
 
 .card__icon{
@@ -284,8 +285,8 @@ export default {
 }
 
 .card__text{
-  font-weight: 300;
-  font-size: 1.2vh;
+  font-weight: 500;
+  font-size: 1.4vh;
   color: #242135;
   padding-top:0.5vh;
 }

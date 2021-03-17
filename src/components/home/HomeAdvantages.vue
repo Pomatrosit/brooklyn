@@ -321,7 +321,7 @@ export default {
 }
 
 .advantage__desc{
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.5625vh;
   line-height: 160%;
   color: #FFFFFF;
