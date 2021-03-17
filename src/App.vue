@@ -142,4 +142,11 @@ input, input:before, input:after {
     padding:0 20px;
   }
 }
+
+@media screen and (min-width:1121px){
+  body::-webkit-scrollbar {
+      width: 0px;
+  }
+}
+
 </style>

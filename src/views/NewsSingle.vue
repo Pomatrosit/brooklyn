@@ -1,5 +1,6 @@
 <template>
-  <div>
+<div>
+  <div v-if="isDesktop">
     <ContentWrapper>
       <NewsSingle />
     </ContentWrapper>
@@ -8,6 +9,10 @@
     </AsideNav>
     <NewsFooter />
   </div>
+  <div v-else>
+    <NewsSingleMobile />
+  </div>
+</div>
 </template>
 
 <script>
@@ -16,6 +21,7 @@ import AsideNav from '@/components/AsideNav'
 import ContentWrapper from '@/components/ContentWrapper'
 import NewsNav from '@/components/news/NewsNav'
 import NewsSingle from '@/components/news/NewsSingle'
+import NewsSingleMobile from '@/components/news/NewsSingleMobile'
 
 export default {
   name: 'News',
@@ -24,7 +30,13 @@ export default {
     AsideNav,
     ContentWrapper,
     NewsNav,
-    NewsSingle
+    NewsSingle,
+    NewsSingleMobile
+  },
+  computed: {
+    isDesktop () {
+      return this.$store.getters.isDesktop
+    }
   }
 }
 </script>

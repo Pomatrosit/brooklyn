@@ -44,7 +44,6 @@
 <script>
 import WhiteArrow from '@/components/svg/WhiteArrow'
 import gsap, { Power2 } from 'gsap'
-
 export default {
   name: 'ApartmentsVisualFirst',
   components: {
@@ -67,16 +66,13 @@ export default {
   display:flex;
   align-items:center;
 }
-
 .titles{
   padding-top:14.5vh;
 }
-
 .sections{
   margin-bottom: 5.416vh;
   align-items:stretch;
 }
-
 .section{
   cursor:pointer;
   position:relative;
@@ -87,19 +83,15 @@ export default {
   justify-content:center;
   border:0.52vh solid #242135;
 }
-
 .section2, .section3{
   border-left:none;
 }
-
 .section img{
   width:100%;
 }
-
 .section2 img{
   height:100%;
 }
-
 .section-after{
   position:absolute;
   top:0;
@@ -113,58 +105,47 @@ export default {
   transition:0.3s;
   opacity:0;
 }
-
 .section-after span{
   font-weight: 600;
   font-size:2.5vh;
   margin-right:2.8vh;
   color: #FFFFFF;
 }
-
 .section1, .title1, .count-title1, .count1{
   width:35%;
 }
-
 .section2, .title2, .count-title2, .count2{
   width:30.5%;
 }
-
 .section3, .title3, .count-title3, .count3{
   width:34.5%;
 }
-
 .titles{
   margin-bottom: 3.125vh;
 }
-
 .title{
   font-weight: 500;
   font-size: 2.08vh;
   color: #242135;
   text-align:center;
 }
-
 .count-titles{
   margin-bottom:4.15vh;
 }
-
 .count-title{
   font-size: 1.875vh;
   color: #242135;
   text-align:center;
 }
-
 .count{
   font-weight: bold;
   font-size: 5.8vh;
   color: #242135;
   text-align:center;
 }
-
 @media(hover:hover){
   .section:hover .section-after{
     opacity:1;
   }
 }
-
 </style>

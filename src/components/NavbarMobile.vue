@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="navbar-mobile">
     <div class="app-wrapper">
       <div @click="goToHomePage">
@@ -17,27 +18,45 @@
           width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10.5021 0L10.8026 0.00512006C14.9301 0.143932 18.6372 3.08222 20.7867 7.84724L20.9329 8.18023C21.0213 8.38142 21.0224 8.61049 20.936 8.81255C18.7643 13.8942 14.8459 17 10.4979 17L10.1974 16.9949C6.06422 16.8559 2.3587 13.9115 0.214451 9.15534L0.0639606 8.81255C-0.0213202 8.613 -0.0213202 8.387 0.0639606 8.18745C2.23573 3.10577 6.15413 0 10.5021 0ZM10.5094 1.58251C7.02605 1.58341 3.79173 4.00897 1.81291 8.14533L1.6485 8.49905L1.8261 8.88218C3.70269 12.7866 6.70185 15.1641 9.95464 15.3972L10.2343 15.4119L10.5042 15.4156L10.7718 15.4115C14.2348 15.2844 17.4286 12.7505 19.3407 8.52458L19.3505 8.49905C17.4852 4.36213 14.3978 1.84326 11.0407 1.60273L10.7603 1.58797L10.5094 1.58251ZM10.4995 4.37055C12.768 4.37055 14.6071 6.21908 14.6071 8.50021C14.6071 10.7805 12.7678 12.6288 10.4995 12.6288C8.23125 12.6288 6.39292 10.7806 6.39292 8.50021C6.39292 6.21895 8.23105 4.37055 10.4995 4.37055ZM10.4995 5.95401C9.10098 5.95401 7.96792 7.09339 7.96792 8.50021C7.96792 9.9061 9.1011 11.0454 10.4995 11.0454C11.8981 11.0454 13.0321 9.90582 13.0321 8.50021C13.0321 7.09367 11.8983 5.95401 10.4995 5.95401Z" fill="#242135"/>
         </svg>
-        <div class="burger">
-          <div class="burger__line burger__line1"></div>
-          <div class="burger__line burger__line2"></div>
+        <div class="burger" @click="toggleMenu">
+          <div
+            class="burger__line burger__line1"
+            :class="{'burger__line1--open' : isMenuOpen}"
+            >
+          </div>
+          <div
+            class="burger__line burger__line2"
+            :class="{'burger__line2--open' : isMenuOpen}"
+          >
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <MobileMenu v-if="isMenuOpen" :toggleMenu="toggleMenu"/>
+</div>
 </template>
 
 <script>
 import Logo from '@/components/svg/Logo'
+import MobileMenu from '@/components/MobileMenu'
 
 export default {
   components: {
-    Logo
+    Logo,
+    MobileMenu
   },
   methods: {
     goToHomePage () {
       this.$router.push('/').then(() => window.scrollTo(0, 0))
+    },
+    toggleMenu () {
+      this.isMenuOpen = !this.isMenuOpen
     }
-  }
+  },
+  data: () => ({
+    isMenuOpen: false
+  })
 }
 </script>
 
@@ -49,7 +68,7 @@ export default {
   top:0;
   left:0;
   right:0;
-  z-index:2;
+  z-index:10;
   height:57px;
   display:flex;
   align-items:center;
@@ -86,6 +105,7 @@ export default {
   background: #FFFFFF;
   border-radius: 1px;
   left:5px;
+  transition:0.5s;
 }
 
 .burger__line1{
@@ -94,5 +114,12 @@ export default {
 
 .burger__line2{
   top:12px;
+}
+
+.burger__line1--open{
+  transform:translateY(3px) rotate(45deg);
+}
+.burger__line2--open{
+  transform:translateY(-2px) rotate(-45deg);
 }
 </style>
