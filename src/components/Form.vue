@@ -150,7 +150,7 @@ form{
   font-style: normal;
   font-weight: 300;
   font-size: 1.46vh;
-  line-height: 1.7vh;
+  line-height: 130%;
   color: #FFFFFF;
 }
 
@@ -195,6 +195,9 @@ form{
   .policy__checkbox svg{
     width:15px;
     height:12px;
+  }
+  .submit-btn{
+    font-size:12px;
   }
 }
 </style>

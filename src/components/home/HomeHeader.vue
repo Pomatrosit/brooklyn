@@ -151,7 +151,7 @@ export default {
     },
     onMouseDown (e) {
       this.touchStart = e.clientX
-      document.body.style.cursor = 'grab'
+      document.body.style.cursor = 'grabbing'
     },
     onMouseUp (e) {
       this.touchEnd = e.clientX
@@ -262,7 +262,8 @@ export default {
 }
 
 .nav__main{
-  width:calc(50vw - 13.5vh);
+  /* width:calc(50vw - 13.5vh); */
+  width:40vw;
   padding-left:3.125vw;
   height:13.54vh;
   background:#242135;

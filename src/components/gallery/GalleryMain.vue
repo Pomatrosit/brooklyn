@@ -3,18 +3,18 @@
     <div class="app-wrapper">
       <div class="gallery-top">
         <h1 class="gallery__title gallery-animated">Галерея ЖК Бруклин</h1>
-        <div class="gallery__back gallery-animated" @click="goToMainPage">
-          <svg width="1vh" height="1.667vh" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.7541 15.7589C9.05216 15.4667 9.07926 15.0095 8.83539 14.6873L8.7541 14.595L2.02658 8L8.7541 1.40503C9.05216 1.11283 9.07926 0.655583 8.83539 0.333375L8.7541 0.241064C8.45604 -0.0511349 7.98963 -0.0776984 7.66096 0.161374L7.56679 0.241064L0.245899 7.41802C-0.0521603 7.71022 -0.079257 8.16746 0.16461 8.48967L0.245899 8.58198L7.56679 15.7589C7.89466 16.0804 8.42624 16.0804 8.7541 15.7589Z" fill="#242135"/>
-          </svg>
-          <span>На главную</span>
-        </div>
         <div class="gallery-top__after gallery-animated"></div>
+      </div>
+      <div class="gallery__back gallery-animated" @click="goToMainPage">
+        <svg width="1vh" height="1.667vh" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.7541 15.7589C9.05216 15.4667 9.07926 15.0095 8.83539 14.6873L8.7541 14.595L2.02658 8L8.7541 1.40503C9.05216 1.11283 9.07926 0.655583 8.83539 0.333375L8.7541 0.241064C8.45604 -0.0511349 7.98963 -0.0776984 7.66096 0.161374L7.56679 0.241064L0.245899 7.41802C-0.0521603 7.71022 -0.079257 8.16746 0.16461 8.48967L0.245899 8.58198L7.56679 15.7589C7.89466 16.0804 8.42624 16.0804 8.7541 15.7589Z" fill="#242135"/>
+        </svg>
+        <span>На главную</span>
       </div>
       <div class="gallery-bottom">
         <figure class="category-card gallery-animated" @click="goToGaleryCategory(1)">
           <div class="category-card__icon">
-            <img src="/img/Vector-2.svg" alt="gallery">
+            <img src="/img/Vector-1.svg" alt="gallery">
           </div>
           <h2 class="category-card__title">
             Архитектура <br/>и двор
@@ -23,7 +23,7 @@
         </figure>
         <figure class="category-card gallery-animated" @click="goToGaleryCategory(2)">
           <div class="category-card__icon">
-            <img src="/img/Vector.svg" alt="gallery">
+            <img src="/img/Vector.svg" alt="gallery" class="second-icon">
           </div>
           <h2 class="category-card__title">
             Места общего <br/>пользования
@@ -32,7 +32,7 @@
         </figure>
         <figure class="category-card gallery-animated" @click="goToGaleryCategory(3)">
           <div class="category-card__icon">
-            <img src="/img/Vector-1.svg" alt="gallery">
+            <img src="/img/Vector-2.svg" alt="gallery">
           </div>
           <h2 class="category-card__title">
             Интерьеры <br/>квартир
@@ -66,18 +66,14 @@ export default {
 <style scoped>
 .app-wrapper{
   display:flex;
-  align-items:center;
   flex-direction:column;
   justify-content:space-between;
   height:100%;
 }
 
 .gallery-top{
-  display:flex;
-  align-items:Center;
-  justify-content:space-between;
   width:100%;
-  padding: 12.5vh 0 7.29vh 0;
+  padding: 12.5vh 0 5.2vh 0;
   position:relative;
 }
 
@@ -100,6 +96,7 @@ export default {
   cursor:pointer;
   display:flex;
   align-items:Center;
+  justify-content:flex-start;
 }
 
 .gallery__back span{
@@ -153,7 +150,7 @@ export default {
 }
 
 .category-card__icon img{
-  width:50%;
+  width:35%;
 }
 
 .category-card__title{

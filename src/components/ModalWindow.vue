@@ -96,10 +96,14 @@ export default {
   }
 }
 
-@media screen and (max-width:500px){
+/* @media screen and (max-width:500px){
   .modal{
     padding:30px 20px;
+    height:100%;
+    max-height:100%;
+    display:flex;
+    align-items:Center;
   }
-}
+} */
 
 </style>

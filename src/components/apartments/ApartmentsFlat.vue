@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flat-wrapper">
     <div class="flat flat-animated">
       <img src="/img/apartments/flat1.png" alt="flat">
     </div>
@@ -76,15 +76,23 @@ export default {
 </script>
 
 <style scoped>
+.flat-wrapper{
+  height:100%;
+}
 .flat{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:10vh 0;
+  padding:10vh 0 1vh 0;
+  height:100%;
+  position:relative;
+  overflow:hidden;
 }
 
 .flat img {
-  max-width:95%;
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
 .flat-footer{

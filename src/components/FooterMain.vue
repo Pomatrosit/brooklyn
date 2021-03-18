@@ -44,7 +44,7 @@ export default {
 
 .footer__text{
   font-weight: 500;
-  font-size: 1.25vh;
+  font-size: 1.4vh;
   color: #000000;
   margin-right:1vh;
 }

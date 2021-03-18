@@ -8,7 +8,7 @@
       </div>
       <figure class="category-card gallery-animated" @click="goToGaleryCategory(1)">
         <div class="category-card__icon">
-          <img src="/img/Vector-2.svg" alt="gallery">
+          <img src="/img/Vector-1.svg" alt="gallery">
         </div>
         <h2 class="category-card__title">
           Архитектура <br/>и двор
@@ -26,7 +26,7 @@
       </figure>
       <figure class="category-card gallery-animated" @click="goToGaleryCategory(3)">
         <div class="category-card__icon">
-          <img src="/img/Vector-1.svg" alt="gallery">
+          <img src="/img/Vector-2.svg" alt="gallery">
         </div>
         <h2 class="category-card__title">
           Интерьеры <br/>квартир
@@ -120,7 +120,7 @@ export default {
 }
 
 .category-card__icon img{
-  width:50%;
+  width:40%;
 }
 
 .category-card__title{
