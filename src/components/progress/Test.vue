@@ -1,18 +1,25 @@
 <template>
   <section class="progress progress-desktop" @wheel="onWheel">
     <div class="app-wrapper progress1-animated">
-            <div class="progress__img progress-animated">
+          <div class="progress__img progress-animated" ref="img">
+            <div class="slick-wrapper">
               <slick
-                @beforeChange="handleBeforeChange"
                 class="slick"
                 ref="slick"
                 :options="slickOptions"
               >
-                  <div v-for="img in slidesInfo.map(el => el.img)" :key="img" class="slide">
-                    <img :src="img" alt="">
+                  <div v-for="img in slidesInfo[currentSlide].img" :key="img.id" class="slide">
+                    <img :src="img.src" alt="">
                   </div>
               </slick>
+              <div class="sl-arrow-left sl-arrow sl-dark-arrow" @click="innerSlidePrev">
+                <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#242135"/>
+              </div>
+              <div class="sl-arrow-right sl-arrow sl-pink-arrow" @click="innerSlideNext">
+                <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
+              </div>
             </div>
+          </div>
             <div class="progress__main">
               <div class="text-block">
                 <svg class="text-block__bg" ref="bg" width="836" height="710" viewBox="0 0 836 710" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,17 +38,17 @@
                 </div>
               </div>
               <div class="slider-nav progress-animated" ref="navImages" v-if="slidesInfo.length >= 2">
-                <div class="slider-nav__prev" @click="goTo(nextSlide)">
+                <div class="slider-nav__prev" @click="onNextArrow">
                   <p class="slider-nav__text">{{slidesInfo[nextSlide].title}}</p>
-                  <img :src="slidesInfo[nextSlide].img" alt="">
+                  <img :src="slidesInfo[nextSlide].img[0].src" alt="">
                 </div>
-                <div v-if="slidesInfo.length >= 3" class="slider-nav__next" @click="goTo(nextNextSlide)">
+                <div v-if="slidesInfo.length >= 3" class="slider-nav__next" @click="onNextNextArrow">
                   <p class="slider-nav__text">{{slidesInfo[nextNextSlide].title}}</p>
-                  <img :src="slidesInfo[nextNextSlide].img" alt="">
+                  <img :src="slidesInfo[nextNextSlide].img[0].src" alt="">
                 </div>
               </div>
             </div>
-            <div class="mouse progress-animated" v-if="slidesInfo.length >= 2" @click="goToNextSlide">
+            <div class="mouse progress-animated" v-if="slidesInfo.length >= 2" @click="onNextArrow">
               <svg :style="{ marginRight: '1vw' }" width="2.1vh" height="3.5vh" viewBox="0 0 21 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1" y="1" width="19" height="32" rx="9.5" stroke="#EA8E79" stroke-width="2"/>
                 <circle r="2.5" transform="matrix(-1 0 0 1 10.5 11.5)" fill="#EA8E79"/>
@@ -52,10 +59,10 @@
             </div>
 
             <div class="slider-arrows progress-animated" v-if="slidesInfo.length >= 2" >
-              <div class="arrow-left light-arrow " @click="goToPrevSlide">
+              <div class="arrow-left light-arrow" @click="onPrevArrow">
                 <SliderArrowLeft width="1.25vh" height="2.08vh" fill="#242135"/>
               </div>
-              <div class="arrow-right pink-arrow" @click="goToNextSlide">
+              <div class="arrow-right pink-arrow" @click="onNextArrow">
                 <SliderArrowRight width="1.25vh" height="2.2vh" fill="#fff"/>
               </div>
             </div>
@@ -88,6 +95,7 @@ export default {
     currentSlide: 0,
     nextSlide: 1,
     nextNextSlide: 2,
+    isWheelAvailable: true,
     slidesInfo: [
       {
         title: 'Январь 2021',
@@ -97,7 +105,11 @@ export default {
           'Выполняем монолитные работы рампы паркинга и устройство гидроизоляции плиты паркинга.',
           'Продолжаем фасадные работы. Приступаем к благоустройству территории.'
         ],
-        img: '/img/mainPage/swooshed/1.jpg'
+        img: [
+          { id: 1, src: '/img/mainPage/swooshed/1.jpg' },
+          { id: 2, src: '/img/mainPage/swooshed/2.jpg' },
+          { id: 3, src: '/img/mainPage/swooshed/3.jpg' }
+        ]
       },
       {
         title: 'Февраль 2021',
@@ -106,7 +118,11 @@ export default {
           'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.',
           'Выполняем монолитные работы рампы паркинга и устройство гидроизоляции плиты паркинга.'
         ],
-        img: '/img/mainPage/swooshed/3.jpg'
+        img: [
+          { id: 1, src: '/img/mainPage/swooshed/2.jpg' },
+          { id: 2, src: '/img/mainPage/swooshed/1.jpg' },
+          { id: 3, src: '/img/mainPage/swooshed/4.jpg' }
+        ]
       },
       {
         title: 'Март 2021',
@@ -114,7 +130,11 @@ export default {
           'Продолжаем монтаж системы электроснабжения, вентиляции, водоснабжения и водоотведения.',
           'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.'
         ],
-        img: '/img/mainPage/swooshed/2.jpg'
+        img: [
+          { id: 1, src: '/img/mainPage/swooshed/5.jpg' },
+          { id: 2, src: '/img/mainPage/swooshed/4.jpg' },
+          { id: 3, src: '/img/mainPage/swooshed/6.jpg' }
+        ]
       },
       {
         title: 'Апрель 2021',
@@ -123,7 +143,11 @@ export default {
           'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.',
           'Выполняем монолитные работы рампы паркинга и устройство гидроизоляции плиты паркинга.'
         ],
-        img: '/img/mainPage/swooshed/4.jpg'
+        img: [
+          { id: 1, src: '/img/mainPage/swooshed/6.jpg' },
+          { id: 2, src: '/img/mainPage/swooshed/1.jpg' },
+          { id: 3, src: '/img/mainPage/swooshed/2.jpg' }
+        ]
       }
     ]
   }),
@@ -137,35 +161,96 @@ export default {
   },
   methods: {
     onWheel (e) {
-      if (e.deltaY > 0) this.$refs.slick.next()
-      else this.$refs.slick.prev()
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        if (e.deltaY > 0) this.goNextSlide()
+        else this.goPrevSlide()
+      }
     },
-    handleBeforeChange (event, _, currentSlide, nextSlide) {
+    goNextSlide () {
+      const currentSlide = this.currentSlide
+      setTimeout(() => {
+        this.$refs.slick.destroy()
+        this.currentSlide = (currentSlide + 1) % this.slidesInfo.length
+        this.nextSlide = (currentSlide + 2) % this.slidesInfo.length
+        this.nextNextSlide = (currentSlide + 3) % this.slidesInfo.length
+      }, 800)
+      setTimeout(() => {
+        this.$refs.slick.create()
+      }, 900)
+    },
+    goPrevSlide () {
+      let currentSlide = this.currentSlide
+      setTimeout(() => {
+        this.$refs.slick.destroy()
+        currentSlide = currentSlide === 0 ? this.slidesInfo.length - 1 : currentSlide - 1
+        this.currentSlide = currentSlide
+        this.nextSlide = (currentSlide + 1) % this.slidesInfo.length
+        this.nextNextSlide = (currentSlide + 2) % this.slidesInfo.length
+      }, 800)
+      setTimeout(() => {
+        this.$refs.slick.create()
+      }, 900)
+    },
+    onNextArrow () {
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        this.goNextSlide()
+      }
+    },
+    onNextNextArrow () {
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        const currentSlide = this.currentSlide
+        setTimeout(() => {
+          this.$refs.slick.destroy()
+          this.currentSlide = (currentSlide + 2) % this.slidesInfo.length
+          this.nextSlide = (currentSlide + 3) % this.slidesInfo.length
+          this.nextNextSlide = (currentSlide + 4) % this.slidesInfo.length
+        }, 800)
+        setTimeout(() => {
+          this.$refs.slick.create()
+        }, 900)
+      }
+    },
+    onPrevArrow () {
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        this.goPrevSlide()
+      }
+    },
+    changeSlidesAnimation () {
       const tl1 = gsap.timeline()
       const tl2 = gsap.timeline()
       const tl3 = gsap.timeline()
-      tl1.to(this.$refs.title, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut })
+      const tl4 = gsap.timeline()
+      tl1.to(this.$refs.img, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut })
+        .to(this.$refs.img, { y: 50, duration: 0 })
+        .to(this.$refs.img, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
+      tl2.to(this.$refs.title, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.1 })
         .to(this.$refs.title, { y: 50, duration: 0 })
         .to(this.$refs.title, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
-      tl2.to(this.$refs.list, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.1 })
+      tl3.to(this.$refs.list, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.2 })
         .to(this.$refs.list, { y: 50, duration: 0 })
         .to(this.$refs.list, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
-      tl3.to(this.$refs.navImages, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.2 })
+      tl4.to(this.$refs.navImages, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.3 })
         .to(this.$refs.navImages, { y: 50, duration: 0 })
         .to(this.$refs.navImages, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
+    },
+    setWheelUnavailable () {
+      this.isWheelAvailable = false
       setTimeout(() => {
-        this.currentSlide = nextSlide
-        this.nextSlide = (nextSlide + 1) % this.slidesInfo.length
-        this.nextNextSlide = (nextSlide + 2) % this.slidesInfo.length
-      }, 800)
+        this.isWheelAvailable = true
+      }, 1500)
     },
-    goTo (idx) {
-      this.$refs.slick.goTo(idx)
-    },
-    goToNextSlide () {
+    innerSlideNext () {
       this.$refs.slick.next()
     },
-    goToPrevSlide () {
+    innerSlidePrev () {
       this.$refs.slick.prev()
     }
   }
@@ -191,12 +276,48 @@ export default {
   width:100%;
 }
 
+.slick-wrapper{
+  position:relative;
+}
+
+.sl-arrow{
+  position:absolute;
+  width:6.25vh;
+  height:6.25vh;
+  background:#242135;
+  top:0;
+  left:0;
+  cursor:pointer;
+  display:flex;
+  align-items:Center;
+  justify-content:center;
+  top:calc(100% - 4vh);
+  transform:translateY(-50%);
+  transition:0.5s;
+}
+
+.sl-arrow-left{
+  left:calc(100% - 12.5vh);
+  background:#fff;
+}
+.sl-arrow-right{
+  left:calc(100% - 6.25vh);
+}
+
+.sl-arrow-left svg, .sl-arrow-right svg{
+  transition:0.3s;
+}
+
 .slick{
   height:100%;
 }
 
 .slide{
   height:76.5vh;
+}
+
+.slick-dots{
+  border:100px solid red;
 }
 
 .progress__img{
@@ -367,12 +488,23 @@ export default {
   .arrow-right:hover svg{
     transform:translateX(30%);
   }
+  .sl-arrow-left:hover svg{
+    transform:translateX(-30%);
+  }
+  .sl-arrow-right:hover svg{
+    transform:translateX(30%);
+  }
 }
 
 @keyframes arrow-animation{
   0%{transform:translateX(0px)}
   50%{transform:translateX(-5px)}
   100%{transform:translateX(0px)}
+}
+
+@keyframes arrow-inner-animation{
+  0%{opacity:0}
+  100%{opacity:1}
 }
 
 @media (max-aspect-ratio: 16/9) {

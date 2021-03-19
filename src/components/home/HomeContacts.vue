@@ -251,11 +251,11 @@ export default {
   height:11.25vh;
   width:100%;
   background: #FAFAFA;
-  border:1px solid #E7E7E7;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 4.167vh 0 3.125vh;
+  cursor:pointer;
 }
 
 .card__left{

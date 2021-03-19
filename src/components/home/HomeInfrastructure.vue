@@ -11,7 +11,7 @@
               v-for="el in nav"
               :key="el.id"
               @click="changeNavHandler(el.id)"
-              :class="{active_nav_item : currentNavItem === el.id}"
+              :class="{'active_nav_item' : currentNavItem === el.id}"
             >
               <div class="nav__img">
                 <svg width="19" v-if="el.id === 1" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -246,6 +246,7 @@ export default {
   font-size: 1.875vh;
   color: #424242;
   flex-grow:1;
+  transition:0.3s;
 }
 
 .nav__checkbox{
@@ -271,6 +272,12 @@ export default {
   background:#EA8E79;
 }
 
+.active_nav_item .nav__title{
+  color:#ea8e79;
+  text-decoration:underline;
+  font-weight:bold;
+}
+
 .active_nav_item .nav__checkbox-inner{
   opacity:1;
 }
@@ -292,6 +299,15 @@ export default {
 .nav__img svg{
   width:2.08vh;
   height:2.08vh;
+}
+
+@media (hover:hover){
+  .nav__row:hover .nav__title{
+    color:#ea8e79;
+  }
+  .nav__row:hover svg{
+    color:#ea8e79;
+  }
 }
 
 </style>

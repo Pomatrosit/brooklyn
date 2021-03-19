@@ -3,7 +3,6 @@
     <div class="app-wrapper">
       <h2 class="apartments__title">Выбор квартиры</h2>
       <div class="apartments__nav">
-        <p class="nav-title">Укажите нужные  параметры</p>
         <div class="nav-main">
           <p class="nav-subtitle">Количество комнат</p>
           <div class="parameters__buttons">

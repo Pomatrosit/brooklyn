@@ -76,7 +76,8 @@ export default {
     isSliderMoved: false,
     HEADER_SLIDE_ANIMATION_DURATION: 1.5,
     touchStart: 0,
-    touchEnd: 0
+    touchEnd: 0,
+    interval: null
   }),
   computed: mapGetters(['homeSlide']),
   watch: {
@@ -97,8 +98,15 @@ export default {
     gsap.to(this.$refs.header, { height: '100%', duration: 0 })
     gsap.to(this.$refs.header, { opacity: 1, duration: 1, ease: Power2.easeInOut })
     gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
+    this.interval = setInterval(this.autoChange, 7000)
+  },
+  beforeDestroy () {
+    clearInterval(this.interval)
   },
   methods: {
+    autoChange () {
+      this.nextSlide()
+    },
     nextSlide () {
       if (!this.isSliderMoved) {
         this.setSliderMoved()
@@ -187,6 +195,7 @@ export default {
   left:0;
   bottom:0;
   overflow:hidden;
+  cursor:grab;
 }
 
 .header__slide img{
@@ -298,6 +307,8 @@ export default {
 
 .nav__point-active{
   background:#EA8E79;
+  width:1vh;
+  height:1vh;
 }
 
 .nav__arrow-left, .nav__arrow-right{
