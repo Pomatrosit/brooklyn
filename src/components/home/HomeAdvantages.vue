@@ -6,10 +6,10 @@
         <div class="advantages__flex advantages__flex1">
 
           <figure class="advantage advantage1" ref="advantage1" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <figcaption class="advantage__title" ref="title1">Просторные колясочные <br/>и велосипедные зоны</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Просторные колясочные и велосипедные зоны</span>
+                <span class="advantage__title-secondary">Просторные колясочные <br/>и велосипедные зоны</span>
                 <span class="advantage__desc">В холлах ЖК «Бруклин» предусмотрено все для комфортной жизни. Коляску или велосипед Вы можете оставить в специальн о предусмотренном для этого месте на первом этаже.
                 </span>
               </div>
@@ -17,7 +17,7 @@
           </figure>
 
           <figure class="advantage advantage2" ref="advantage2" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <figcaption class="advantage__title" ref="title1">Благоустройство двора</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
                 <span class="advantage__title-secondary">Благоустройство двора</span>
@@ -31,7 +31,7 @@
         <div class="advantages__flex advantages__flex2">
 
           <figure class="advantage advantage3" ref="advantage3" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <figcaption class="advantage__title" ref="title1">Уютные планировочные решения</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
                 <span class="advantage__title-secondary">Уютные планировочные решения</span>
@@ -46,7 +46,7 @@
           <div class="advantage__flex3-inner">
 
             <figure class="advantage advantage4" ref="advantage4" @mouseenter="hover" @mouseleave="unhover">
-              <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+              <figcaption class="advantage__title" ref="title1">Безопасная среда</figcaption>
               <div class="advantage__overlay">
                 <div class="advantage__top">
                   <span class="advantage__title-secondary">Безопасная среда</span>
@@ -57,7 +57,7 @@
             </figure>
 
             <figure class="advantage advantage5" ref="advantage5" @mouseenter="hover" @mouseleave="unhover">
-              <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+              <figcaption class="advantage__title" ref="title1">Витражное остекление</figcaption>
               <div class="advantage__overlay">
                 <div class="advantage__top">
                   <span class="advantage__title-secondary">Витражное остекление</span>
@@ -70,7 +70,7 @@
           </div>
 
           <figure class="advantage advantage6" ref="advantage6" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Просторные колясочные и велосипедные зоны</figcaption>
+            <figcaption class="advantage__title" ref="title1">Дизайнерские холлы и коридоры</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
                 <span class="advantage__title-secondary">Дизайнерские холлы и коридоры</span>
@@ -282,7 +282,7 @@ export default {
 .advantage__title{
   position:absolute;
   font-weight: bold;
-  font-size: 1.667vh;
+  font-size: 1.875vh;
   line-height: 160%;
   color: #FFFFFF;
   bottom:0;
@@ -312,7 +312,7 @@ export default {
   opacity:0;
   margin-bottom:1vh;
   font-weight: bold;
-  font-size: 1.667vh;
+  font-size: 1.875vh;
   line-height: 160%;
   color: #FFFFFF;
   transform:translateY(50px);
@@ -321,8 +321,8 @@ export default {
 }
 
 .advantage__desc{
-  font-weight: 600;
-  font-size: 1.5625vh;
+  font-weight: 400;
+  font-size: 1.875vh;
   line-height: 160%;
   color: #FFFFFF;
   opacity:0;

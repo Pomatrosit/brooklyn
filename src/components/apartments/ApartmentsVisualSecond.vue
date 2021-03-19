@@ -25,7 +25,7 @@
                 :key="path.id"
                 :d="path.d"
                 :fill="path.fill"
-                fill-opacity="0.2"
+                fill-opacity="0.1"
                 @click="$router.push('/flat/' + path.id)"
               />
             </svg>
@@ -37,7 +37,7 @@
                 :key="path.id"
                 :d="path.d"
                 :fill="path.fill"
-                fill-opacity="0.2"
+                fill-opacity="0.1"
                 @click="$router.push('/flat/' + path.id)"
               />
             </svg>
@@ -49,7 +49,7 @@
                 :key="path.id"
                 :d="path.d"
                 :fill="path.fill"
-                fill-opacity="0.2"
+                fill-opacity="0.1"
                 @click="$router.push('/flat/' + path.id)"
               />
             </svg>
@@ -221,7 +221,7 @@ export default {
 
 @media (hover:hover){
   .entrance path:hover{
-    fill-opacity:0.7;
+    fill-opacity:0.3;
     cursor:pointer;
   }
 }
