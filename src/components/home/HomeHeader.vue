@@ -111,12 +111,20 @@ export default {
       if (!this.isSliderMoved) {
         this.setSliderMoved()
         this.changeSlideNext()
+        clearInterval(this.interval)
+        setTimeout(() => {
+          this.interval = setInterval(this.autoChange, 7000)
+        }, 1500)
       }
     },
     prevSlide () {
       if (!this.isSliderMoved) {
         this.setSliderMoved()
         this.changeSlidePrev()
+        clearInterval(this.interval)
+        setTimeout(() => {
+          this.interval = setInterval(this.autoChange, 7000)
+        }, 1500)
       }
     },
     changeSlideNext () {
