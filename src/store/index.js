@@ -4,6 +4,7 @@ import homepage from './homepage'
 import modal from './modal'
 import loading from './loading'
 import isDesktop from './isDesktop'
+import api from './api'
 
 Vue.use(Vuex)
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     homepage,
     modal,
     loading,
-    isDesktop
+    isDesktop,
+    api
   }
 })

@@ -21,9 +21,9 @@
           <div v-if="id === 1" class="entrance entrance1 apartments-visual-second-animated">
             <svg viewBox="0 0 805 386" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
-                v-for="path in flats[0]"
+                v-for="path in apartmentList"
                 :key="path.id"
-                :d="path.d"
+                :d="path.path"
                 :fill="path.fill"
                 fill-opacity="0.1"
                 @click="$router.push('/flat/' + path.id)"
@@ -33,9 +33,9 @@
           <div v-else-if="id === 2" class="entrance entrance2 apartments-visual-second-animated">
             <svg viewBox="0 0 691 386" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
-                v-for="path in flats[1]"
+                v-for="path in apartmentList"
                 :key="path.id"
-                :d="path.d"
+                :d="path.path"
                 :fill="path.fill"
                 fill-opacity="0.1"
                 @click="$router.push('/flat/' + path.id)"
@@ -45,9 +45,9 @@
           <div v-else-if="id === 3" class="entrance entrance3 apartments-visual-second-animated">
             <svg viewBox="0 0 805 386" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
-                v-for="path in flats[2]"
+                v-for="path in apartmentList"
                 :key="path.id"
-                :d="path.d"
+                :d="path.path"
                 :fill="path.fill"
                 fill-opacity="0.1"
                 @click="$router.push('/flat/' + path.id)"
@@ -75,35 +75,11 @@ export default {
   computed: {
     id () {
       return +this.$route.params.id
+    },
+    apartmentList () {
+      return this.$store.getters.apartmentList.filter(el => +el.section === +this.id)
     }
   },
-  data: () => ({
-    flats: [
-      [
-        { id: 1, d: 'M495 384.5H630V180.5H549.5V173.5H495V384.5Z', fill: '#A0A2AB' },
-        { id: 2, d: 'M266 136.5V1H0V235H89.5V209V186H128.5V131.5H198V136.5H266Z', fill: '#F7BFB3' },
-        { id: 3, d: 'M1.5 234H85V185H130V179.5H268V173.5H316V385H1.5V234Z', fill: '#F7BFB3' },
-        { id: 4, d: 'M717.5 129H644V180.5H630V384.5H806V0.5H717.5V129Z', fill: '#F7BFB3' },
-        { id: 5, d: 'M544 0.5H717.5V129.5H544V0.5Z', fill: '#A0A2AB' },
-        { id: 6, d: 'M316 385V173.5H343V180H447V173.5H495V385H316Z', fill: '#DFE0E0' }
-      ],
-      [
-        { id: 6, d: 'M209 131.5V0H0.5V385.5H89V185.5H153V131.5H209Z', fill: '#F7BFB3' },
-        { id: 7, d: 'M153 185.5H89V386H258V173.5H153V185.5Z', fill: '#DFE0E0' },
-        { id: 8, d: 'M485 131.5V0H690.5V385.5H605V185.5H541V131.5H485Z', fill: '#F7BFB3' },
-        { id: 9, d: 'M541 185.5H605V386H436V173.5H541V185.5Z', fill: '#DFE0E0' },
-        { id: 10, d: 'M436 173.5H258V385.5H436V173.5Z', fill: '#DFE0E0' }
-      ],
-      [
-        { id: 11, d: 'M0.5 385.5V0.5H262.5V137.5H194.5V130H177V385.5H0.5Z', fill: '#C5D2BD' },
-        { id: 12, d: 'M805 235V0.5H543V131H611H628.5H678.5V186H723.5V235H805Z', fill: '#F7BFB3' },
-        { id: 13, d: 'M177 385.5V180H284.5V174H312V385.5H177Z', fill: '#A6A7AF' },
-        { id: 14, d: 'M492 385.5V180V174H544.5V180H592V385.5H492Z', fill: '#A6A7AF' },
-        { id: 15, d: 'M492 385.5H312V174H360V180H464.5V174H492V385.5Z', fill: '#DFE0E0' },
-        { id: 16, d: 'M805 385.5H592V174H618.5V180H678.5V186H723.5V235H805V385.5Z', fill: '#DFE0E0' }
-      ]
-    ]
-  }),
   methods: {
     changeEntrance (id) {
       if (id !== this.id) this.$router.push(`/apartments/visual/${id}`)

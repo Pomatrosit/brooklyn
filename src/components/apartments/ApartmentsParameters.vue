@@ -15,12 +15,13 @@
             <span>3</span>
           </div>
         </div>
-        <p class="parameters__title apartments-parameters-animated">Найдено 4 планировки</p>
+        <p class="parameters__title apartments-parameters-animated">Найдено: {{ apartmentList.length }}</p>
         <div class="flat-cards apartments-parameters-animated">
-          <FlatCard />
-          <FlatCard />
-          <FlatCard />
-          <FlatCard />
+          <FlatCard
+            v-for="flat in apartmentList"
+            :key="flat.id"
+            :flat="flat"
+          />
         </div>
       </div>
 </template>
@@ -36,6 +37,16 @@ export default {
   computed: {
     id () {
       return this.$route.params.id
+    },
+    apartmentList () {
+      const list = this.$store.getters.apartmentList
+      switch (this.id) {
+        case 'studios' : return list.filter(el => el.count === 'studio')
+        case '1' : return list.filter(el => el.count === 'one')
+        case '2' : return list.filter(el => el.count === 'two')
+        case '3' : return list.filter(el => el.count === 'three')
+        default : return []
+      }
     }
   },
   methods: {

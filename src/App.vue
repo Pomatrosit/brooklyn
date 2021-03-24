@@ -58,6 +58,7 @@ export default {
       document.querySelector('.preloader').style.opacity = '0'
       setTimeout(() => this.$store.commit('hideLoader'), 1000)
     })
+    this.$store.dispatch('loadData')
   },
   mounted () {
     loadImages()

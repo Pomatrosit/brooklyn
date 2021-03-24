@@ -1,19 +1,19 @@
 <template>
   <div class="flat-wrapper">
     <div class="flat flat-animated">
-      <img src="/img/apartments/flat1.png" alt="flat">
+      <img :src="flat.image.path" alt="flat">
     </div>
     <div class="flat-footer flat-animated">
       <div class="app-wrapper">
-        <p class="plan-title">Планировка 2А</p>
+        <p class="plan-title">Планировка {{flat.title}}</p>
         <div class="flat-main">
           <div class="square">
             <p class="flat__title">Общая площадь:</p>
-            <p class="flat__count">56 м&sup2;</p>
+            <p class="flat__count">{{flat.square}} м&sup2;</p>
           </div>
           <div class="count">
             <p class="flat__title">Количество комнат:</p>
-            <p class="flat__count">2</p>
+            <p class="flat__count">{{flatCountCaption}}</p>
           </div>
           <div class="flat-buttons">
             <Button
@@ -40,6 +40,7 @@
               fontColor="#fff"
               margin="0 0 0 3vh"
               type="dark-btn"
+              :clickHandler="() => downloadPdf(flat.pdf.path)"
             >
               <svg class="svg-in-btn" width="3.3vh" height="3.3vh" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.32341 16.7354C6.3881 16.7354 4 14.3146 4 11.3378L4 5.40857C4 2.42692 6.3941 -1.88885e-06 9.33662 -1.6316e-06C9.84664 -1.58702e-06 10.2595 0.419693 10.2595 0.936707C10.2595 1.45372 9.84664 1.87341 9.33662 1.87341C7.41174 1.87341 5.84808 3.45973 5.84808 5.40857L5.84808 11.3378C5.84807 13.2818 7.40694 14.862 9.32341 14.862L10.4527 14.862C10.9627 14.862 11.3767 15.2817 11.3767 15.7987C11.3767 16.3157 10.9627 16.7354 10.4527 16.7354L9.32341 16.7354ZM21.5461 16.7357C21.0373 16.7357 20.6233 16.316 20.6233 15.799C20.6233 15.2819 21.0373 14.8623 21.5461 14.8623L22.6634 14.8623C24.5883 14.8623 26.1519 13.2759 26.1519 11.3259L26.1519 5.39787C26.1519 3.45389 24.5919 1.87366 22.6766 1.87366L13.5382 1.87366C13.0282 1.87366 12.6142 1.45396 12.6142 0.936951C12.6142 0.419938 13.0282 0.000242832 13.5382 0.000242876L22.6766 0.000243675C25.6119 0.000243932 28 2.42108 28 5.39787L28 11.3259C28 14.3087 25.6059 16.7357 22.6634 16.7357L21.5461 16.7357ZM16.3526 23.9292C16.007 24.0739 15.6085 23.9924 15.3445 23.7248L11.8536 20.1702C11.6748 19.9865 11.5836 19.748 11.5836 19.5084C11.5836 19.2687 11.6748 19.0279 11.856 18.8454C12.2184 18.4804 12.8028 18.4804 13.1628 18.8478L15.0757 20.7955L15.0757 8.44795C15.0757 7.93094 15.4897 7.51003 15.9998 7.51003C16.5098 7.51003 16.925 7.93094 16.925 8.44795L16.925 23.063C16.925 23.4426 16.6994 23.7844 16.3526 23.9292ZM19.2734 21.0631C18.9134 21.4317 18.3289 21.4341 17.9665 21.0704C17.7841 20.8867 17.6917 20.6458 17.6917 20.405C17.6917 20.1665 17.7817 19.9281 17.9593 19.7456L18.8342 18.849C19.193 18.4817 19.7786 18.4792 20.1398 18.843C20.5046 19.2079 20.507 19.7991 20.147 20.1677L19.2734 21.0631Z" fill="white"/>
@@ -70,6 +71,26 @@ export default {
   methods: {
     openModal () {
       this.$store.commit('toggleModal', 1)
+    },
+    downloadPdf (src) {
+      window.open(src, '_blank')
+    }
+  },
+  computed: {
+    id () {
+      return +this.$route.params.id
+    },
+    flat () {
+      return this.$store.getters.apartmentList.find(el => +el.id === +this.id)
+    },
+    flatCountCaption () {
+      switch (this.flat.count) {
+        case 'one' : return 1
+        case 'two' : return 2
+        case 'three' : return 3
+        case 'studio' : return 'Студия'
+        default: return 0
+      }
     }
   }
 }
