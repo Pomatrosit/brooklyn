@@ -1,47 +1,52 @@
 <template>
   <section class="progress progress-desktop" @wheel="onWheel">
     <div class="app-wrapper progress1-animated">
-            <div class="progress__img progress-animated">
+          <div class="progress__img progress-animated" ref="img">
+            <div class="slick-wrapper">
               <slick
-                @beforeChange="handleBeforeChange"
                 class="slick"
                 ref="slick"
                 :options="slickOptions"
               >
-                  <div v-for="img in slidesInfo.map(el => el.img)" :key="img" class="slide">
-                    <img :src="img" alt="">
+                  <div v-for="img in progressItems[currentSlide].image" :key="img.id" class="slide">
+                    <img :src="img.path" alt="">
                   </div>
               </slick>
+              <div class="sl-arrow-left sl-arrow sl-dark-arrow" @click="innerSlidePrev">
+                <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#242135"/>
+              </div>
+              <div class="sl-arrow-right sl-arrow sl-pink-arrow" @click="innerSlideNext">
+                <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
+              </div>
             </div>
+          </div>
             <div class="progress__main">
               <div class="text-block">
                 <svg class="text-block__bg" ref="bg" width="836" height="710" viewBox="0 0 836 710" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M415.826 1L1 355L415.826 709M625.413 1L210.587 355L625.413 709M521.054 1L105.359 355L521.054 709M730.641 1L314.946 355L730.641 709M468.875 1L54.049 355L468.875 709M678.462 1L263.636 355L678.462 709M573.234 1L158.408 355L573.234 709M782.821 1L367.995 355L782.821 709M433.219 1L18.3931 355L433.219 709M642.806 1L227.98 355L642.806 709M537.578 1L122.752 355L537.578 709M747.165 1L332.339 355L747.165 709M486.268 1L71.4421 355L486.268 709M695.855 1L281.029 355L695.855 709M590.627 1L175.801 355L590.627 709M800.214 1L385.388 355L800.214 709M450.612 1L35.7862 355L450.612 709M660.199 1L245.373 355L660.199 709M554.971 1L140.145 355L554.971 709M764.558 1L349.732 355L764.558 709M503.661 1L88.8352 355L503.661 709M713.248 1L298.422 355L713.248 709M608.02 1L193.194 355L608.02 709M817.607 1L402.781 355L817.607 709M835 1L420.174 355L835 709" stroke="#242135" stroke-opacity="0.08"/>
                 </svg>
                 <div class="text-block__content">
-                  <h2 class="text-block__title progress-animated progress-animated" ref="title">{{slidesInfo[currentSlide].title}}</h2>
-                  <ul class="text-block__list" ref="list">
-                    <li
-                      v-for="text in slidesInfo[currentSlide].paragraphs"
-                      :key="text"
-                      class="text-block__item progress-animated">
-                      {{text}}
-                    </li>
-                  </ul>
+                  <h2 class="text-block__title progress-animated progress-animated" ref="title">{{progressItems[currentSlide].title}}</h2>
+                  <div
+                    class="text-block__list progress-animated"
+                    ref="list"
+                    v-html="progressItems[currentSlide].text"
+                  >
+                  </div>
                 </div>
               </div>
-              <div class="slider-nav progress-animated" ref="navImages" v-if="slidesInfo.length >= 2">
-                <div class="slider-nav__prev" @click="goTo(nextSlide)">
-                  <p class="slider-nav__text">{{slidesInfo[nextSlide].title}}</p>
-                  <img :src="slidesInfo[nextSlide].img" alt="">
+              <div class="slider-nav progress-animated" ref="navImages" v-if="progressItems.length >= 2">
+                <div class="slider-nav__prev" @click="onNextArrow">
+                  <p class="slider-nav__text">{{progressItems[nextSlide].title}}</p>
+                  <img :src="progressItems[nextSlide].image[0].path" alt="">
                 </div>
-                <div v-if="slidesInfo.length >= 3" class="slider-nav__next" @click="goTo(nextNextSlide)">
-                  <p class="slider-nav__text">{{slidesInfo[nextNextSlide].title}}</p>
-                  <img :src="slidesInfo[nextNextSlide].img" alt="">
+                <div v-if="progressItems.length >= 3" class="slider-nav__next" @click="onNextNextArrow">
+                  <p class="slider-nav__text">{{progressItems[nextNextSlide].title}}</p>
+                  <img :src="progressItems[nextNextSlide].image[0].path" alt="">
                 </div>
               </div>
             </div>
-            <div class="mouse progress-animated" v-if="slidesInfo.length >= 2" @click="goToNextSlide">
+            <div class="mouse progress-animated" v-if="progressItems.length >= 2" @click="onNextArrow">
               <svg :style="{ marginRight: '1vw' }" width="2.1vh" height="3.5vh" viewBox="0 0 21 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1" y="1" width="19" height="32" rx="9.5" stroke="#EA8E79" stroke-width="2"/>
                 <circle r="2.5" transform="matrix(-1 0 0 1 10.5 11.5)" fill="#EA8E79"/>
@@ -51,11 +56,11 @@
               </svg>
             </div>
 
-            <div class="slider-arrows progress-animated" v-if="slidesInfo.length >= 2" >
-              <div class="arrow-left light-arrow " @click="goToPrevSlide">
+            <div class="slider-arrows progress-animated" v-if="progressItems.length >= 2" >
+              <div class="arrow-left light-arrow" @click="onPrevArrow">
                 <SliderArrowLeft width="1.25vh" height="2.08vh" fill="#242135"/>
               </div>
-              <div class="arrow-right pink-arrow" @click="goToNextSlide">
+              <div class="arrow-right pink-arrow" @click="onNextArrow">
                 <SliderArrowRight width="1.25vh" height="2.2vh" fill="#fff"/>
               </div>
             </div>
@@ -77,6 +82,11 @@ export default {
     SliderArrowRight,
     Slick
   },
+  computed: {
+    progressItems () {
+      return this.$store.getters.progressItems
+    }
+  },
   data: () => ({
     slickOptions: {
       slidesToShow: 1,
@@ -88,84 +98,108 @@ export default {
     currentSlide: 0,
     nextSlide: 1,
     nextNextSlide: 2,
-    slidesInfo: [
-      {
-        title: 'Январь 2021',
-        paragraphs: [
-          'Продолжаем монтаж системы электроснабжения, вентиляции, водоснабжения и водоотведения.',
-          'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.',
-          'Выполняем монолитные работы рампы паркинга и устройство гидроизоляции плиты паркинга.',
-          'Продолжаем фасадные работы. Приступаем к благоустройству территории.'
-        ],
-        img: '/img/mainPage/swooshed/1.jpg'
-      },
-      {
-        title: 'Февраль 2021',
-        paragraphs: [
-          'Продолжаем монтаж системы электроснабжения, вентиляции, водоснабжения и водоотведения.',
-          'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.',
-          'Выполняем монолитные работы рампы паркинга и устройство гидроизоляции плиты паркинга.'
-        ],
-        img: '/img/mainPage/swooshed/3.jpg'
-      },
-      {
-        title: 'Март 2021',
-        paragraphs: [
-          'Продолжаем монтаж системы электроснабжения, вентиляции, водоснабжения и водоотведения.',
-          'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.'
-        ],
-        img: '/img/mainPage/swooshed/2.jpg'
-      },
-      {
-        title: 'Апрель 2021',
-        paragraphs: [
-          'Продолжаем монтаж системы электроснабжения, вентиляции, водоснабжения и водоотведения.',
-          'Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.',
-          'Выполняем монолитные работы рампы паркинга и устройство гидроизоляции плиты паркинга.'
-        ],
-        img: '/img/mainPage/swooshed/4.jpg'
-      }
-    ]
+    isWheelAvailable: true
   }),
   mounted () {
     this.currentSlide = 0
-    if (this.slidesInfo.length >= 1) this.nextSlide = 1
-    if (this.slidesInfo.length >= 2) this.nextNextSlide = 2
+    if (this.progressItems.length >= 1) this.nextSlide = 1
+    if (this.progressItems.length >= 2) this.nextNextSlide = 2
     gsap.to('.progress-animated', { opacity: 0, y: 100, duration: 0 })
     gsap.to(this.$refs.bg, { x: 0, duration: 1, ease: Power2.easeInOut })
     gsap.to('.progress-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: Power2.easeInOut })
   },
   methods: {
     onWheel (e) {
-      if (e.deltaY > 0) this.$refs.slick.next()
-      else this.$refs.slick.prev()
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        if (e.deltaY > 0) this.goNextSlide()
+        else this.goPrevSlide()
+      }
     },
-    handleBeforeChange (event, _, currentSlide, nextSlide) {
+    goNextSlide () {
+      const currentSlide = this.currentSlide
+      setTimeout(() => {
+        this.$refs.slick.destroy()
+        this.currentSlide = (currentSlide + 1) % this.progressItems.length
+        this.nextSlide = (currentSlide + 2) % this.progressItems.length
+        this.nextNextSlide = (currentSlide + 3) % this.progressItems.length
+      }, 800)
+      setTimeout(() => {
+        this.$refs.slick.create()
+      }, 900)
+    },
+    goPrevSlide () {
+      let currentSlide = this.currentSlide
+      setTimeout(() => {
+        this.$refs.slick.destroy()
+        currentSlide = currentSlide === 0 ? this.progressItems.length - 1 : currentSlide - 1
+        this.currentSlide = currentSlide
+        this.nextSlide = (currentSlide + 1) % this.progressItems.length
+        this.nextNextSlide = (currentSlide + 2) % this.progressItems.length
+      }, 800)
+      setTimeout(() => {
+        this.$refs.slick.create()
+      }, 900)
+    },
+    onNextArrow () {
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        this.goNextSlide()
+      }
+    },
+    onNextNextArrow () {
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        const currentSlide = this.currentSlide
+        setTimeout(() => {
+          this.$refs.slick.destroy()
+          this.currentSlide = (currentSlide + 2) % this.progressItems.length
+          this.nextSlide = (currentSlide + 3) % this.progressItems.length
+          this.nextNextSlide = (currentSlide + 4) % this.progressItems.length
+        }, 800)
+        setTimeout(() => {
+          this.$refs.slick.create()
+        }, 900)
+      }
+    },
+    onPrevArrow () {
+      if (this.isWheelAvailable) {
+        this.setWheelUnavailable()
+        this.changeSlidesAnimation()
+        this.goPrevSlide()
+      }
+    },
+    changeSlidesAnimation () {
       const tl1 = gsap.timeline()
       const tl2 = gsap.timeline()
       const tl3 = gsap.timeline()
-      tl1.to(this.$refs.title, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut })
+      const tl4 = gsap.timeline()
+      tl1.to(this.$refs.img, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut })
+        .to(this.$refs.img, { y: 50, duration: 0 })
+        .to(this.$refs.img, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
+      tl2.to(this.$refs.title, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.1 })
         .to(this.$refs.title, { y: 50, duration: 0 })
         .to(this.$refs.title, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
-      tl2.to(this.$refs.list, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.1 })
+      tl3.to(this.$refs.list, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.2 })
         .to(this.$refs.list, { y: 50, duration: 0 })
         .to(this.$refs.list, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
-      tl3.to(this.$refs.navImages, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.2 })
+      tl4.to(this.$refs.navImages, { opacity: 0, y: -50, duration: 0.7, ease: Power2.easeInOut, delay: 0.3 })
         .to(this.$refs.navImages, { y: 50, duration: 0 })
         .to(this.$refs.navImages, { opacity: 1, y: 0, duration: 0.7, ease: Power2.easeInOut })
+    },
+    setWheelUnavailable () {
+      this.isWheelAvailable = false
       setTimeout(() => {
-        this.currentSlide = nextSlide
-        this.nextSlide = (nextSlide + 1) % this.slidesInfo.length
-        this.nextNextSlide = (nextSlide + 2) % this.slidesInfo.length
-      }, 800)
+        this.isWheelAvailable = true
+      }, 1500)
     },
-    goTo (idx) {
-      this.$refs.slick.goTo(idx)
-    },
-    goToNextSlide () {
+    innerSlideNext () {
       this.$refs.slick.next()
     },
-    goToPrevSlide () {
+    innerSlidePrev () {
       this.$refs.slick.prev()
     }
   }
@@ -191,12 +225,48 @@ export default {
   width:100%;
 }
 
+.slick-wrapper{
+  position:relative;
+}
+
+.sl-arrow{
+  position:absolute;
+  width:6.25vh;
+  height:6.25vh;
+  background:#242135;
+  top:0;
+  left:0;
+  cursor:pointer;
+  display:flex;
+  align-items:Center;
+  justify-content:center;
+  top:calc(100% - 4vh);
+  transform:translateY(-50%);
+  transition:0.5s;
+}
+
+.sl-arrow-left{
+  left:calc(100% - 12.5vh);
+  background:#fff;
+}
+.sl-arrow-right{
+  left:calc(100% - 6.25vh);
+}
+
+.sl-arrow-left svg, .sl-arrow-right svg{
+  transition:0.3s;
+}
+
 .slick{
   height:100%;
 }
 
 .slide{
   height:76.5vh;
+}
+
+.slick-dots{
+  border:100px solid red;
 }
 
 .progress__img{
@@ -251,10 +321,6 @@ export default {
 .text-block__list{
   width:100%;
   max-width:30vw;
-}
-
-.text-block__item{
-  list-style:none;
   line-height: 150%;
   color: #000000;
   font-size: 1.667vh;
@@ -367,12 +433,23 @@ export default {
   .arrow-right:hover svg{
     transform:translateX(30%);
   }
+  .sl-arrow-left:hover svg{
+    transform:translateX(-30%);
+  }
+  .sl-arrow-right:hover svg{
+    transform:translateX(30%);
+  }
 }
 
 @keyframes arrow-animation{
   0%{transform:translateX(0px)}
   50%{transform:translateX(-5px)}
   100%{transform:translateX(0px)}
+}
+
+@keyframes arrow-inner-animation{
+  0%{opacity:0}
+  100%{opacity:1}
 }
 
 @media (max-aspect-ratio: 16/9) {

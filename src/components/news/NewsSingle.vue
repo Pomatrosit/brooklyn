@@ -1,15 +1,39 @@
 <template>
   <div class="news">
-    <h1 class="news__title news-single-animated">Открытие офиса продаж</h1>
+    <h1 class="news__title news-single-animated">{{ newsItem.title }}</h1>
+    <div v-if="newsItem.youtube.length > 0" class="youtube news-single-animated">
+      <iframe width="100%" height="400" :src="'https://www.youtube.com/embed/' + youtube"
+        title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="news__content news-single-animated">
+      <div class="news__text" v-html="newsItem.text"></div>
+      <div class="quote news-single-animated">
+        <p class="quote__text">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее
+          устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально. Отличный выбор для тех,
+          кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры.
+        </p>
+        <img src="/img/news/comma.png" alt="comma" class="quote__comma">
+      </div>
+    </div>
+    <div class="news__content news-single-animated">
+      <div class="news__text" v-html="newsItem.text2"></div>
+    </div>
     <div class="slider">
       <div class="slider-main news-single-animated">
         <slick
           ref="slick"
           :options="slickOptions"
         >
-            <div class="slide"><img src="/img/mainPage/contacts.jpg" alt=""></div>
-            <div class="slide"><img src="/img/mainPage/contacts.jpg" alt=""></div>
-            <div class="slide"><img src="/img/mainPage/contacts.jpg" alt=""></div>
+          <div
+            v-for="img in newsItem.image"
+            :key="img.path"
+            class="slide"
+          >
+            <img :src="img.path" alt="">
+          </div>
         </slick>
       </div>
       <div class="slider-arrows news-single-animated">
@@ -19,27 +43,6 @@
         <div class="arrow-right arrow pink-arrow" @click="next">
           <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
-      </div>
-    </div>
-    <div class="slider-description news-single-animated">
-      <p>Первый день работы офиса</p>
-      <p>21/01/21</p>
-    </div>
-    <h2 class="news__subtitle news-single-animated">Концептуальный жилой комплекс в Астрахани (H2)</h2>
-    <div class="news__content">
-      <p class="news__text news-single-animated">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально.
-         Отличный выбор для тех, кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры
-       </p>
-      <p class="news__text">Жилой Квартал «Бруклин» - отличный выбор для тех, кто хочет совместить жизнь в тихом районе и
-        максимальную доступность объектов инфраструктуры. Все: от особенностей отделки до обустройства придомовой
-        территории — продумано и функционально.
-      </p>
-      <div class="quote">
-        <p class="quote__text">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее
-          устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально. Отличный выбор для тех,
-          кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры.
-        </p>
-        <img src="/img/news/comma.png" alt="comma" class="quote__comma">
       </div>
     </div>
   </div>
@@ -76,6 +79,17 @@ export default {
   mounted () {
     gsap.to('.news-single-animated', { opacity: 0, y: 100, duration: 0 })
     gsap.to('.news-single-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: Power2.easeInOut })
+  },
+  computed: {
+    id () {
+      return this.$route.params.id
+    },
+    newsItem () {
+      return this.$store.getters.news.find(el => +el.id === +this.id)
+    },
+    youtube () {
+      return this.newsItem.youtube.split('=').[1]
+    }
   }
 }
 </script>
@@ -129,6 +143,7 @@ export default {
 
 .slider{
   position:relative;
+  margin-bottom:5vh;
 }
 
 .slider-main{
@@ -155,14 +170,30 @@ export default {
 
 .news__content{
   width:70%;
+  margin-top:4vh;
+  margin-bottom:4vh;
 }
 
 .news__text{
   font-weight: 400;
-  font-size: 1.667vh;
+  font-size: 2vh;
   line-height: 160%;
   color: #242135;
   margin-bottom:3vh;
+}
+
+ol {
+  padding-left:20px;
+  list-style-position: inside;
+  border:1px solid red;
+}
+
+li::marker{
+  display:none;
+}
+
+.youtube{
+  margin-bottom:5vh;
 }
 
 .quote{
@@ -172,11 +203,11 @@ export default {
   position:relative;
   font-style: italic;
   font-weight: 500;
-  font-size: 1.667vh;
+  font-size: 1.8vh;
   line-height: 150%;
   color: #242135;
-  margin-top:8vh;
-  margin-bottom:6vh;
+  margin-top:6vh;
+  margin-bottom:8vh;
 }
 
 .quote:after{

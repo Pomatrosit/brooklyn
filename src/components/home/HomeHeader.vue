@@ -83,11 +83,13 @@ export default {
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 1) {
+        this.interval = setInterval(this.autoChange, 5000)
         gsap.to(this.$refs.header, { height: '100%', duration: 0 })
         gsap.to(this.$refs.header, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
       }
       if (prevHomeSlide === 1) {
+        clearInterval(this.interval)
         gsap.to(this.$refs.header, { height: 0, duration: 0, delay: 1 })
         gsap.to(this.$refs.header, { opacity: 0, y: -100, duration: 1, ease: Power2.easeInOut })
         gsap.to(this.$refs.navigation, { y: '20vh', duration: 0.8, ease: Power2.easeInOut, delay: 0.2 })
@@ -98,7 +100,7 @@ export default {
     gsap.to(this.$refs.header, { height: '100%', duration: 0 })
     gsap.to(this.$refs.header, { opacity: 1, duration: 1, ease: Power2.easeInOut })
     gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
-    this.interval = setInterval(this.autoChange, 7000)
+    this.interval = setInterval(this.autoChange, 5000)
   },
   beforeDestroy () {
     clearInterval(this.interval)
@@ -113,7 +115,7 @@ export default {
         this.changeSlideNext()
         clearInterval(this.interval)
         setTimeout(() => {
-          this.interval = setInterval(this.autoChange, 7000)
+          this.interval = setInterval(this.autoChange, 5000)
         }, 1500)
       }
     },
@@ -123,7 +125,7 @@ export default {
         this.changeSlidePrev()
         clearInterval(this.interval)
         setTimeout(() => {
-          this.interval = setInterval(this.autoChange, 7000)
+          this.interval = setInterval(this.autoChange, 5000)
         }, 1500)
       }
     },

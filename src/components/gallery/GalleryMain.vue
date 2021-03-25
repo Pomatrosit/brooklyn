@@ -12,32 +12,19 @@
         <span>На главную</span>
       </div>
       <div class="gallery-bottom">
-        <figure class="category-card gallery-animated" @click="goToGaleryCategory(1)">
+        <figure
+          v-for="galleryItem in gallery"
+          :key="galleryItem.id"
+          class="category-card gallery-animated"
+          @click="goToGaleryCategory(galleryItem.id)"
+        >
           <div class="category-card__icon">
-            <img src="/img/Vector-1.svg" alt="gallery">
+            <img :src="galleryItem.icon.path" alt="gallery">
           </div>
           <h2 class="category-card__title">
-            Архитектура <br/>и двор
+            {{ galleryItem.title }}
           </h2>
-          <img src="/img/gallery/1.png" alt="" class="category-card__img">
-        </figure>
-        <figure class="category-card gallery-animated" @click="goToGaleryCategory(2)">
-          <div class="category-card__icon">
-            <img src="/img/Vector.svg" alt="gallery" class="second-icon">
-          </div>
-          <h2 class="category-card__title">
-            Места общего <br/>пользования
-          </h2>
-          <img src="/img/gallery/2.png" alt="" class="category-card__img">
-        </figure>
-        <figure class="category-card gallery-animated" @click="goToGaleryCategory(3)">
-          <div class="category-card__icon">
-            <img src="/img/Vector-2.svg" alt="gallery">
-          </div>
-          <h2 class="category-card__title">
-            Интерьеры <br/>квартир
-          </h2>
-          <img src="/img/gallery/3.png" alt="" class="category-card__img">
+          <img :src="galleryItem.primary_image.path" alt="" class="category-card__img">
         </figure>
       </div>
     </div>
@@ -59,6 +46,11 @@ export default {
   mounted () {
     gsap.to('.gallery-animated', { opacity: 0, y: 100, duration: 0 })
     gsap.to('.gallery-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: Power2.easeInOut })
+  },
+  computed: {
+    gallery () {
+      return this.$store.getters.gallery
+    }
   }
 }
 </script>
@@ -110,12 +102,25 @@ export default {
 .gallery-bottom{
   width:100%;
   display:flex;
-  justify-content:space-between;
+  flex-wrap:wrap;
+  height:41.6vh;
+  position:relative;
+  overflow-y:scroll;
+}
+
+.gallery-bottom::-webkit-scrollbar {
+    width: 4px;
+    background-color: #fff;
+}
+
+.gallery-bottom::-webkit-scrollbar-thumb {
+    background-color: #242135;
 }
 
 .category-card{
   height:41.6vh;
   width:32%;
+  margin-right:1%;
   border-radius:2px;
   cursor:pointer;
   display:flex;
@@ -124,6 +129,7 @@ export default {
   flex-direction:column;
   position:relative;
   overflow:hidden;
+  margin-bottom:2vh;
 }
 
 .category-card__img{
@@ -154,7 +160,7 @@ export default {
 }
 
 .category-card__title{
-  width:100%;
+  width:80%;
   text-align:center;
   font-weight: bold;
   font-size: 3.125vh;

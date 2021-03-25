@@ -1,9 +1,11 @@
 <template>
   <div class="list">
-    <NewsItem class="newslist-animated"/>
-    <NewsItem class="newslist-animated"/>
-    <NewsItem class="newslist-animated"/>
-    <NewsItem class="newslist-animated"/>
+    <NewsItem
+      v-for="newsItem in news"
+      :key="newsItem.id"
+      :newsItem="newsItem"
+      class="newslist-animated"
+    />
   </div>
 </template>
 
@@ -14,6 +16,11 @@ import gsap, { Power2 } from 'gsap'
 export default {
   components: {
     NewsItem
+  },
+  computed: {
+    news () {
+      return this.$store.getters.news
+    }
   },
   mounted () {
     gsap.to('.newslist-animated', { opacity: 0, y: 100, duration: 0 })

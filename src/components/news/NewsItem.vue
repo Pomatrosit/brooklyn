@@ -1,13 +1,11 @@
 <template>
   <div class="item">
     <div class="item-main">
-      <h3 class="title">Открытие офиса продаж</h3>
-      <p class="text">Жилой Квартал «Бруклин» - отличный выбор для тех, кто хочет совместить жизнь в тихом
-        районе и максимальную доступность объектов инфраструктуры. </p>
-      <a class="read-link" @click="goToSingleNews(1)">Читать полностью</a>
+      <h3 class="title">{{ newsItem.title }}</h3>
+      <p class="text">{{ newsItem.description.slice(0, 150) + ' ...' }} </p>
+      <a class="read-link" @click="goToSingleNews(newsItem.id)">Читать полностью</a>
     </div>
-    <div class="item-img" :style="{ background: 'url(/img/mainPage/contacts.jpg) center /cover' }">
-      <!-- <img src="/img/mainPage/contacts.jpg" alt=""> -->
+    <div class="item-img" :style="{ background: 'url('+ newsItem.image[0].path +') center /cover' }">
     </div>
   </div>
 </template>
@@ -18,7 +16,8 @@ export default {
     goToSingleNews (id) {
       this.$router.push('/news/' + id)
     }
-  }
+  },
+  props: ['newsItem']
 }
 </script>
 

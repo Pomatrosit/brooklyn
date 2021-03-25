@@ -12,7 +12,7 @@
 
 <script>
 import ProgressFooter from '@/components/progress/ProgressFooter'
-import ProgressMain from '@/components/progress/Test'
+import ProgressMain from '@/components/progress/ProgressMain'
 import ProgressMobile from '@/components/progress/ProgressMobile'
 
 export default {

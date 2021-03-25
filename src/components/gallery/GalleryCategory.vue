@@ -12,9 +12,7 @@
     <div class="gallery-main">
       <div class="app-wrapper">
         <div class="gallery-top">
-          <h1 v-if="id ==='1'" class="gallery__title gallery-animated">Архитектура и двор</h1>
-          <h1 v-else-if="id ==='2'" class="gallery__title gallery-animated">Места общего пользования</h1>
-          <h1 v-else-if="id ==='3'" class="gallery__title gallery-animated">Интерьеры квартир</h1>
+          <h1 class="gallery__title gallery-animated">{{ gallery.title }}</h1>
           <div class="gallery-top__after gallery-animated"></div>
         </div>
         <div class="gallery__back gallery-animated" @click="goBack">
@@ -27,11 +25,11 @@
 
           <div
             class="gallery-img gallery-animated"
-            v-for="(image, imageIndex) in imagesComputed"
+            v-for="(image, imageIndex) in gallery.secondary_image"
             :key="imageIndex"
             @click="index = imageIndex"
           >
-            <img :src="image">
+            <img :src="image.path">
             <SearchIcon />
           </div>
 
@@ -56,9 +54,11 @@ export default {
     id () {
       return this.$route.params.id
     },
+    gallery () {
+      return this.$store.getters.gallery.find(el => +el.id === +this.id)
+    },
     imagesComputed () {
-      if (this.id === '1') return this.images
-      return this.images2
+      return this.gallery.secondary_image.map(el => el.path)
     }
   },
   methods: {
@@ -67,24 +67,6 @@ export default {
     }
   },
   data: () => ({
-    images: [
-      '/img/mainPage/swooshed/1.jpg',
-      '/img/mainPage/swooshed/2.jpg',
-      '/img/mainPage/swooshed/3.jpg',
-      '/img/mainPage/swooshed/4.jpg',
-      '/img/mainPage/swooshed/5.jpg'
-    ],
-    images2: [
-      '/img/gallery/4.jpg',
-      '/img/gallery/5.jpg',
-      '/img/gallery/6.jpg',
-      '/img/gallery/9.jpg',
-      '/img/gallery/10.jpg',
-      '/img/gallery/11.jpg',
-      '/img/gallery/12.jpg',
-      '/img/gallery/13.jpg',
-      '/img/gallery/14.jpg'
-    ],
     index: null
   }),
   mounted () {
