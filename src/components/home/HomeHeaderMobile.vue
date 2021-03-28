@@ -9,21 +9,23 @@
       effect="swipe"
       @close="index = null">
     </CoolLightBox>
-    <slick
-      class="slick"
-      ref="slick"
-      :options="slickOptions"
-      @afterChange="handleAfterChange"
-    >
-        <div
-          class="slide"
-          v-for="(image, imageIndex) in images"
-          :key="imageIndex"
-          @click="index = imageIndex"
-        >
-          <img :src="image">
-        </div>
-    </slick>
+    <div v-if="allInfo.length > 0">
+      <slick
+        class="slick"
+        ref="slick"
+        :options="slickOptions"
+        @afterChange="handleAfterChange"
+      >
+          <div
+            class="slide"
+            v-for="(image, imageIndex) in allInfo[0].homeslider"
+            :key="imageIndex"
+            @click="index = imageIndex"
+          >
+            <img :src="image.path">
+          </div>
+      </slick>
+    </div>
     <div class="app-wrapper">
       <div class="slick-bottom">
         <div class="slider-arrows">
@@ -43,8 +45,8 @@
     </div>
     <div class="app-wrapper with-padding">
       <p class="home__text">
-        <span class="white-text">ЖК Бруклин - Ваш вклад </span><br/>
-        <span class="pink-text">в счастливое будущее</span>
+        <span class="white-text">{{ allInfo.length > 0 ? allInfo[0].hometitle1 : "" }}</span><br/>
+        <span class="pink-text">{{ allInfo.length > 0 ? allInfo[0].hometitle2 : "" }}</span>
       </p>
       <div class="button" @click="goToApartmentsPage">
         <span>Выбор квартиры</span>
@@ -77,14 +79,18 @@ export default {
       arrows: false,
       dots: false
     },
-    images: [
-      '/img/mainPage/swooshed/1.jpg',
-      '/img/mainPage/swooshed/2.jpg',
-      '/img/mainPage/swooshed/3.jpg'
-    ],
     index: null,
     index2: 0
   }),
+  computed: {
+    allInfo () {
+      return this.$store.getters.allInfo
+    },
+    images () {
+      if (this.allInfo.length < 1) return []
+      return this.$store.getters.allInfo[0].homeslider.map(el => el.path)
+    }
+  },
   methods: {
     prevSlide () {
       this.$refs.slick.prev()

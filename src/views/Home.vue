@@ -49,6 +49,9 @@ export default {
   computed: {
     isDesktop () {
       return this.$store.getters.isDesktop
+    },
+    titles () {
+      return this.$store.getters.titles
     }
   },
   data: () => ({
@@ -76,6 +79,8 @@ export default {
     }
   },
   mounted () {
+    document.title = this.titles[0].hometitle
+    document.querySelector('meta[name="description"]').setAttribute('content', this.titles[0].homedescription)
     this.$store.commit('setStartSlide')
     if (this.isDesktop) {
       this.setWheelUnavailable()

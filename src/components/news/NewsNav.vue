@@ -2,9 +2,7 @@
       <div class="nav-content">
         <div class="nav-top">
           <h2 class="nav-title news-animated">Новости</h2>
-          <p class="nav-text news-animated"><strong>В разделе Новости </strong>публикуются самые последние и актуальные сведения о жилом комплексе «Бруклин». </p>
-          <p class="nav-text news-animated"><strong>Регулярно просматривайте </strong>новостной блок, знакомьтесь с развитием инфраструктуры и
-            планируйте светлое будущее вместе с нами.</p>
+          <p class="nav-text news-animated" v-html="newsText"></p>
         </div>
 
         <div v-show="isBackBtn" class="news__back" @click="goBack">
@@ -53,6 +51,11 @@ export default {
     if (this.animated) {
       gsap.to('.news-animated', { opacity: 0, y: 100, duration: 0 })
       gsap.to('.news-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: Power2.easeInOut, delay: 1 })
+    }
+  },
+  computed: {
+    newsText () {
+      return this.$store.getters.allInfo.length > 0 ? this.$store.getters.allInfo[0].newstext : ''
     }
   }
 }

@@ -25,6 +25,23 @@ export default {
     ApartmentsFooter,
     AsideNav,
     ContentWrapper
+  },
+  computed: {
+    titles () {
+      return this.$store.getters.titles
+    },
+    isDesktop () {
+      return this.$store.getters.isDesktop
+    }
+  },
+  watch: {
+    isDesktop (isDesktop) {
+      if (!isDesktop) this.$router.push('/apartments/parameters/studios')
+    }
+  },
+  mounted () {
+    document.title = this.titles[0].apartmentstitle
+    document.querySelector('meta[name="description"]').setAttribute('content', this.titles[0].apartmentsdescription)
   }
 }
 </script>

@@ -29,14 +29,14 @@
         </div>
       </div>
       <div class="count-titles apartments-visual-first-animated">
-        <span class="count-title count-title1">Количество квартир</span>
-        <span class="count-title count-title2">Количество квартир</span>
-        <span class="count-title count-title3">Количество квартир</span>
+        <span class="count-title count-title1">Количество квартир на этаже</span>
+        <span class="count-title count-title2">Количество квартир на этаже</span>
+        <span class="count-title count-title3">Количество квартир на этаже</span>
       </div>
       <div class="counts apartments-visual-first-animated">
-        <span class="count count1">16</span>
-        <span class="count count2">21</span>
-        <span class="count count3">7</span>
+        <span class="count count1">6</span>
+        <span class="count count2">5</span>
+        <span class="count count3">6</span>
       </div>
     </div>
 </template>

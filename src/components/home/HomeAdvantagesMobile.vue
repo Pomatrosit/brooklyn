@@ -12,34 +12,24 @@
       </div>
     </div>
     <div class="mobile-content" ref="content">
-      <img class="advantages-img" src="/img/mainPage/advantage1.png" alt="">
-      <h3 class="advantage-title">Просторные колясочные и велосипедные зоны</h3>
-      <p class="advantage-text">В холлах ЖК «Бруклин» предусмотрено все для комфортной жизни. Коляску или велосипед Вы можете оставить
-        в специальн о предусмотренном для этого месте на первом этаже.
-      </p>
-      <img class="advantages-img" src="/img/mainPage/advantage2.png" alt="">
-      <h3 class="advantage-title">Благоустройство двора</h3>
-      <p class="advantage-text">Игровые комплексы для детей разных возрастов и спортивные площадки создают единый ландшафт.
-        Двор тихий и спокойный. В нём не слышно шума дорог
-      </p>
-      <img class="advantages-img" src="/img/mainPage/advantage3.png" alt="">
-      <h3 class="advantage-title">Уютные планировочные решения</h3>
-      <p class="advantage-text">В ЖК «Бруклин» использованы современные продуманные планировки с европейским типом разделения
-        пространства, здесь каждый найдет для себя функциональную квартиру
-      </p>
-      <img class="advantages-img" src="/img/mainPage/advantage4.png" alt="">
-      <h3 class="advantage-title">Безопасная среда</h3>
-      <p class="advantage-text">Закрытая территория двора без доступа посторонних и автомобилей обеспечит безопасность Вашей семьи.
-      </p>
-      <img class="advantages-img" src="/img/mainPage/advantage5.png" alt="">
-      <h3 class="advantage-title">Витражное остекление</h3>
-      <p class="advantage-text">Добавит в квартиру больше света и позволит в полной мере наслаждаться видом из окна
-      </p>
-      <img class="advantages-img" src="/img/mainPage/advantage6.png" alt="">
-      <h3 class="advantage-title">Дизайнерские холлы и коридоры</h3>
-      <p class="advantage-text">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит
-        равнодушными ни жильцов, ни их гостей.
-      </p>
+      <img class="advantages-img" :src="advantages.length > 0 ? advantages[0].image.path : ''" alt="">
+      <h3 class="advantage-title">{{ advantages.length > 0 ? advantages[0].title : "" }}</h3>
+      <p class="advantage-text">{{ advantages.length > 0 ? advantages[0].text : "" }}</p>
+      <img class="advantages-img" :src="advantages.length > 0 ? advantages[1].image.path : ''" alt="">
+      <h3 class="advantage-title">{{ advantages.length > 0 ? advantages[1].title : "" }}</h3>
+      <p class="advantage-text">{{ advantages.length > 0 ? advantages[1].text : "" }}</p>
+      <img class="advantages-img" :src="advantages.length > 0 ? advantages[2].image.path : ''" alt="">
+      <h3 class="advantage-title">{{ advantages.length > 0 ? advantages[2].title : "" }}</h3>
+      <p class="advantage-text">{{ advantages.length > 0 ? advantages[2].text : "" }}</p>
+      <img class="advantages-img" :src="advantages.length > 0 ? advantages[3].image.path : ''" alt="">
+      <h3 class="advantage-title">{{ advantages.length > 0 ? advantages[3].title : "" }}</h3>
+      <p class="advantage-text">{{ advantages.length > 0 ? advantages[3].text : "" }}</p>
+      <img class="advantages-img" :src="advantages.length > 0 ? advantages[4].image.path : ''" alt="">
+      <h3 class="advantage-title">{{ advantages.length > 0 ? advantages[4].title : "" }}</h3>
+      <p class="advantage-text">{{ advantages.length > 0 ? advantages[4].text : "" }}</p>
+      <img class="advantages-img" :src="advantages.length > 0 ? advantages[5].image.path : ''" alt="">
+      <h3 class="advantage-title">{{ advantages.length > 0 ? advantages[5].title : "" }}</h3>
+      <p class="advantage-text">{{ advantages.length > 0 ? advantages[5].text : "" }}</p>
     </div>
   </div>
 </template>
@@ -59,6 +49,11 @@ export default {
   },
   mounted () {
     $(this.$refs.content).slideToggle(0)
+  },
+  computed: {
+    advantages () {
+      return this.$store.getters.advantages
+    }
   }
 }
 </script>

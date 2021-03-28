@@ -5,23 +5,14 @@
     @mouseup="onMouseUp"
     @mouseleave="onMouseLeave"
   >
-    <div class="header__slide header__slide1" ref="slide1">
-      <!-- <img src="/img/mainPage/swooshed/1.png" alt=""> -->
+    <div v-if="allInfo.length > 0">
+    <div
+      v-for="(img, idx) in allInfo[0].homeslider"
+      :key="img.id"
+      class="header__slide"
+      :style="{ background: `url(${img.path}) center / cover`, zIndex: -1000 + allInfo[0].homeslider.length - idx }"
+      :ref="`slide${idx + 1}`">
     </div>
-    <div class="header__slide header__slide2" ref="slide2">
-      <!-- <img src="/img/mainPage/swooshed/2.png" alt=""> -->
-    </div>
-    <div class="header__slide header__slide3" ref="slide3">
-      <!-- <img src="/img/mainPage/swooshed/3.png" alt=""> -->
-    </div>
-    <div class="header__slide header__slide4" ref="slide4">
-      <!-- <img src="/img/mainPage/swooshed/4.png" alt=""> -->
-    </div>
-    <div class="header__slide header__slide5" ref="slide5">
-      <!-- <img src="/img/mainPage/swooshed/5.png" alt=""> -->
-    </div>
-    <div class="header__slide header__slide6" ref="slide6">
-      <!-- <img src="/img/mainPage/swooshed/6.png" alt=""> -->
     </div>
   </section>
 
@@ -36,8 +27,8 @@
     <div class="nav__main">
 
       <p class="nav__text">
-        <span class="white-text">ЖК Бруклин - Ваш вклад </span><br/>
-        <span class="pink-text">в счастливое будущее</span>
+        <span class="white-text">{{ allInfo.length > 0 ? allInfo[0].hometitle1 : "" }}</span><br/>
+        <span class="pink-text">{{ allInfo.length > 0 ? allInfo[0].hometitle2 : "" }}</span>
       </p>
 
       <div class="nav__points">
@@ -71,7 +62,6 @@ export default {
   name: 'HomeHeader',
   data: () => ({
     currentSlide: 1,
-    countOfSlides: 6,
     currentZIndex: -1000,
     isSliderMoved: false,
     HEADER_SLIDE_ANIMATION_DURATION: 1.5,
@@ -79,17 +69,24 @@ export default {
     touchEnd: 0,
     interval: null
   }),
-  computed: mapGetters(['homeSlide']),
+  computed: {
+    ...mapGetters(['homeSlide']),
+    allInfo () {
+      return this.$store.getters.allInfo
+    },
+    countOfSlides () {
+      if (this.allInfo.length < 1) return 0
+      return this.allInfo[0].homeslider.length
+    }
+  },
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 1) {
-        this.interval = setInterval(this.autoChange, 5000)
         gsap.to(this.$refs.header, { height: '100%', duration: 0 })
         gsap.to(this.$refs.header, { opacity: 1, y: 0, duration: 1, ease: Power2.easeInOut, delay: 1 })
         gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut, delay: 1.2 })
       }
       if (prevHomeSlide === 1) {
-        clearInterval(this.interval)
         gsap.to(this.$refs.header, { height: 0, duration: 0, delay: 1 })
         gsap.to(this.$refs.header, { opacity: 0, y: -100, duration: 1, ease: Power2.easeInOut })
         gsap.to(this.$refs.navigation, { y: '20vh', duration: 0.8, ease: Power2.easeInOut, delay: 0.2 })

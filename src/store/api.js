@@ -17,12 +17,28 @@ function getProgress () {
   return axios.get(`${API_URL}/api/progress`)
 }
 
+function getAdvantages () {
+  return axios.get(`${API_URL}/api/advantages`)
+}
+
+function getAll () {
+  return axios.get(`${API_URL}/api/all`)
+}
+
+function getTitles () {
+  return axios.get(`${API_URL}/api/titles`)
+}
+
 export default {
   state: {
     apartmentList: [],
     gallery: [],
     news: [],
-    progressItems: []
+    progressItems: [],
+    advantages: [],
+    allInfo: [],
+    titles: [],
+    isApiLoading: true
   },
   getters: {
     apartmentList (state) {
@@ -36,6 +52,18 @@ export default {
     },
     progressItems (state) {
       return state.progressItems
+    },
+    advantages (state) {
+      return state.advantages
+    },
+    allInfo (state) {
+      return state.allInfo
+    },
+    titles (state) {
+      return state.titles
+    },
+    isApiLoading (state) {
+      return state.isApiLoading
     }
   },
   mutations: {
@@ -50,16 +78,33 @@ export default {
     },
     setProgressItems (state, payload) {
       state.progressItems = payload
+    },
+    setAdvantages (state, payload) {
+      state.advantages = payload
+    },
+    setAllInfo (state, payload) {
+      state.allInfo = payload
+    },
+    setTitles (state, payload) {
+      state.titles = payload
+    },
+    setApiLoadingFalse (state) {
+      state.isApiLoading = false
     }
   },
   actions: {
     loadData ({ commit }) {
-      Promise.all([getApartments(), getGallery(), getNews(), getProgress()])
+      Promise.all([getApartments(), getGallery(), getNews(), getProgress(), getAdvantages(), getAll(), getTitles()])
         .then(function (results) {
           commit('setApartmentList', results[0].data.data)
           commit('setGallery', results[1].data.data)
           commit('setNews', results[2].data.data)
           commit('setProgressItems', results[3].data.data)
+          commit('setAdvantages', results[4].data.data)
+          commit('setAllInfo', results[5].data.data)
+          commit('setTitles', results[6].data.data)
+          commit('setApiLoadingFalse')
+          console.log('api was loaded')
         })
     }
   }

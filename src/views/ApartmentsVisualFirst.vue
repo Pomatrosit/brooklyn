@@ -26,20 +26,22 @@ export default {
     AsideNav,
     ContentWrapper
   },
-  data: () => ({
-    animated: false,
-    prevRoute: null
-  }),
-  beforeRouteEnter (to, from, next) {
-    next(vm => {
-      vm.prevRoute = from
-    })
-    localStorage.setItem('path', from.path)
+  computed: {
+    titles () {
+      return this.$store.getters.titles
+    },
+    isDesktop () {
+      return this.$store.getters.isDesktop
+    }
+  },
+  watch: {
+    isDesktop (isDesktop) {
+      if (!isDesktop) this.$router.push('/apartments/parameters/studios')
+    }
   },
   mounted () {
-    const path = localStorage.getItem('path')
-    const pathArr = path.split('/')
-    if (!pathArr.includes('apartments') && !pathArr.includes('flat')) this.animated = true
+    document.title = this.titles[0].apartmentstitle
+    document.querySelector('meta[name="description"]').setAttribute('content', this.titles[0].apartmentsdescription)
   }
 }
 </script>

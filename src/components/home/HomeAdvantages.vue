@@ -5,23 +5,27 @@
       <div class="advantages__main">
         <div class="advantages__flex advantages__flex1">
 
-          <figure class="advantage advantage1" ref="advantage1" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Просторные колясочные <br/>и велосипедные зоны</figcaption>
+          <figure class="advantage advantage1"
+            :style="{ background: `url(${advantages.length > 0 ? advantages[0].image.path : ''}) center / cover` }"
+            ref="advantage1" @mouseenter="hover" @mouseleave="unhover">
+            <figcaption class="advantage__title" ref="title1">{{ advantages.length > 0 ? advantages[0].title : "" }}</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Просторные колясочные <br/>и велосипедные зоны</span>
-                <span class="advantage__desc">В холлах ЖК «Бруклин» предусмотрено все для комфортной жизни. Коляску или велосипед Вы можете оставить в специальн о предусмотренном для этого месте на первом этаже.
+                <span class="advantage__title-secondary">{{ advantages.length > 0 ? advantages[0].title : "" }}</span>
+                <span class="advantage__desc">{{ advantages.length > 0 ? advantages[0].text : "" }}
                 </span>
               </div>
             </div>
           </figure>
 
-          <figure class="advantage advantage2" ref="advantage2" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Благоустройство двора</figcaption>
+          <figure class="advantage advantage2"
+            :style="{ background: `url(${advantages.length > 0 ? advantages[1].image.path : ''}) center / cover` }"
+            ref="advantage2" @mouseenter="hover" @mouseleave="unhover">
+            <figcaption class="advantage__title" ref="title1">{{ advantages.length > 0 ? advantages[1].title : "" }}</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Благоустройство двора</span>
-                <span class="advantage__desc">Игровые комплексы для детей разных возрастов и спортивные площадки создают единый ландшафт. Двор тихий и спокойный. В нём не слышно шума дорог, а жители будут чувствовать себя уединенно.
+                <span class="advantage__title-secondary">{{ advantages.length > 0 ? advantages[1].title : "" }}</span>
+                <span class="advantage__desc">{{ advantages.length > 0 ? advantages[1].text : "" }}
                 </span>
               </div>
             </div>
@@ -30,12 +34,14 @@
         </div>
         <div class="advantages__flex advantages__flex2">
 
-          <figure class="advantage advantage3" ref="advantage3" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Уютные планировочные решения</figcaption>
+          <figure class="advantage advantage3"
+            :style="{ background: `url(${advantages.length > 0 ? advantages[2].image.path : ''}) center / cover` }"
+            ref="advantage3" @mouseenter="hover" @mouseleave="unhover">
+            <figcaption class="advantage__title" ref="title1">{{ advantages.length > 0 ? advantages[2].title : "" }}</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Уютные планировочные решения</span>
-                <span class="advantage__desc">В ЖК «Бруклин» использованы современные продуманные планировки с европейским типом разделения пространства, здесь каждый найдет для себя функциональную и комфортную квартиру .
+                <span class="advantage__title-secondary">{{ advantages.length > 0 ? advantages[2].title : "" }}</span>
+                <span class="advantage__desc">{{ advantages.length > 0 ? advantages[2].text : "" }}
                 </span>
               </div>
             </div>
@@ -45,23 +51,27 @@
         <div class="advantages__flex advantages__flex3">
           <div class="advantage__flex3-inner">
 
-            <figure class="advantage advantage4" ref="advantage4" @mouseenter="hover" @mouseleave="unhover">
-              <figcaption class="advantage__title" ref="title1">Безопасная среда</figcaption>
+            <figure class="advantage advantage4"
+              :style="{ background: `url(${advantages.length > 0 ? advantages[3].image.path : ''}) center / cover` }"
+              ref="advantage4" @mouseenter="hover" @mouseleave="unhover">
+              <figcaption class="advantage__title" ref="title1">{{ advantages.length > 0 ? advantages[3].title : "" }}</figcaption>
               <div class="advantage__overlay">
                 <div class="advantage__top">
-                  <span class="advantage__title-secondary">Безопасная среда</span>
-                  <span class="advantage__desc">Закрытая территория двора без доступа посторонних и автомобилей обеспечит безопасность Вашей семьи.
+                  <span class="advantage__title-secondary">{{ advantages.length > 0 ? advantages[3].title : "" }}</span>
+                  <span class="advantage__desc">{{ advantages.length > 0 ? advantages[3].text : "" }}
                   </span>
                 </div>
               </div>
             </figure>
 
-            <figure class="advantage advantage5" ref="advantage5" @mouseenter="hover" @mouseleave="unhover">
-              <figcaption class="advantage__title" ref="title1">Витражное остекление</figcaption>
+            <figure class="advantage advantage5"
+              :style="{ background: `url(${advantages.length > 0 ? advantages[4].image.path : ''}) center / cover` }"
+              ref="advantage5" @mouseenter="hover" @mouseleave="unhover">
+              <figcaption class="advantage__title" ref="title1">{{ advantages.length > 0 ? advantages[4].title : "" }}</figcaption>
               <div class="advantage__overlay">
                 <div class="advantage__top">
-                  <span class="advantage__title-secondary">Витражное остекление</span>
-                  <span class="advantage__desc">Добавит в квартиру больше света и позволит в полной мере наслаждаться видом из окна
+                  <span class="advantage__title-secondary">{{ advantages.length > 0 ? advantages[4].title : "" }}</span>
+                  <span class="advantage__desc">{{ advantages.length > 0 ? advantages[4].text : "" }}
                   </span>
                 </div>
               </div>
@@ -69,12 +79,14 @@
 
           </div>
 
-          <figure class="advantage advantage6" ref="advantage6" @mouseenter="hover" @mouseleave="unhover">
-            <figcaption class="advantage__title" ref="title1">Дизайнерские холлы и коридоры</figcaption>
+          <figure class="advantage advantage6"
+            :style="{ background: `url(${advantages.length > 0 ? advantages[5].image.path : ''}) center / cover` }"
+            ref="advantage6" @mouseenter="hover" @mouseleave="unhover">
+            <figcaption class="advantage__title" ref="title1">{{ advantages.length > 0 ? advantages[5].title : "" }}</figcaption>
             <div class="advantage__overlay">
               <div class="advantage__top">
-                <span class="advantage__title-secondary">Дизайнерские холлы и коридоры</span>
-                <span class="advantage__desc">Авторский дизайн-проект выполнен из материалов премиум-класса и не оставит равнодушными ни жильцов, ни их гостей.
+                <span class="advantage__title-secondary">{{ advantages.length > 0 ? advantages[5].title : "" }}</span>
+                <span class="advantage__desc">{{ advantages.length > 0 ? advantages[5].text : "" }}
                 </span>
               </div>
             </div>
@@ -92,7 +104,12 @@ import gsap, { Power2 } from 'gsap'
 
 export default {
   name: 'HomeAdvantages',
-  computed: mapGetters(['homeSlide']),
+  computed: {
+    ...mapGetters(['homeSlide']),
+    advantages () {
+      return this.$store.getters.advantages
+    }
+  },
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 3) {
@@ -136,12 +153,7 @@ export default {
   },
   mounted () {
     gsap.to(this.$refs.advantages, { height: 0, duration: 0 })
-    gsap.to(this.$refs.advantage1, { opacity: 0, y: 100, duration: 0 })
-    gsap.to(this.$refs.advantage2, { opacity: 0, y: 100, duration: 0 })
-    gsap.to(this.$refs.advantage3, { opacity: 0, y: 100, duration: 0 })
-    gsap.to(this.$refs.advantage4, { opacity: 0, y: 100, duration: 0 })
-    gsap.to(this.$refs.advantage5, { opacity: 0, y: 100, duration: 0 })
-    gsap.to(this.$refs.advantage6, { opacity: 0, y: 100, duration: 0 })
+    gsap.to('.advantage', { opacity: 0, y: 100, duration: 0 })
   },
   methods: {
     hover (e) {
@@ -195,6 +207,7 @@ export default {
   z-index:0;
   padding:10.42vh 0 13.54vh 0;
   display:flex;
+  height:0;
 }
 
 .app-wrapper, .advantages__main{
@@ -239,6 +252,7 @@ export default {
 .advantage{
   position:relative;
   overflow:hidden;
+
 }
 
 .advantage1, .advantage2, .advantage6{
@@ -258,25 +272,6 @@ export default {
   position:absolute;
   top:0;
   left:51.6%;
-}
-
-.advantage1{
-  background: url('/img/mainPage/advantage1.png') center / cover;
-}
-.advantage2{
-  background: url('/img/mainPage/advantage2.png') center / cover;
-}
-.advantage3{
-  background: url('/img/mainPage/advantage3.png') center / cover;
-}
-.advantage4{
-  background: url('/img/mainPage/advantage4.png') center / cover;
-}
-.advantage5{
-  background: url('/img/mainPage/advantage5.png') center / cover;
-}
-.advantage6{
-  background: url('/img/mainPage/advantage6.png') center / cover;
 }
 
 .advantage__title{

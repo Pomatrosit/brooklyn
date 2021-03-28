@@ -3,8 +3,11 @@
     <div class="app-wrapper">
       <h2 class="news__title">Новости</h2>
       <p class="news__desc"><strong>В разделе Новости </strong>публикуются самые последние и актуальные сведения о жилом комплексе «Бруклин».</p>
-      <NewsItemMobile />
-      <NewsItemMobile />
+      <NewsItemMobile
+        v-for="newsItem in news"
+        :key="newsItem.id"
+        :newsItem="newsItem"
+      />
       <div class="button" @click="$router.push('/')">
         <span>Вернуться на главную</span>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,6 +23,11 @@ import NewsItemMobile from './NewsItemMobile'
 export default {
   components: {
     NewsItemMobile
+  },
+  computed: {
+    news () {
+      return this.$store.getters.news
+    }
   }
 }
 </script>

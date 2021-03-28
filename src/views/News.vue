@@ -36,7 +36,14 @@ export default {
   computed: {
     isDesktop () {
       return this.$store.getters.isDesktop
+    },
+    titles () {
+      return this.$store.getters.titles
     }
+  },
+  mounted () {
+    document.title = this.titles[0].newstitle
+    document.querySelector('meta[name="description"]').setAttribute('content', this.titles[0].newsdescription)
   }
 }
 </script>

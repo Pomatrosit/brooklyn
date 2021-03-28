@@ -2,8 +2,10 @@
   <div class="item">
     <div class="item-main">
       <h3 class="title">{{ newsItem.title }}</h3>
-      <p class="text">{{ newsItem.description.slice(0, 150) + ' ...' }} </p>
-      <a class="read-link" @click="goToSingleNews(newsItem.id)">Читать полностью</a>
+      <div class="read-btn-and-date">
+        <a class="read-link" @click="goToSingleNews(newsItem.id)">Читать полностью</a>
+        <span class="date">{{ date }}</span>
+      </div>
     </div>
     <div class="item-img" :style="{ background: 'url('+ newsItem.image[0].path +') center /cover' }">
     </div>
@@ -17,7 +19,12 @@ export default {
       this.$router.push('/news/' + id)
     }
   },
-  props: ['newsItem']
+  props: ['newsItem'],
+  computed: {
+    date () {
+      return this.newsItem.created_at.split(' ')[0]
+    }
+  }
 }
 </script>
 
@@ -49,6 +56,7 @@ export default {
   font-size: 2.5vh;
   color: #242135;
   margin-bottom:3vh;
+  margin-bottom:6vh;
 }
 
 .text{
@@ -65,5 +73,17 @@ export default {
   text-decoration-line: underline;
   color: #EA8E79;
   cursor:pointer;
+}
+
+.read-btn-and-date{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.date{
+  font-size:1.5vh;
+  font-weight:600;
+  color:#242135;
 }
 </style>

@@ -1,25 +1,8 @@
 <template>
   <div class="news">
     <h1 class="news__title news-single-animated">{{ newsItem.title }}</h1>
-    <div v-if="newsItem.youtube.length > 0" class="youtube news-single-animated">
-      <iframe width="100%" height="400" :src="'https://www.youtube.com/embed/' + youtube"
-        title="YouTube video player"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
     <div class="news__content news-single-animated">
       <div class="news__text" v-html="newsItem.text"></div>
-      <div class="quote news-single-animated">
-        <p class="quote__text">Благородство и достоинство архитектурного проекта столь же гармоничны, сколь удобно его внутреннее
-          устройство. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально. Отличный выбор для тех,
-          кто хочет совместить жизнь в тихом районе и максимальную доступность объектов инфраструктуры.
-        </p>
-        <img src="/img/news/comma.png" alt="comma" class="quote__comma">
-      </div>
-    </div>
-    <div class="news__content news-single-animated">
-      <div class="news__text" v-html="newsItem.text2"></div>
     </div>
     <div class="slider">
       <div class="slider-main news-single-animated">
@@ -36,7 +19,7 @@
           </div>
         </slick>
       </div>
-      <div class="slider-arrows news-single-animated">
+      <div v-if="newsItem.image.length > 1" class="slider-arrows news-single-animated">
         <div class="arrow-left arrow dark-arrow" @click="prev">
           <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
         </div>
@@ -79,6 +62,7 @@ export default {
   mounted () {
     gsap.to('.news-single-animated', { opacity: 0, y: 100, duration: 0 })
     gsap.to('.news-single-animated', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: Power2.easeInOut })
+    document.title = this.newsItem.title
   },
   computed: {
     id () {
@@ -86,9 +70,6 @@ export default {
     },
     newsItem () {
       return this.$store.getters.news.find(el => +el.id === +this.id)
-    },
-    youtube () {
-      return this.newsItem.youtube.split('=').[1]
     }
   }
 }
@@ -194,37 +175,6 @@ li::marker{
 
 .youtube{
   margin-bottom:5vh;
-}
-
-.quote{
-  border: 1px solid #242135;
-  padding:6.25vh 12.5vh 6.25vh 6.25vh;
-  margin-left:15px;
-  position:relative;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.8vh;
-  line-height: 150%;
-  color: #242135;
-  margin-top:6vh;
-  margin-bottom:8vh;
-}
-
-.quote:after{
-  content:"";
-  position:absolute;
-  width:5px;
-  height:calc(100% + 2px);
-  left:-15px;
-  top:-1px;
-  background:#242135;
-}
-
-.quote__comma{
-  position:absolute;
-  width:10vh;
-  right:-2.5vh;
-  top:-4vh;
 }
 
 .arrow-left, .arrow-right{

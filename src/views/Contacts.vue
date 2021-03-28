@@ -25,7 +25,14 @@ export default {
   computed: {
     isDesktop () {
       return this.$store.getters.isDesktop
+    },
+    titles () {
+      return this.$store.getters.titles
     }
+  },
+  mounted () {
+    document.title = this.titles[0].contactstitle
+    document.querySelector('meta[name="description"]').setAttribute('content', this.titles[0].contactsdescription)
   }
 }
 </script>

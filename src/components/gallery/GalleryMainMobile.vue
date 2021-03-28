@@ -6,32 +6,19 @@
         <SliderArrowLeft width="7px" height="12px" fill="#242135"/>
         <span>На главную</span>
       </div>
-      <figure class="category-card gallery-animated" @click="goToGaleryCategory(1)">
+      <figure
+        v-for="galleryItem in gallery"
+        :key="galleryItem.id"
+        class="category-card"
+        @click="goToGaleryCategory(galleryItem.id)"
+      >
         <div class="category-card__icon">
-          <img src="/img/Vector-1.svg" alt="gallery">
+          <img :src="galleryItem.icon.path" alt="gallery">
         </div>
         <h2 class="category-card__title">
-          Архитектура <br/>и двор
+          {{ galleryItem.title }}
         </h2>
-        <img src="/img/gallery/1.png" alt="" class="category-card__img">
-      </figure>
-      <figure class="category-card gallery-animated" @click="goToGaleryCategory(2)">
-        <div class="category-card__icon">
-          <img src="/img/Vector.svg" alt="gallery">
-        </div>
-        <h2 class="category-card__title">
-          Места общего <br/>пользования
-        </h2>
-        <img src="/img/gallery/2.png" alt="" class="category-card__img">
-      </figure>
-      <figure class="category-card gallery-animated" @click="goToGaleryCategory(3)">
-        <div class="category-card__icon">
-          <img src="/img/Vector-2.svg" alt="gallery">
-        </div>
-        <h2 class="category-card__title">
-          Интерьеры <br/>квартир
-        </h2>
-        <img src="/img/gallery/3.png" alt="" class="category-card__img">
+        <img :src="galleryItem.primary_image.path" alt="" class="category-card__img">
       </figure>
     </div>
   </div>
@@ -49,7 +36,12 @@ export default {
       this.$router.push('/').then(() => window.scrollTo(0, 0))
     },
     goToGaleryCategory (id) {
-      this.$router.push('/gallery/' + id)
+      this.$router.push('/gallery/' + id).then(window.scrollTo(0, 0))
+    }
+  },
+  computed: {
+    gallery () {
+      return this.$store.getters.gallery
     }
   }
 }
@@ -133,5 +125,6 @@ export default {
   color:#fff;
   z-index:0;
   position:relative;
+  width:80%;
 }
 </style>

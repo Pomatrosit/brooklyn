@@ -22,8 +22,11 @@
         </div>
       </div>
       <div class="apartments__cards">
-        <FlatCardMobile />
-        <FlatCardMobile />
+        <FlatCardMobile
+          v-for="flat in apartmentList"
+          :key="flat.id"
+          :flat="flat"
+        />
       </div>
     </div>
   </div>
@@ -39,6 +42,16 @@ export default {
   computed: {
     id () {
       return this.$route.params.id
+    },
+    apartmentList () {
+      const list = this.$store.getters.apartmentList
+      switch (this.id) {
+        case 'studios' : return list.filter(el => el.count === 'studio')
+        case '1' : return list.filter(el => el.count === 'one')
+        case '2' : return list.filter(el => el.count === 'two')
+        case '3' : return list.filter(el => el.count === 'three')
+        default : return []
+      }
     }
   },
   methods: {

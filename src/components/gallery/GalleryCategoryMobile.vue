@@ -1,26 +1,24 @@
 <template>
   <div class="gallery">
     <div class="app-wrapper">
-      <h1 class="gallery__title" v-if="id === '1'">Архитектура и двор</h1>
-      <h1 class="gallery__title" v-else-if="id === '2'">Места общего пользования</h1>
-      <h1 class="gallery__title" v-else-if="id === '3'">Интерьеры квартир</h1>
+      <h1 class="gallery__title">{{ gallery.title }}</h1>
       <div class="gallery__back" @click="goBack">
         <SliderArrowLeft width="7px" height="12px" fill="#242135"/>
         <span>К категориям</span>
       </div>
       <div
         class="gallery-img"
-        v-for="(image, imageIndex) in images"
+        v-for="(image, imageIndex) in gallery.secondary_image"
         :key="imageIndex"
         @click="index = imageIndex"
       >
-        <img :src="image">
+        <img :src="image.path">
       </div>
       <CoolLightBox
         overlayColor="rgba(30, 30, 30, .9)"
         :zIndex="2"
         :style="{zIndex: 100}"
-        :items="images"
+        :items="imagesComputed"
         :index="index"
         effect="swipe"
         @close="index = null">
@@ -46,6 +44,12 @@ export default {
   computed: {
     id () {
       return this.$route.params.id
+    },
+    gallery () {
+      return this.$store.getters.gallery.find(el => +el.id === +this.id)
+    },
+    imagesComputed () {
+      return this.gallery.secondary_image.map(el => el.path)
     }
   },
   methods: {
@@ -54,13 +58,6 @@ export default {
     }
   },
   data: () => ({
-    images: [
-      '/img/mainPage/swooshed/1.jpg',
-      '/img/mainPage/swooshed/2.jpg',
-      '/img/mainPage/swooshed/3.jpg',
-      '/img/mainPage/swooshed/4.jpg',
-      '/img/mainPage/swooshed/5.jpg'
-    ],
     index: null
   })
 }

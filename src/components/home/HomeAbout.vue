@@ -1,22 +1,21 @@
 <template>
   <section class="about" id="section2" ref="about">
 
-    <div class="about__img" ref="aboutImg"></div>
+    <div class="about__img"
+     :style="{ background: `url(${allInfo.length > 0 ? allInfo[0].aboutimage.path : ''}) center / cover` }"
+     ref="aboutImg">
+    </div>
 
     <div class="about__main" ref="aboutMain">
 
       <div class="about__text-block">
 
         <h2 class="about__title" ref="aboutTitle">
-          <span class="white-text">Новый концептуальный </span><br/>
-          <span class="pink-text">жилой комплекс в Астрахани</span>
+          <span class="white-text">{{ allInfo.length > 0 ? allInfo[0].abouttitle1 : "" }} </span><br/>
+          <span class="pink-text">{{ allInfo.length > 0 ? allInfo[0].abouttitle2 : "" }}</span>
         </h2>
 
-        <p class="about__text" ref="aboutText"><strong>Благородство и достоинство </strong> архитектурного проекта столь же гармоничны, сколь удобно его внутреннее устройство.
-          Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально.<br><br/>
-          <strong>Жилой Квартал «Бруклин» </strong> - отличный выбор для тех, кто хочет совместить жизнь в тихом районе и максимальную доступность
-          объектов инфраструктуры. Все: от особенностей отделки до обустройства придомовой территории — продумано и функционально.
-        </p>
+        <p class="about__text" v-html="allInfo.length > 0 ? allInfo[0].abouttext : ''" ref="aboutText"></p>
 
       </div>
 
@@ -39,7 +38,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeAbout',
-  computed: mapGetters(['homeSlide']),
+  computed: {
+    ...mapGetters(['homeSlide']),
+    allInfo () {
+      return this.$store.getters.allInfo
+    }
+  },
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       if (homeSlide === 2) {

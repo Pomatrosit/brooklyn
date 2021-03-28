@@ -4,7 +4,7 @@
       overlayColor="rgba(30, 30, 30, .9)"
       :zIndex="2"
       :style="{zIndex: 100}"
-      :items="images"
+      :items="item.image.map(el => el.path)"
       :index="index"
       effect="swipe"
       @close="index = null">
@@ -17,11 +17,11 @@
       >
         <div
           class="slide"
-          v-for="(image, imageIndex) in images"
+          v-for="(image, imageIndex) in item.image"
           :key="imageIndex"
           @click="index = imageIndex"
         >
-          <img :src="image">
+          <img :src="image.path">
         </div>
       </slick>
       <div class="slider-arrows">
@@ -38,9 +38,8 @@
         </svg>
       </div>
     </div>
-    <h3 class="subtitle">{{title}}</h3>
-    <p class="text">Продолжаем монтаж системы электроснабжения, вентиляции, водоснабжения и водоотведения. </p>
-    <p class="text">Выполняем устройство слаботочных сетей. Идут работы черновой отделки. Монтируем витражи и окна.</p>
+    <h3 class="subtitle">{{item.title}}</h3>
+    <p class="text" v-html="item.text"></p>
   </div>
 </template>
 
@@ -59,7 +58,7 @@ export default {
     Slick,
     CoolLightBox
   },
-  props: ['title'],
+  props: ['item'],
   data: () => ({
     slickOptions: {
       slidesToShow: 1,
@@ -176,16 +175,5 @@ export default {
   margin-bottom:30px;
   padding-left:25px;
   position:relative;
-}
-
-.text:after{
-  content:"";
-  position:absolute;
-  top:1vh;
-  left:0;
-  width:5px;
-  height:5px;
-  background:#EA8E79;
-  border-radius:50%;
 }
 </style>

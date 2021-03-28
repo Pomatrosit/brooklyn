@@ -26,8 +26,8 @@
         </svg>
       </div>
       <p class="footer__subtitle">Юридическа информациия</p>
-      <p class="footer__subtitle">Политика в отношении обработки персональных данных</p>
-      <p class="footer__subtitle with-link">Разработка сайта компания Sells</p>
+      <p @click="goToPolicy" class="footer__subtitle">Политика в отношении обработки персональных данных</p>
+      <p class="footer__subtitle with-link" @click="goToSells">Разработка сайта компания Sells</p>
     </div>
   </div>
 </template>
@@ -37,6 +37,12 @@ export default {
   methods: {
     openModal () {
       this.$store.commit('toggleModal', 2)
+    },
+    goToSells () {
+      window.open('https://sells.company/', '_blank')
+    },
+    goToPolicy () {
+      this.$router.push('/policy').then(() => window.scrollTo(0, 0))
     }
   }
 }

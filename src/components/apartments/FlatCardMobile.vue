@@ -3,18 +3,18 @@
     <div class="flat-card__top">
       <div class="flat-card__count">
         <p class="flat-card__title">Количество комнат:</p>
-        <p class="flat-card__text">Студия</p>
+        <p class="flat-card__text">{{flatCountCaption}}</p>
       </div>
       <div class="flat-card__square">
         <p class="flat-card__title">Общая площадь:</p>
-        <p class="flat-card__text">56 м&sup2;</p>
+        <p class="flat-card__text">{{ flat.square }} м&sup2;</p>
       </div>
     </div>
     <div class="flat-card__img">
-      <img src="/img/apartments/mini.png" alt="flat">
+      <img :src="flat.image.path" alt="flat">
     </div>
     <div class="flat-card__buttons">
-      <div class="flat-card__btn"><span>Скачать PDF</span></div>
+      <div @click="downloadPdf(flat.pdf.path)" class="flat-card__btn"><span>Скачать PDF</span></div>
       <div class="flat-card__btn light-btn" @click="openModal"><span>Записаться на просмотр</span></div>
     </div>
   </figure>
@@ -22,12 +22,27 @@
 
 <script>
 export default {
+  props: ['flat'],
+  computed: {
+    flatCountCaption () {
+      switch (this.flat.count) {
+        case 'one' : return 1
+        case 'two' : return 2
+        case 'three' : return 3
+        case 'studio' : return 'Студия'
+        default: return 0
+      }
+    }
+  },
   methods: {
     goToFlat (id) {
       this.$router.push('/flat/' + id)
     },
     openModal () {
       this.$store.commit('toggleModal', 1)
+    },
+    downloadPdf (src) {
+      window.open(src, '_blank')
     }
   }
 }

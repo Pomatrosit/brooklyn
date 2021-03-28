@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <PreLoader v-if="isLoading"/>
-    <Navbar v-if="isDesktop"/>
-    <NavbarMobile v-else/>
-    <router-view/>
-    <FooterMobile v-if="!isDesktop"/>
-    <ModalWindow
-      v-if="isModalOpen"
-      :closeModal="toggleModal"
-    >
-      <Form />
-    </ModalWindow>
+    <PreLoader v-if="isLoading || isApiLoading"/>
+    <div v-if="!isApiLoading">
+      <Navbar v-if="isDesktop"/>
+      <NavbarMobile v-else/>
+      <router-view/>
+      <FooterMobile v-if="!isDesktop"/>
+      <ModalWindow
+        v-if="isModalOpen"
+        :closeModal="toggleModal"
+      >
+        <Form />
+      </ModalWindow>
+    </div>
   </div>
 </template>
 
@@ -20,7 +22,7 @@ import NavbarMobile from '@/components/NavbarMobile'
 import ModalWindow from '@/components/ModalWindow'
 import Form from '@/components/Form'
 import PreLoader from '@/components/PreLoader'
-import { loadImages } from '@/utils/utils'
+// import { loadImages } from '@/utils/utils'
 import FooterMobile from '@/components/FooterMobile'
 
 export default {
@@ -39,6 +41,9 @@ export default {
     },
     isLoading () {
       return this.$store.getters.isLoading
+    },
+    isApiLoading () {
+      return this.$store.getters.isApiLoading
     },
     isDesktop () {
       return this.$store.getters.isDesktop
@@ -61,13 +66,13 @@ export default {
     this.$store.dispatch('loadData')
   },
   mounted () {
-    loadImages()
+    // loadImages()
     this.onResize()
     window.addEventListener('resize', this.onResize)
   },
-  updated () {
-    this.$store.commit('setStartSlide')
-  },
+  // updated () {
+  //   this.$store.commit('setStartSlide')
+  // },
   beforeDestroy () {
     window.removeEventListener('resize', this.onResize)
   }

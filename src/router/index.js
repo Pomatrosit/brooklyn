@@ -61,6 +61,11 @@ const routes = [
     component: () => import('../views/Contacts.vue')
   },
   {
+    path: '/policy',
+    name: 'Policy',
+    component: () => import('../views/Policy.vue')
+  },
+  {
     path: '/404',
     name: '404',
     component: () => import('../views/NotFound.vue')
