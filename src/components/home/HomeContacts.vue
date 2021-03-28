@@ -7,7 +7,7 @@
     <div class="contacts__main" ref="main">
 
       <div class="contacts__top" ref="top">
-        <div class="logo"><img src="/img/logo__big.png" alt="Brooklyn"></div>
+        <div class="logo"><Logo height="11.98vh"/></div>
         <div class="contacts__desc">
           <h2 class="contacts__title">{{ allInfo.length > 0 ? allInfo[0].contactstitle : "" }}</h2>
           <p class="contacts__text">{{ allInfo.length > 0 ? allInfo[0].contactstext : "" }}</p>
@@ -125,9 +125,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import gsap, { Power2 } from 'gsap'
+import Logo from '@/components/svg/Logo'
 
 export default {
   name: 'HomeContacts',
+  components: {
+    Logo
+  },
   computed: {
     ...mapGetters(['homeSlide']),
     allInfo () {

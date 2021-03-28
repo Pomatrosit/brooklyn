@@ -60,6 +60,7 @@ export default {
   },
   beforeCreate () {
     window.addEventListener('load', () => {
+      console.log('dom was loaded')
       document.querySelector('.preloader').style.opacity = '0'
       setTimeout(() => this.$store.commit('hideLoader'), 1000)
     })

@@ -10,8 +10,11 @@
       v-for="(img, idx) in allInfo[0].homeslider"
       :key="img.id"
       class="header__slide"
-      :style="{ background: `url(${img.path}) center / cover`, zIndex: -1000 + allInfo[0].homeslider.length - idx }"
-      :ref="`slide${idx + 1}`">
+      :style="{ zIndex: -1000 + allInfo[0].homeslider.length - idx }"
+      :ref="`slide${idx + 1}`"
+    >
+      <img :src="img.path" @load="onImageLoad">
+      <!-- :style="{ background: `url(${img.path}) center / cover`, zIndex: -1000 + allInfo[0].homeslider.length - idx }" -->
     </div>
     </div>
   </section>
@@ -67,7 +70,8 @@ export default {
     HEADER_SLIDE_ANIMATION_DURATION: 1.5,
     touchStart: 0,
     touchEnd: 0,
-    interval: null
+    interval: null,
+    imagesLoaded: 0
   }),
   computed: {
     ...mapGetters(['homeSlide']),
@@ -91,6 +95,9 @@ export default {
         gsap.to(this.$refs.header, { opacity: 0, y: -100, duration: 1, ease: Power2.easeInOut })
         gsap.to(this.$refs.navigation, { y: '20vh', duration: 0.8, ease: Power2.easeInOut, delay: 0.2 })
       }
+    },
+    imagesLoaded (count) {
+      console.log(count)
     }
   },
   mounted () {
@@ -101,8 +108,12 @@ export default {
   },
   beforeDestroy () {
     clearInterval(this.interval)
+    this.interval = null
   },
   methods: {
+    onImageLoad () {
+      this.imagesLoaded++
+    },
     autoChange () {
       this.nextSlide()
     },
@@ -193,6 +204,7 @@ export default {
   z-index:0;
   height:0;
   opacity:0;
+  padding:10.42vh 0 13.54vh 0;
 }
 
 .header__slide{
@@ -207,11 +219,10 @@ export default {
 
 .header__slide img{
   position:absolute;
-  top:50vh;
-  transform:translateY(-50%);
-  left:0;
-  width:100vw;
-  height:auto;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  pointer-events:none;
 }
 
 .header__slide1{

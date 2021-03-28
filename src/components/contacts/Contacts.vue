@@ -7,7 +7,7 @@
     <div class="contacts__main" ref="main">
 
       <div class="contacts__top" ref="top">
-        <div class="logo contacts-animated"><img src="/img/logo__big.png" alt="Brooklyn"></div>
+        <div class="logo contacts-animated"><Logo height="11.98vh"/></div>
         <div class="contacts__desc">
           <h2 class="contacts__title contacts-animated">{{ allInfo.length > 0 ? allInfo[0].contactstitle : "" }}</h2>
           <p class="contacts__text contacts-animated">{{ allInfo.length > 0 ? allInfo[0].contactstext : "" }}</p>
@@ -119,8 +119,12 @@
 
 <script>
 import gsap, { Power2 } from 'gsap'
+import Logo from '@/components/svg/Logo'
 
 export default {
+  components: {
+    Logo
+  },
   mounted () {
     gsap.to('.contacts-animated', { opacity: 0, y: 100, duration: 0 })
     gsap.to(this.$refs.bg, { opacity: 1, x: 0, duration: 1, ease: Power2.easeInOut })

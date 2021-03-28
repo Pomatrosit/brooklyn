@@ -7,21 +7,21 @@
       </div>
       <div class="sections apartments-visual-first-animated">
         <div class="section section1" @click = "nextStep(1)">
-          <img src="/img/apartments/section1.png" alt="first entrance">
+          <img :src="sections[0].path" alt="first entrance">
           <div class="section-after">
             <span>Подробнее</span>
             <WhiteArrow />
           </div>
         </div>
         <div class="section section2" @click = "nextStep(2)">
-          <img src="/img/apartments/section1.png" alt="first entrance">
+          <img :src="sections[1].path" alt="first entrance">
           <div class="section-after">
             <span>Подробнее</span>
             <WhiteArrow />
           </div>
         </div>
         <div class="section section3" @click = "nextStep(3)">
-          <img src="/img/apartments/section1.png" alt="first entrance">
+          <img :src="sections[2].path" alt="first entrance">
           <div class="section-after">
             <span>Подробнее</span>
             <WhiteArrow />
@@ -44,6 +44,7 @@
 <script>
 import WhiteArrow from '@/components/svg/WhiteArrow'
 import gsap, { Power2 } from 'gsap'
+
 export default {
   name: 'ApartmentsVisualFirst',
   components: {
@@ -52,6 +53,11 @@ export default {
   methods: {
     nextStep (id) {
       this.$router.push(`/apartments/visual/${id}`)
+    }
+  },
+  computed: {
+    sections () {
+      return this.$store.getters.allInfo[0].sections
     }
   },
   mounted () {

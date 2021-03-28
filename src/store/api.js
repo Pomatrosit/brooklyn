@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'http://cy83453.tmweb.ru'
+const API_URL = 'http://bruklyn.tmweb.ru'
 
 function getApartments () {
   return axios.get(`${API_URL}/api/apartments`)

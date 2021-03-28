@@ -1,6 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import ApartmentsVisualFirst from '../views/ApartmentsVisualFirst.vue'
+import ApartmentsVisualSecond from '../views/ApartmentsVisualSecond.vue'
+import ApartmentsParameters from '../views/ApartmentsParameters.vue'
+import ApartmentsFlat from '../views/ApartmentsFlat.vue'
+import GalleryMain from '../views/GalleryMain.vue'
+import GalleryCategory from '../views/GalleryCategory.vue'
+import News from '../views/News.vue'
+import NewsSingle from '../views/NewsSingle.vue'
+import Progress from '../views/Progress.vue'
+import Contacts from '../views/Contacts.vue'
+import Policy from '../views/Policy.vue'
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -13,62 +25,62 @@ const routes = [
   {
     path: '/apartments/visual',
     name: 'ApartmentsVisual',
-    component: () => import('../views/ApartmentsVisualFirst.vue')
+    component: ApartmentsVisualFirst
   },
   {
     path: '/apartments/visual/:id',
     name: 'ApartmentsVisualSecond',
-    component: () => import('../views/ApartmentsVisualSecond.vue')
+    component: ApartmentsVisualSecond
   },
   {
     path: '/apartments/parameters/:id',
     name: 'ApartmentsParameters',
-    component: () => import('../views/ApartmentsParameters.vue')
+    component: ApartmentsParameters
   },
   {
     path: '/flat/:id',
     name: 'ApartmentsFlat',
-    component: () => import('../views/ApartmentsFlat.vue')
+    component: ApartmentsFlat
   },
   {
     path: '/gallery',
     name: 'GalleryMain',
-    component: () => import('../views/GalleryMain.vue')
+    component: GalleryMain
   },
   {
     path: '/gallery/:id',
     name: 'GalleryCategory',
-    component: () => import('../views/GalleryCategory.vue')
+    component: GalleryCategory
   },
   {
     path: '/news',
     name: 'News',
-    component: () => import('../views/News.vue')
+    component: News
   },
   {
     path: '/news/:id',
     name: 'NewsSingle',
-    component: () => import('../views/NewsSingle.vue')
+    component: NewsSingle
   },
   {
     path: '/progress',
     name: 'Progress',
-    component: () => import('../views/Progress.vue')
+    component: Progress
   },
   {
     path: '/contacts',
     name: 'Contacts',
-    component: () => import('../views/Contacts.vue')
+    component: Contacts
   },
   {
     path: '/policy',
     name: 'Policy',
-    component: () => import('../views/Policy.vue')
+    component: Policy
   },
   {
     path: '/404',
     name: '404',
-    component: () => import('../views/NotFound.vue')
+    component: NotFound
   },
   {
     path: '*',
