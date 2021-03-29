@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <PreLoader v-if="isLoading || isApiLoading"/>
+    <PreLoader v-if="isApiLoading || (isLoading && route==='/')"/>
     <div v-if="!isApiLoading">
       <Navbar v-if="isDesktop"/>
       <NavbarMobile v-else/>
@@ -22,7 +22,6 @@ import NavbarMobile from '@/components/NavbarMobile'
 import ModalWindow from '@/components/ModalWindow'
 import Form from '@/components/Form'
 import PreLoader from '@/components/PreLoader'
-// import { loadImages } from '@/utils/utils'
 import FooterMobile from '@/components/FooterMobile'
 
 export default {
@@ -47,6 +46,9 @@ export default {
     },
     isDesktop () {
       return this.$store.getters.isDesktop
+    },
+    route () {
+      return this.$route.path
     }
   },
   methods: {
@@ -59,21 +61,12 @@ export default {
     }
   },
   beforeCreate () {
-    window.addEventListener('load', () => {
-      console.log('dom was loaded')
-      document.querySelector('.preloader').style.opacity = '0'
-      setTimeout(() => this.$store.commit('hideLoader'), 1000)
-    })
     this.$store.dispatch('loadData')
   },
   mounted () {
-    // loadImages()
     this.onResize()
     window.addEventListener('resize', this.onResize)
   },
-  // updated () {
-  //   this.$store.commit('setStartSlide')
-  // },
   beforeDestroy () {
     window.removeEventListener('resize', this.onResize)
   }

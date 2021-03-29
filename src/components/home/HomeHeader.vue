@@ -14,7 +14,6 @@
       :ref="`slide${idx + 1}`"
     >
       <img :src="img.path" @load="onImageLoad">
-      <!-- :style="{ background: `url(${img.path}) center / cover`, zIndex: -1000 + allInfo[0].homeslider.length - idx }" -->
     </div>
     </div>
   </section>
@@ -97,7 +96,14 @@ export default {
       }
     },
     imagesLoaded (count) {
-      console.log(count)
+      if (count >= this.countOfSlides) {
+        console.log('images was loaded')
+        const preloader = document.querySelector('.preloader')
+        if (preloader) preloader.style.opacity = '0'
+        setTimeout(() => {
+          setTimeout(() => this.$store.commit('hideLoader'), 1000)
+        })
+      }
     }
   },
   mounted () {

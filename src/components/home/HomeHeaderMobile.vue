@@ -22,7 +22,7 @@
             :key="imageIndex"
             @click="index = imageIndex"
           >
-            <img :src="image.path">
+            <img :src="image.path" @load="onImageLoad">
           </div>
       </slick>
     </div>
@@ -80,7 +80,8 @@ export default {
       dots: false
     },
     index: null,
-    index2: 0
+    index2: 0,
+    imagesLoaded: 0
   }),
   computed: {
     allInfo () {
@@ -103,6 +104,21 @@ export default {
     },
     handleAfterChange (event, slick, currentSlide) {
       this.index2 = currentSlide
+    },
+    onImageLoad () {
+      this.imagesLoaded++
+    }
+  },
+  watch: {
+    imagesLoaded (count) {
+      if (count >= this.images.length) {
+        console.log('images was loaded')
+        const preloader = document.querySelector('.preloader')
+        if (preloader) preloader.style.opacity = '0'
+        setTimeout(() => {
+          setTimeout(() => this.$store.commit('hideLoader'), 1000)
+        })
+      }
     }
   }
 }

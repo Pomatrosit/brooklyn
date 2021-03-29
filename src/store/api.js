@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { loadImages } from '@/utils/utils'
+
 const API_URL = 'http://bruklyn.tmweb.ru'
 
 function getApartments () {
@@ -105,6 +107,20 @@ export default {
           commit('setTitles', results[6].data.data)
           commit('setApiLoadingFalse')
           console.log('api was loaded')
+          // прекеширование всех изображений
+          const imgArr = []
+          results[5].data.data[0].sections.forEach(el => imgArr.push(el.path))
+          results[0].data.data.forEach(el => imgArr.push(el.image.path))
+          results[1].data.data.forEach(el => {
+            imgArr.push(el.primary_image.path)
+            imgArr.push(el.icon.path)
+            el.secondary_image.forEach(el => imgArr.push(el.path))
+          })
+          imgArr.push(results[3].data.data[0].image[0].path)
+          imgArr.push(results[3].data.data[1].image[0].path)
+          imgArr.push(results[3].data.data[2].image[0].path)
+          results[2].data.data.forEach(el => imgArr.push(el.image[0].path))
+          loadImages(imgArr)
         })
     }
   }

@@ -50,6 +50,9 @@ export default {
     isDesktop () {
       return this.$store.getters.isDesktop
     },
+    isApiLoading () {
+      return this.$store.getters.isApiLoading
+    },
     titles () {
       return this.$store.getters.titles
     }

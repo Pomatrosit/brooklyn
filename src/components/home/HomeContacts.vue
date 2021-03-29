@@ -282,6 +282,7 @@ export default {
   padding:0 4.167vh 0 3.125vh;
   cursor:pointer;
   text-decoration:none;
+  border:1px solid #E7E7E7;
 }
 
 .card__left{
