@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { loadImages } from '@/utils/utils'
 
-const API_URL = 'http://bruklyn.tmweb.ru'
+const API_URL = 'https://brooklyn30.ru/'
 
 function getApartments () {
   return axios.get(`${API_URL}/api/apartments`)
@@ -116,11 +116,11 @@ export default {
             imgArr.push(el.icon.path)
             el.secondary_image.forEach(el => imgArr.push(el.path))
           })
-          imgArr.push(results[3].data.data[0].image[0].path)
-          imgArr.push(results[3].data.data[1].image[0].path)
-          imgArr.push(results[3].data.data[2].image[0].path)
+          results[3].data.data.forEach(el => imgArr.push(el.image[0].path))
           results[2].data.data.forEach(el => imgArr.push(el.image[0].path))
-          loadImages(imgArr)
+          setTimeout(() => {
+            loadImages(imgArr)
+          }, 3000)
         })
     }
   }

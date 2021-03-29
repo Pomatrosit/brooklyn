@@ -107,40 +107,54 @@ export default {
     }
   },
   mounted () {
+    window.sliderInterval = null
     gsap.to(this.$refs.header, { height: '100%', duration: 0 })
     gsap.to(this.$refs.header, { opacity: 1, duration: 1, ease: Power2.easeInOut })
     gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
-    this.interval = setInterval(this.autoChange, 5000)
+    window.sliderInterval = setInterval(this.autoChange, 5000)
+    window.addEventListener('blur', this.onBlur)
+    window.addEventListener('focus', this.onFocus)
   },
   beforeDestroy () {
-    clearInterval(this.interval)
-    this.interval = null
+    clearInterval(window.sliderInterval)
+  },
+  destroyed () {
+    window.removeEventListener('blur', this.onBlur)
+    window.removeEventListener('focus', this.onFocus)
+    clearInterval(window.sliderInterval)
   },
   methods: {
+    onBlur () {
+      clearInterval(window.sliderInterval)
+    },
+    onFocus () {
+      window.sliderInterval = setInterval(this.autoChange, 5000)
+    },
     onImageLoad () {
       this.imagesLoaded++
     },
     autoChange () {
+      console.log('autochange')
       this.nextSlide()
     },
     nextSlide () {
       if (!this.isSliderMoved) {
         this.setSliderMoved()
         this.changeSlideNext()
-        clearInterval(this.interval)
-        setTimeout(() => {
-          this.interval = setInterval(this.autoChange, 5000)
-        }, 1500)
+        // clearInterval(window.sliderInterval)
+        // setTimeout(() => {
+        //   window.sliderInterval = setInterval(this.autoChange, 5000)
+        // }, 1500)
       }
     },
     prevSlide () {
       if (!this.isSliderMoved) {
         this.setSliderMoved()
         this.changeSlidePrev()
-        clearInterval(this.interval)
-        setTimeout(() => {
-          this.interval = setInterval(this.autoChange, 5000)
-        }, 1500)
+        // clearInterval(window.sliderInterval)
+        // setTimeout(() => {
+        //   window.sliderInterval = setInterval(this.autoChange, 5000)
+        // }, 1500)
       }
     },
     changeSlideNext () {

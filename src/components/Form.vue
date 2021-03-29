@@ -48,7 +48,7 @@
 <script>
 import axios from 'axios'
 import MaskedInput from 'vue-masked-input'
-const API_URL = 'http://bruklyn.tmweb.ru'
+const API_URL = 'https://brooklyn30.ru/'
 
 export default {
   components: {
