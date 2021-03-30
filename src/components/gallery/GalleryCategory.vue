@@ -23,6 +23,8 @@
         </div>
         <div class="gallery-bottom">
 
+          <p v-if="imagesComputed.length < 1" class="in-progress-title gallery-animated">Страница находится в разработке</p>
+
           <div
             class="gallery-img gallery-animated"
             v-for="(image, imageIndex) in gallery.secondary_image"
@@ -211,6 +213,16 @@ export default {
 
 .gallery__back:hover svg path{
   transition:0.5s;
+}
+
+.in-progress-title{
+  font-weight: 500;
+  font-size: 3.125vh;
+  color: #242135;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
 }
 
 @media (hover:hover){

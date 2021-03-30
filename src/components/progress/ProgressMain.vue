@@ -13,7 +13,7 @@
                   </div>
               </slick>
               <div class="sl-arrow-left sl-arrow sl-dark-arrow" @click="innerSlidePrev">
-                <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#242135"/>
+                <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
               </div>
               <div class="sl-arrow-right sl-arrow sl-pink-arrow" @click="innerSlideNext">
                 <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
@@ -91,7 +91,7 @@ export default {
     slickOptions: {
       slidesToShow: 1,
       arrows: false,
-      speed: 1000,
+      speed: 800,
       cssEase: 'ease-in-out',
       centerPadding: '0'
     },
@@ -240,17 +240,15 @@ export default {
   display:flex;
   align-items:Center;
   justify-content:center;
-  top:calc(100% - 4vh);
-  transform:translateY(-50%);
+  top:calc(50% - 3.1vh);
   transition:0.5s;
 }
 
 .sl-arrow-left{
-  left:calc(100% - 12.5vh);
-  background:#fff;
+  left:2vh;
 }
 .sl-arrow-right{
-  left:calc(100% - 6.25vh);
+  left:calc(100% - 8.25vh);
 }
 
 .sl-arrow-left svg, .sl-arrow-right svg{
@@ -278,7 +276,7 @@ export default {
   display:block;
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
 }
 
 .progress__main{

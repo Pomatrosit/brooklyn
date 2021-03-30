@@ -50,10 +50,10 @@ export default {
       return state.gallery
     },
     news (state) {
-      return state.news.reverse()
+      return state.news.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))
     },
     progressItems (state) {
-      return state.progressItems
+      return state.progressItems.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))
     },
     advantages (state) {
       return state.advantages

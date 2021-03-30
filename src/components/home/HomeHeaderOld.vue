@@ -1,21 +1,21 @@
 <template>
 <div>
-  <section class="header" id="section1" ref="header">
-      <slick
-        class="slick"
-        ref="slick"
-        @beforeChange="handleBeforeChange"
-        @lazyLoaded="handleLazyLoaded"
-        :options="slickOptions"
-      >
-        <div
-          class="header__slide"
-          v-for="img in allInfo[0].homeslider"
-          :key="img.id"
-        >
-          <img :src="img.path" @load="onImageLoad">
-        </div>
-      </slick>
+  <section class="header" id="section1" ref="header"
+    @mousedown="onMouseDown"
+    @mouseup="onMouseUp"
+    @mouseleave="onMouseLeave"
+  >
+    <div v-if="allInfo.length > 0">
+    <div
+      v-for="(img, idx) in allInfo[0].homeslider"
+      :key="img.id"
+      class="header__slide"
+      :style="{ zIndex: -1000 + allInfo[0].homeslider.length - idx }"
+      :ref="`slide${idx + 1}`"
+    >
+      <img :src="img.path" @load="onImageLoad">
+    </div>
+    </div>
   </section>
 
   <div class="nav" ref = "navigation">
@@ -35,9 +35,9 @@
 
       <div class="nav__points">
         <div
-          v-for="(_, idx) in allInfo[0].homeslider"
+          v-for="(_, idx) in countOfSlides"
           class="nav__point"
-          :class="{ 'nav__point-active': currentSlide === idx }"
+          :class="{ 'nav__point-active': currentSlide === idx + 1 }"
           @click="pointClickHandler(idx)"
           :key="idx">
         </div>
@@ -56,33 +56,30 @@
 </template>
 
 <script>
-import Slick from 'vue-slick'
-import 'slick-carousel/slick/slick.css'
+// todo : Заменить в хуке mounted стартовые gsap анимации на css свойства
 import gsap, { Power2 } from 'gsap'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeHeader',
-  components: {
-    Slick
-  },
   data: () => ({
-    currentSlide: 0,
-    imagesLoaded: 0,
-    slickOptions: {
-      slidesToShow: 1,
-      arrows: false,
-      speed: 1000,
-      cssEase: 'ease-in-out',
-      autoplay: true,
-      autoplaySpeed: 4000,
-      pauseOnHover: false
-    }
+    currentSlide: 1,
+    currentZIndex: -1000,
+    isSliderMoved: false,
+    HEADER_SLIDE_ANIMATION_DURATION: 1.5,
+    touchStart: 0,
+    touchEnd: 0,
+    interval: null,
+    imagesLoaded: 0
   }),
   computed: {
     ...mapGetters(['homeSlide']),
     allInfo () {
       return this.$store.getters.allInfo
+    },
+    countOfSlides () {
+      if (this.allInfo.length < 1) return 0
+      return this.allInfo[0].homeslider.length
     }
   },
   watch: {
@@ -99,7 +96,7 @@ export default {
       }
     },
     imagesLoaded (count) {
-      if (count >= this.allInfo[0].homeslider.length) {
+      if (count >= this.countOfSlides) {
         console.log('images was loaded')
         const preloader = document.querySelector('.preloader')
         if (preloader) preloader.style.opacity = '0'
@@ -110,28 +107,108 @@ export default {
     }
   },
   mounted () {
+    window.sliderInterval = null
     gsap.to(this.$refs.header, { height: '100%', duration: 0 })
     gsap.to(this.$refs.header, { opacity: 1, duration: 1, ease: Power2.easeInOut })
     gsap.to(this.$refs.navigation, { y: 0, duration: 0.8, ease: Power2.easeInOut })
+    window.sliderInterval = setInterval(this.autoChange, 5000)
+    window.addEventListener('blur', this.onBlur)
+    window.addEventListener('focus', this.onFocus)
+  },
+  beforeDestroy () {
+    clearInterval(window.sliderInterval)
+  },
+  destroyed () {
+    window.removeEventListener('blur', this.onBlur)
+    window.removeEventListener('focus', this.onFocus)
+    clearInterval(window.sliderInterval)
   },
   methods: {
+    onBlur () {
+      clearInterval(window.sliderInterval)
+    },
+    onFocus () {
+      window.sliderInterval = setInterval(this.autoChange, 5000)
+    },
     onImageLoad () {
       this.imagesLoaded++
     },
+    autoChange () {
+      console.log('autochange')
+      this.nextSlide()
+    },
     nextSlide () {
-      this.$refs.slick.next()
+      if (!this.isSliderMoved) {
+        this.setSliderMoved()
+        this.changeSlideNext()
+        // clearInterval(window.sliderInterval)
+        // setTimeout(() => {
+        //   window.sliderInterval = setInterval(this.autoChange, 5000)
+        // }, 1500)
+      }
     },
     prevSlide () {
-      this.$refs.slick.prev()
+      if (!this.isSliderMoved) {
+        this.setSliderMoved()
+        this.changeSlidePrev()
+        // clearInterval(window.sliderInterval)
+        // setTimeout(() => {
+        //   window.sliderInterval = setInterval(this.autoChange, 5000)
+        // }, 1500)
+      }
+    },
+    changeSlideNext () {
+      const currentSlide = `slide${this.currentSlide}`
+      const tl = gsap.timeline()
+      tl.to(this.$refs[currentSlide], { width: 0, duration: this.HEADER_SLIDE_ANIMATION_DURATION, ease: Power2.easeInOut })
+      tl.to(this.$refs[currentSlide], { zIndex: this.currentZIndex, width: '100%', duration: 0 })
+      if (this.currentSlide < this.countOfSlides) this.currentSlide++
+      else this.currentSlide = 1
+      this.currentZIndex--
+    },
+    changeSlidePrev () {
+      if (this.currentSlide > 1) this.currentSlide--
+      else this.currentSlide = this.countOfSlides
+      this.currentZIndex++
+      const currentSlide = `slide${this.currentSlide}`
+      const tl = gsap.timeline()
+      tl.to(this.$refs[currentSlide], { zIndex: this.currentZIndex + this.countOfSlides, width: 0, duration: 0 })
+      tl.to(this.$refs[currentSlide], { width: '100%', duration: this.HEADER_SLIDE_ANIMATION_DURATION, ease: Power2.easeInOut })
+    },
+    setSliderMoved () {
+      this.isSliderMoved = true
+      setTimeout(() => { this.isSliderMoved = false }, this.HEADER_SLIDE_ANIMATION_DURATION * 1000)
     },
     pointClickHandler (idx) {
-      this.$refs.slick.goTo(idx)
+      if (!this.isSliderMoved) {
+        const clickedSlide = idx + 1
+        if (clickedSlide !== this.currentSlide) {
+          if (clickedSlide > this.currentSlide) {
+            const delta = clickedSlide - this.currentSlide
+            this.setSliderMoved()
+            for (let i = 1; i <= delta; i++) this.changeSlideNext()
+          } else {
+            const delta = this.currentSlide - clickedSlide
+            this.setSliderMoved()
+            for (let i = 1; i <= delta; i++) this.changeSlidePrev()
+          }
+        }
+      }
     },
-    handleBeforeChange (e, slick, currentSlide, nextSlide) {
-      this.currentSlide = nextSlide
+    onMouseDown (e) {
+      this.touchStart = e.clientX
+      document.body.style.cursor = 'grabbing'
     },
-    handleLazyLoaded (event, slick, image, imageSource) {
-      console.log('handleLazyLoaded', event, slick, image, imageSource)
+    onMouseUp (e) {
+      this.touchEnd = e.clientX
+      document.body.style.cursor = 'auto'
+      if (this.touchStart - this.touchEnd > 150) this.nextSlide()
+      if (this.touchStart - this.touchEnd < -150) this.prevSlide()
+    },
+    onMouseLeave () {
+      document.body.style.cursor = 'auto'
+      this.touchStart = 0
+      this.touchEnd = 0
     }
   }
 }
@@ -151,13 +228,17 @@ export default {
 }
 
 .header__slide{
-  height:76.5vh;
-  width:100%;
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
   overflow:hidden;
   cursor:grab;
 }
 
 .header__slide img{
+  position:absolute;
   width:100%;
   height:100%;
   object-fit:cover;

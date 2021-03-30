@@ -7,7 +7,8 @@
         <span class="date">{{ date }}</span>
       </div>
     </div>
-    <div class="item-img" :style="{ background: 'url('+ newsItem.image[0].path +') center /cover' }">
+    <div class="item-img">
+      <img :src="newsItem.image[0].path" alt="">
     </div>
   </div>
 </template>
@@ -37,12 +38,16 @@ export default {
 .item-main{
   border:1px solid #242135;
   border-right:none;
-  width:61%;
+  width:82%;
   padding:4.7vh 10% 6.2vh 4.7vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-radius:3px 0 0 3px;
 }
 
 .item-img{
-  width:39%;
+  width:18%;
 }
 
 .item-img img{

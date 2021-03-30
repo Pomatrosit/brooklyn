@@ -23,7 +23,8 @@
         effect="swipe"
         @close="index = null">
       </CoolLightBox>
-      <div class="gallery__back" @click="goBack">
+      <p v-if="imagesComputed.length < 1" class="in-progress-title gallery-animated">Страница находится в разработке</p>
+      <div v-if="imagesComputed.length > 0" class="gallery__back" @click="goBack">
         <SliderArrowLeft width="7px" height="12px" fill="#242135"/>
         <span>К категориям</span>
       </div>
@@ -101,5 +102,11 @@ export default {
   width:100%;
   height:100%;
   object-fit:cover;
+}
+
+.in-progress-title{
+  font-size:20px;
+  font-weight:500;
+  padding:30px 0;
 }
 </style>

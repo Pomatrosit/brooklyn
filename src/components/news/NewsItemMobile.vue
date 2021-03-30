@@ -29,7 +29,7 @@ export default {
 <style scoped>
 .img{
   width:100%;
-  height:190px;
+  height:500px;
 }
 
 .img img{

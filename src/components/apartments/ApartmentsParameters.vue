@@ -41,9 +41,9 @@ export default {
     apartmentList () {
       const list = this.$store.getters.apartmentList
       switch (this.id) {
-        case 'studios' : return list.filter(el => el.count === 'studio')
-        case '1' : return list.filter(el => el.count === 'one')
-        case '2' : return list.filter(el => el.count === 'two')
+        case 'studios' : return list.filter(el => (el.count === 'studio' && el.id !== 13))
+        case '1' : return list.filter(el => el.count === 'one' && el.id !== 9 && el.id !== 10 && el.id !== 14)
+        case '2' : return list.filter(el => el.count === 'two' && el.id !== 11 && el.id !== 17)
         case '3' : return list.filter(el => el.count === 'three')
         default : return []
       }

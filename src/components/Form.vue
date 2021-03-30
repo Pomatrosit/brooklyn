@@ -77,16 +77,17 @@ export default {
         // отправка
         this.isSubmitBtnDisabled = true
         const payload = {
-          phone: rawValue,
+          phone: this.phone,
           name: this.name,
           type: this.modalTypeForRequest
         }
+        axios.get(`${API_URL}/api/mail/${payload.name}/${this.phone}/${payload.type}`)
         axios.post(`${API_URL}/api/order`, payload)
           .then(function (response) {
             thisComponent.formStep = 2
           })
           .catch(function (error) {
-            console.log(error)
+            console.error(error)
             thisComponent.formStep = 2
             thisComponent.afterSubmitText = 'Что-то пошло не так, попробуйте позже'
           })

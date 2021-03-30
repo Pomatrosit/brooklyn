@@ -19,13 +19,11 @@
           </div>
         </slick>
       </div>
-      <div v-if="newsItem.image.length > 1" class="slider-arrows news-single-animated">
-        <div class="arrow-left arrow dark-arrow" @click="prev">
-          <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
-        </div>
-        <div class="arrow-right arrow pink-arrow" @click="next">
-          <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
-        </div>
+      <div v-if="newsItem.image.length > 1" class="arrow-left arrow dark-arrow news-single-animated" @click="prev">
+        <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
+      </div>
+      <div v-if="newsItem.image.length > 1" class="arrow-right arrow pink-arrow news-single-animated" @click="next">
+        <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
       </div>
     </div>
   </div>
@@ -91,17 +89,18 @@ export default {
 
 .slide{
   width:100%;
-  height:50vh;
+  height:70vh;
 }
 
 .slide img{
   display:block;
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain;
 }
 
 .arrow{
+  position:absolute;
   background:#242135;
   width:6.25vh;
   height:6.25vh;
@@ -109,17 +108,13 @@ export default {
   display:flex;
   align-items:center;
   justify-content:center;
+  top:calc(50% - 4vh);
+  left:0;
 }
 
 .arrow-right{
   background:#EA8E79;
-}
-
-.slider-arrows{
-  display:flex;
-  position:Absolute;
-  bottom:0;
-  right:0;
+  left:calc(100% - 6.25vh);
 }
 
 .slider{
