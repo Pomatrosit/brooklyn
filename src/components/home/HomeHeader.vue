@@ -76,7 +76,8 @@ export default {
       cssEase: 'ease-in-out',
       autoplay: true,
       autoplaySpeed: 4000,
-      pauseOnHover: false
+      pauseOnHover: false,
+      fade: true
     }
   }),
   computed: {
