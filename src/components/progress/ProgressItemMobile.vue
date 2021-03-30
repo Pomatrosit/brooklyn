@@ -24,7 +24,7 @@
           <img :src="image.path">
         </div>
       </slick>
-      <div class="slider-arrows">
+      <div class="slider-arrows" v-if="item.image.length > 1">
         <div class="arrow-left arrow dark-arrow" @click="prev">
           <SliderArrowLeft width="8px" height="13px" fill="#fff"/>
         </div>

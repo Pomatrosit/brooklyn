@@ -9,10 +9,20 @@
         <span>Онлайн трансляция</span>
       </div> -->
       <ProgressItemMobile
-        v-for="item in progressItems"
+        v-for="item in progressItemsOnPage"
         :key="item.id"
         :item="item"
       />
+      <div v-if="pagesCount > 1" class="pagination">
+        <span
+          v-for="idx in pagesCount"
+          :key="idx"
+          class="pagination-item"
+          :class="{ 'active-pagination-item' : idx === currentPage }"
+          @click="onPaginationClick(idx)"
+        >{{idx}}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -24,9 +34,27 @@ export default {
   components: {
     ProgressItemMobile
   },
+  data: () => ({
+    currentPage: 1,
+    itemsOnPage: 5
+  }),
   computed: {
     progressItems () {
       return this.$store.getters.progressItems
+    },
+    progressItemsOnPage () {
+      const start = this.currentPage * this.itemsOnPage - this.itemsOnPage
+      const end = start + this.itemsOnPage
+      return this.progressItems.slice(start, end)
+    },
+    pagesCount () {
+      return Math.ceil(this.progressItems.length / this.itemsOnPage)
+    }
+  },
+  methods: {
+    onPaginationClick (idx) {
+      this.currentPage = idx
+      window.scrollTo(0, 0)
     }
   }
 }
@@ -46,6 +74,31 @@ export default {
   padding:40px 0 5px 0;
   color: #242135;
   text-align:center;
+}
+
+.pagination{
+  margin:50px 0;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:10px;
+  flex-wrap:wrap;
+}
+
+.pagination-item{
+  display:block;
+  margin-bottom:10px;
+  margin-left:10px;
+  cursor:pointer;
+  color:#212435;
+  font-weight:500;
+}
+
+.active-pagination-item{
+  font-weight:700;
+  color:#ea8e79;
+  text-decoration:underline;
 }
 
 .button{

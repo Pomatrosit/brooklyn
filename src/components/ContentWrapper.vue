@@ -1,6 +1,6 @@
 <template>
   <section class="content">
-    <div class="app-wrapper content-wrapper">
+    <div class="app-wrapper content-wrapper content-wrapper-js">
       <slot />
     </div>
   </section>

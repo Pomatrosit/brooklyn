@@ -12,10 +12,10 @@
                     <img :src="img.path" alt="">
                   </div>
               </slick>
-              <div class="sl-arrow-left sl-arrow sl-dark-arrow" @click="innerSlidePrev">
+              <div v-if="progressItems[currentSlide].image.length > 1" class="sl-arrow-left sl-arrow sl-dark-arrow" @click="innerSlidePrev">
                 <SliderArrowLeft width="0.83vh" height="1.45vh" fill="#fff"/>
               </div>
-              <div class="sl-arrow-right sl-arrow sl-pink-arrow" @click="innerSlideNext">
+              <div v-if="progressItems[currentSlide].image.length > 1" class="sl-arrow-right sl-arrow sl-pink-arrow" @click="innerSlideNext">
                 <SliderArrowRight width="0.83vh" height="1.45vh" fill="#fff"/>
               </div>
             </div>

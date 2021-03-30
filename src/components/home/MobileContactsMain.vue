@@ -213,7 +213,7 @@ export default {
 }
 
 .social-icons svg{
-  margin-left:5px;
+  margin-left:7px;
 }
 
 </style>

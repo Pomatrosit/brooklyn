@@ -4,10 +4,20 @@
       <h2 class="news__title">Новости</h2>
       <p class="news__desc"><strong>В разделе Новости </strong>публикуются самые последние и актуальные сведения о жилом комплексе «Бруклин».</p>
       <NewsItemMobile
-        v-for="newsItem in news"
+        v-for="newsItem in newsOnPage"
         :key="newsItem.id"
         :newsItem="newsItem"
       />
+      <div v-if="pagesCount > 1" class="pagination">
+        <span
+          v-for="idx in pagesCount"
+          :key="idx"
+          class="pagination-item"
+          :class="{ 'active-pagination-item' : idx === currentPage }"
+          @click="onPaginationClick(idx)"
+        >{{idx}}
+        </span>
+      </div>
       <div class="button" @click="$router.push('/')">
         <span>Вернуться на главную</span>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,9 +34,27 @@ export default {
   components: {
     NewsItemMobile
   },
+  data: () => ({
+    currentPage: 1,
+    itemsOnPage: 10
+  }),
   computed: {
     news () {
       return this.$store.getters.news
+    },
+    newsOnPage () {
+      const start = this.currentPage * this.itemsOnPage - this.itemsOnPage
+      const end = start + this.itemsOnPage
+      return this.news.slice(start, end)
+    },
+    pagesCount () {
+      return Math.ceil(this.news.length / this.itemsOnPage)
+    }
+  },
+  methods: {
+    onPaginationClick (idx) {
+      this.currentPage = idx
+      window.scrollTo(0, 0)
     }
   }
 }
@@ -71,6 +99,31 @@ export default {
   line-height: 20px;
   color: #FFFFFF;
   margin-bottom:40px;
+}
+
+.pagination{
+  margin:50px 0;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  padding-right:10px;
+  flex-wrap:wrap;
+}
+
+.pagination-item{
+  display:block;
+  margin-bottom:10px;
+  margin-left:10px;
+  cursor:pointer;
+  color:#212435;
+  font-weight:500;
+}
+
+.active-pagination-item{
+  font-weight:700;
+  color:#ea8e79;
+  text-decoration:underline;
 }
 
 .button{

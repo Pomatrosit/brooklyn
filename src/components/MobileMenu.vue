@@ -96,6 +96,10 @@ export default {
   margin-left:13px;
 }
 
+.social span{
+  font-size:12px;
+}
+
 .description{
   font-weight: 500;
   font-size: 12px;
