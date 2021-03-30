@@ -76,6 +76,7 @@ export default {
       if (!rawValue.split('').includes('_') && this.checked && rawValue !== '' && this.name.length >= 2) {
         // отправка
         this.isSubmitBtnDisabled = true
+        window.dataLayer.push({ event: 'formsend' })
         const payload = {
           phone: this.phone,
           name: this.name,

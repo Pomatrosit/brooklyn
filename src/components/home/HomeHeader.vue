@@ -76,8 +76,7 @@ export default {
       cssEase: 'ease-in-out',
       autoplay: true,
       autoplaySpeed: 4000,
-      pauseOnHover: false,
-      fade: true
+      pauseOnHover: false
     }
   }),
   computed: {
@@ -163,36 +162,6 @@ export default {
   height:100%;
   object-fit:cover;
   pointer-events:none;
-}
-
-.header__slide1{
-  z-index:-994;
-  background:url('/img/mainPage/swooshed/1.jpg') center / cover;
-}
-
-.header__slide2{
-  z-index:-995;
-  background:url('/img/mainPage/swooshed/2.jpg') center / cover;
-}
-
-.header__slide3{
-  z-index:-996;
-  background:url('/img/mainPage/swooshed/3.jpg') center / cover;
-}
-
-.header__slide4{
-  z-index:-997;
-  background:url('/img/mainPage/swooshed/4.jpg') center / cover;
-}
-
-.header__slide5{
-  z-index:-998;
-  background:url('/img/mainPage/swooshed/5.jpg') center / cover;
-}
-
-.header__slide6{
-  z-index:-999;
-  background:url('/img/mainPage/swooshed/6.jpg') center / cover;
 }
 
 .header__slide img{

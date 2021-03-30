@@ -142,6 +142,11 @@ export default {
       if (this.allInfo.length > 0) return this.allInfo[0].mail
       return ''
     }
+  },
+  methods: {
+    goTo (link) {
+      window.open(link, '_blank')
+    }
   }
 }
 </script>
