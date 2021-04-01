@@ -65,6 +65,7 @@ import SliderArrowLeft from '@/components/svg/SliderArrowLeft'
 import SliderArrowRight from '@/components/svg/SliderArrowRight'
 import CoolLightBox from 'vue-cool-lightbox'
 import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
+import { loadImages } from '@/utils/utils'
 
 export default {
   components: {
@@ -90,6 +91,9 @@ export default {
     images () {
       if (this.allInfo.length < 1) return []
       return this.$store.getters.allInfo[0].homeslider.map(el => el.path)
+    },
+    imageArray () {
+      return this.$store.getters.imageArray
     }
   },
   methods: {
@@ -112,7 +116,8 @@ export default {
   watch: {
     imagesLoaded (count) {
       if (count >= this.images.length) {
-        console.log('images was loaded')
+        this.$store.commit('setHomePageShowed')
+        loadImages(this.imageArray)
         const preloader = document.querySelector('.preloader')
         if (preloader) preloader.style.opacity = '0'
         setTimeout(() => {

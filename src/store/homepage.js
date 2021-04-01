@@ -1,7 +1,9 @@
 export default {
   state: {
     homeSlide: 1,
-    LAST_HOME_SLIDE: 5
+    LAST_HOME_SLIDE: 5,
+    isHomePageShowed: false,
+    isWheelAvailable: true
   },
   getters: {
     homeSlide (state) {
@@ -12,6 +14,12 @@ export default {
     },
     progress (state) {
       return (state.homeSlide - 1) * 25
+    },
+    isHomePageShowed (state) {
+      return state.isHomePageShowed
+    },
+    isWheelAvailable (state) {
+      return state.isWheelAvailable
     }
   },
   mutations: {
@@ -23,8 +31,23 @@ export default {
     },
     setStartSlide (state) {
       state.homeSlide = 1
+    },
+    setHomePageShowed (state) {
+      state.isHomePageShowed = true
+    },
+    stopWheel (state) {
+      state.isWheelAvailable = false
+    },
+    unstopWheel (state) {
+      state.isWheelAvailable = true
     }
   },
   actions: {
+    setWheelUnavailable ({ commit }) {
+      commit('stopWheel')
+      setTimeout(() => {
+        commit('unstopWheel')
+      }, 3000)
+    }
   }
 }

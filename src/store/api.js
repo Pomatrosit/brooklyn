@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { loadImages } from '@/utils/utils'
 
 const API_URL = 'https://brooklyn30.ru/'
 
@@ -40,7 +39,8 @@ export default {
     advantages: [],
     allInfo: [],
     titles: [],
-    isApiLoading: true
+    isApiLoading: true,
+    imageArray: []
   },
   getters: {
     apartmentList (state) {
@@ -66,6 +66,9 @@ export default {
     },
     isApiLoading (state) {
       return state.isApiLoading
+    },
+    imageArray (state) {
+      return state.imageArray
     }
   },
   mutations: {
@@ -92,6 +95,9 @@ export default {
     },
     setApiLoadingFalse (state) {
       state.isApiLoading = false
+    },
+    setImageArray (state, payload) {
+      state.imageArray = payload
     }
   },
   actions: {
@@ -106,21 +112,24 @@ export default {
           commit('setAllInfo', results[5].data.data)
           commit('setTitles', results[6].data.data)
           commit('setApiLoadingFalse')
-          console.log('api was loaded')
-          // прекеширование всех изображений
+          // прекеширование ключевых изображений
           const imgArr = []
           results[5].data.data[0].sections.forEach(el => imgArr.push(el.path))
           results[0].data.data.forEach(el => imgArr.push(el.image.path))
           results[1].data.data.forEach(el => {
             imgArr.push(el.primary_image.path)
             imgArr.push(el.icon.path)
-            el.secondary_image.forEach(el => imgArr.push(el.path))
+            el.secondary_image.forEach((elem, idx) => {
+              if (idx < 4) imgArr.push(elem.path)
+            })
           })
-          results[3].data.data.forEach(el => imgArr.push(el.image[0].path))
-          results[2].data.data.forEach(el => imgArr.push(el.image[0].path))
-          setTimeout(() => {
-            loadImages(imgArr)
-          }, 3000)
+          const progress = results[3].data.data
+          imgArr.push(progress[progress.length - 1].image[0].path)
+          const news = results[2].data.data
+          imgArr.push(news[news.length - 1].image[0].path)
+          imgArr.push(news[news.length - 2].image[0].path)
+          imgArr.push(news[news.length - 3].image[0].path)
+          commit('setImageArray', imgArr)
         })
     }
   }

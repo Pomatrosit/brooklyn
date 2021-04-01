@@ -42,10 +42,12 @@ export default {
   components: {
     FooterMain
   },
-  computed: mapGetters(['homeSlide']),
-  data: () => ({
-    isWheelAvailable: true
-  }),
+  computed: {
+    isWheelAvailable () {
+      return this.$store.getters.isWheelAvailable
+    },
+    ...mapGetters(['homeSlide'])
+  },
   watch: {
     homeSlide (homeSlide, prevHomeSlide) {
       switch (homeSlide) {
@@ -79,10 +81,7 @@ export default {
   },
   methods: {
     setScrollUnavailable () {
-      this.isWheelAvailable = false
-      setTimeout(() => {
-        this.isWheelAvailable = true
-      }, 3000)
+      this.$store.dispatch('setWheelUnavailable')
     },
     onScrollTrigger () {
       const homeSlide = this.$store.getters.homeSlide

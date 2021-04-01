@@ -2,18 +2,22 @@
   <div>
     <div class="home" v-if="isDesktop">
       <HomeHeader />
-      <HomeAbout />
-      <HomeAdvantages />
-      <HomeInfrastructure />
-      <HomeContacts />
+      <div v-if="isHomePageShowed">
+        <HomeAbout />
+        <HomeAdvantages />
+        <HomeInfrastructure />
+        <HomeContacts />
+      </div>
       <HomeFooter />
     </div>
     <div class="home" v-if="!isDesktop">
       <HomeHeaderMobile />
-      <HomeAboutMobile />
-      <HomeAdvantagesMobile />
-      <HomeInfrastructureMobile />
-      <homeContactsMobile />
+      <div v-if="isHomePageShowed">
+        <HomeAboutMobile />
+        <HomeAdvantagesMobile />
+        <HomeInfrastructureMobile />
+        <homeContactsMobile />
+      </div>
     </div>
   </div>
 </template>
@@ -55,11 +59,14 @@ export default {
     },
     titles () {
       return this.$store.getters.titles
+    },
+    isHomePageShowed () {
+      return this.$store.getters.isHomePageShowed
+    },
+    isWheelAvailable () {
+      return this.$store.getters.isWheelAvailable
     }
   },
-  data: () => ({
-    isWheelAvailable: true
-  }),
   methods: {
     onWheel (e) {
       const homeSlide = this.$store.getters.homeSlide
@@ -74,11 +81,19 @@ export default {
         }
       }
     },
+    onKey (e) {
+      if (this.isWheelAvailable) {
+        if (e.keyCode === 40) {
+          this.$store.commit('slideDown')
+          this.setWheelUnavailable()
+        } else if (e.keyCode === 38) {
+          this.$store.commit('slideUp')
+          this.setWheelUnavailable()
+        }
+      }
+    },
     setWheelUnavailable () {
-      this.isWheelAvailable = false
-      setTimeout(() => {
-        this.isWheelAvailable = true
-      }, 3000)
+      this.$store.dispatch('setWheelUnavailable')
     }
   },
   mounted () {
@@ -88,10 +103,12 @@ export default {
     if (this.isDesktop) {
       this.setWheelUnavailable()
       window.addEventListener('wheel', this.onWheel)
+      window.addEventListener('keyup', this.onKey)
     }
   },
   beforeDestroy () {
     window.removeEventListener('wheel', this.onWheel)
+    window.removeEventListener('keyup', this.onKey)
   }
 }
 </script>

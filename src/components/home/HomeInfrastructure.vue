@@ -158,7 +158,7 @@ export default {
       46.329099, 48.028477
     ],
     brooklynCoords: [
-      46.324099, 48.026477
+      46.324599, 48.026477
     ],
     settings: {
       apiKey: 'dbdccdc4-2977-40f2-9cc3-07dc75ba9931',

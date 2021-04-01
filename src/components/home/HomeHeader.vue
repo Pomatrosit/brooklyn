@@ -5,7 +5,6 @@
         class="slick"
         ref="slick"
         @beforeChange="handleBeforeChange"
-        @lazyLoaded="handleLazyLoaded"
         :options="slickOptions"
       >
         <div
@@ -60,6 +59,7 @@ import Slick from 'vue-slick'
 import 'slick-carousel/slick/slick.css'
 import gsap, { Power2 } from 'gsap'
 import { mapGetters } from 'vuex'
+import { loadImages } from '@/utils/utils'
 
 export default {
   name: 'HomeHeader',
@@ -83,6 +83,9 @@ export default {
     ...mapGetters(['homeSlide']),
     allInfo () {
       return this.$store.getters.allInfo
+    },
+    imageArray () {
+      return this.$store.getters.imageArray
     }
   },
   watch: {
@@ -100,7 +103,8 @@ export default {
     },
     imagesLoaded (count) {
       if (count >= this.allInfo[0].homeslider.length) {
-        console.log('images was loaded')
+        this.$store.commit('setHomePageShowed')
+        loadImages(this.imageArray)
         const preloader = document.querySelector('.preloader')
         if (preloader) preloader.style.opacity = '0'
         setTimeout(() => {
@@ -129,9 +133,6 @@ export default {
     },
     handleBeforeChange (e, slick, currentSlide, nextSlide) {
       this.currentSlide = nextSlide
-    },
-    handleLazyLoaded (event, slick, image, imageSource) {
-      console.log('handleLazyLoaded', event, slick, image, imageSource)
     }
   }
 }
@@ -144,7 +145,7 @@ export default {
   left:0;
   right:0;
   bottom:0;
-  z-index:0;
+  z-index:0.5;
   height:0;
   opacity:0;
   padding:10.42vh 0 13.54vh 0;
