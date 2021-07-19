@@ -12,6 +12,7 @@
       >
         <Form />
       </ModalWindow>
+      <CookieWarning v-if="!isCookieShowed" :toggleCookieWarning = "toggleCookieWarning"/>
     </div>
   </div>
 </template>
@@ -23,6 +24,7 @@ import ModalWindow from '@/components/ModalWindow'
 import Form from '@/components/Form'
 import PreLoader from '@/components/PreLoader'
 import FooterMobile from '@/components/FooterMobile'
+import CookieWarning from '@/components/CookieWarning'
 
 export default {
   name: 'App',
@@ -32,8 +34,12 @@ export default {
     Form,
     PreLoader,
     NavbarMobile,
-    FooterMobile
+    FooterMobile,
+    CookieWarning
   },
+  data: () => ({
+    isCookieShowed: true
+  }),
   computed: {
     isModalOpen () {
       return this.$store.getters.isModalOpen
@@ -58,6 +64,10 @@ export default {
     onResize () {
       if (document.documentElement.clientWidth < 1120) this.$store.commit('setDesktop', false)
       else this.$store.commit('setDesktop', true)
+    },
+    toggleCookieWarning () {
+      this.isCookieShowed = true
+      localStorage.setItem('cookieWarning', true)
     }
   },
   beforeCreate () {
@@ -66,6 +76,9 @@ export default {
   mounted () {
     this.onResize()
     window.addEventListener('resize', this.onResize)
+    setTimeout(() => {
+      if (!localStorage.getItem('cookieWarning')) this.isCookieShowed = false
+    }, 2000)
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.onResize)

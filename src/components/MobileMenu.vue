@@ -5,6 +5,7 @@
       <p class="menu__item" @click="goTo('/news')">Новости</p>
       <p class="menu__item" @click="goTo('/gallery')">Галерея</p>
       <p class="menu__item" @click="goTo('/progress')">Ход строительства</p>
+      <p class="menu__item" @click="goTo('/camera')">Онлайн - камера</p>
       <p class="menu__item" @click="goTo('/contacts')">Контакты</p>
       <p class="menu__item" @click="openModal">Записаться на просмотр</p>
       <div class="menu__item social">

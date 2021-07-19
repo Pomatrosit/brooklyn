@@ -13,6 +13,7 @@ import Progress from '../views/Progress.vue'
 import Contacts from '../views/Contacts.vue'
 import Policy from '../views/Policy.vue'
 import NotFound from '../views/NotFound.vue'
+import Camera from '../views/Camera.vue'
 
 Vue.use(VueRouter)
 
@@ -76,6 +77,11 @@ const routes = [
     path: '/policy',
     name: 'Policy',
     component: Policy
+  },
+  {
+    path: '/camera',
+    name: 'Camera',
+    component: Camera
   },
   {
     path: '/404',
