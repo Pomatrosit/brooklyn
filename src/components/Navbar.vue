@@ -54,7 +54,7 @@
           >
             <path
               d="M23.7256 9.82546L28.8358 5.59046C30.1021 4.54074 32.0016 5.45532 32 7.11003L31.9814 18.6585C31.9798 20.3132 30.0788 21.2199 28.8156 20.1702L23.7256 15.9352M23.7207 18.5602C23.8463 21.4392 21.5517 23.8737 18.5962 23.996C18.3785 24.0053 7.76546 23.9836 7.76546 23.9836C4.8242 24.2097 2.25 22.0695 2.018 19.2013C2.00053 18.9876 2.00529 7.4563 2.00529 7.4563C1.87499 4.57424 4.16635 2.13355 7.1235 2.00656C7.34437 1.99572 17.9431 2.01585 17.9431 2.01585C20.8986 1.79285 23.4808 3.94858 23.7096 6.83064C23.7255 7.03816 23.7207 18.5602 23.7207 18.5602Z"
-              stroke="#130F26"
+              stroke="#ea8e79"
               stroke-width="2.36646"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -82,9 +82,9 @@
           <p class="nav-hovered">Записаться на просмотр</p>
         </div>
         <div class="nav__phone">
-          <a class="phone-number" :href="'tel:' + phone">{{ phone }}</a>
-          <div class="nav__call" @click="openModal(2)">
+          <div class="nav-phone-flex">
             <svg
+              @click="openModal(2)"
               width="25"
               height="25"
               viewBox="0 0 25 25"
@@ -106,7 +106,12 @@
                 fill="#242135"
               />
             </svg>
-            <p class="nav-hovered">Заказать звонок</p>
+            <div class="nav-phone-flex-inner">
+              <a class="phone-number" :href="'tel:' + phone">{{ phone }}</a>
+              <div class="nav__call" @click="openModal(2)">
+                <p class="nav-hovered">Заказать звонок</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -255,10 +260,21 @@ nav {
 }
 
 .nav__record svg,
-.nav__call svg {
+.nav-phone-flex svg {
   width: 3.333vh;
   height: 2.6vh;
   margin-top: -3px;
+  cursor: pointer;
+}
+
+.nav-phone-flex svg {
+  transform: translateX(2vh);
+}
+
+.nav-phone-flex {
+  display: flex;
+  align-items: center;
+  margin-left: 2vh;
 }
 
 .nav__camera svg {
@@ -266,6 +282,7 @@ nav {
   height: 2.6vh;
   margin-right: 5.2vh;
   cursor: pointer;
+  animation: bounce 5s linear infinite;
 }
 
 .record-animation {
@@ -362,6 +379,55 @@ nav {
   }
   100% {
     opacity: 1;
+  }
+}
+
+.animation-target {
+  animation: animation 1500ms linear both;
+}
+
+@keyframes bounce {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  1% {
+    transform: matrix3d(1.09, 0, 0, 0, 0, 1.09, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  2% {
+    transform: matrix3d(1.177, 0, 0, 0, 0, 1.177, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  3% {
+    transform: matrix3d(1.228, 0, 0, 0, 0, 1.228, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  5% {
+    transform: matrix3d(1.242, 0, 0, 0, 0, 1.242, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  6% {
+    transform: matrix3d(1.23, 0, 0, 0, 0, 1.23, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  7% {
+    transform: matrix3d(1.21, 0, 0, 0, 0, 1.21, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9% {
+    transform: matrix3d(1.196, 0, 0, 0, 0, 1.196, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  10% {
+    transform: matrix3d(1.192, 0, 0, 0, 0, 1.192, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  12% {
+    transform: matrix3d(1.198, 0, 0, 0, 0, 1.198, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  16% {
+    transform: matrix3d(1.201, 0, 0, 0, 0, 1.201, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  21% {
+    transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  25% {
+    transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   }
 }
 
