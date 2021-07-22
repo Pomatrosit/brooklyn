@@ -60,6 +60,7 @@
               stroke-linejoin="round"
             />
           </svg>
+          <p class="nav-hovered">Прямая трансляция</p>
         </div>
         <div class="nav__record" @click="openModal(1)">
           <svg
@@ -209,7 +210,7 @@ nav {
 
 .nav__links li {
   list-style: none;
-  margin-left: 2.36vw;
+  margin-left: 1.562vw;
   font-size: 1.667vh;
 }
 
@@ -219,9 +220,19 @@ nav {
 }
 
 .nav__record,
-.nav__call {
+.nav__call,
+.nav__camera {
   display: flex;
   align-items: center;
+}
+
+.nav__camera {
+  margin-left: 1vw;
+  margin-right: 2vw;
+}
+
+.nav__camera p {
+  margin-top: 1px;
 }
 
 .nav__record {
@@ -237,15 +248,18 @@ nav {
 }
 
 .nav__record p,
-.nav__call p {
+.nav__call p,
+.nav__camera p {
   font-size: 1.667vh;
   color: #242135;
   text-decoration: none;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .nav__record svg,
-.nav__call svg {
+.nav__call svg,
+.nav__camera svg {
   margin-right: 1vw;
 }
 
@@ -280,7 +294,6 @@ nav {
 .nav__camera svg {
   width: 3.333vh;
   height: 2.6vh;
-  margin-right: 5.2vh;
   cursor: pointer;
   animation: bounce 5s linear infinite;
 }
@@ -446,12 +459,15 @@ nav {
 }
 
 @media (max-aspect-ratio: 16/9) {
-  .nav__call p {
-    border: 2px solid red;
-  }
   .nav__record p,
   .nav__call p,
   .phone-number {
+    display: none;
+  }
+}
+
+@media (max-aspect-ratio: 35/18) {
+  .nav__camera p {
     display: none;
   }
 }
